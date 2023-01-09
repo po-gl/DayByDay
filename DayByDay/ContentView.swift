@@ -31,7 +31,7 @@ struct ContentView: View {
                     PastView(dayStatus: $dayStatus)
                     
                     Button("Past Days") { showingPastPage.toggle() }
-                        .foregroundColor(.white)
+                        .foregroundColor(.primary)
                         .sheet(isPresented: $showingPastPage) { pastPage }
                 }
                 .frame(width: 400)
