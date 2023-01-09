@@ -11,20 +11,63 @@ import CoreData
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
-
+    @FetchRequest(sortDescriptors: [SortDescriptor(\DayMO.date, order: .reverse)], animation: .default)
+    private var allDays: FetchedResults<DayMO>
+    
+    @State private var showingPastPage = false
+    
+    @State private var dayStatus = DayStatus()
+    
     var body: some View {
+        GeometryReader { geometry in
+            ScrollView {
+                VStack(spacing: 0) {
+                    Spacer(minLength: 200)
+                    
+                    ButtonCluster(dayStatus: $dayStatus)
+                    
+                    Spacer(minLength: spaceFromButtonsToScreenBottom(geometry))
+                    
+                    PastView(dayStatus: $dayStatus)
+                    
+                    Button("Past Days") { showingPastPage.toggle() }
+                        .foregroundColor(.white)
+                        .sheet(isPresented: $showingPastPage) { pastPage }
+                }
+                .frame(width: 400)
+                .padding()
+            }
+            .position(x: geometry.size.width/2, y: geometry.size.height/2)
+            .coordinateSpace(name: "scroll")
+        }
+        .onAppear() {
+            getDayStatus()
+        }
+    }
+    
+    private func getDayStatus() {
+        guard allDays.count > 0 else { return }
+        let latestDay = allDays[0]
+        guard latestDay.date!.hasSame(.day, as: Date()) else {
+            dayStatus = DayStatus()
+            return
+        }
+        dayStatus.active = latestDay.active
+        dayStatus.creative = latestDay.creative
+        dayStatus.productive = latestDay.productive
+    }
+    
+    var pastPage: some View {
         NavigationView {
             List {
-                ForEach(items) { item in
+                ForEach(allDays) { item in
                     NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                        Text("Item at \(item.date!, formatter: itemFormatter)")
                     } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
+                        Text("\(item.date!, formatter: itemFormatter)  \(item.active ? "🕺" : "_") \(item.creative ? "🎨" : "_") \(item.productive ? "💻" : "_")")
+                            .monospacedDigit()
                     }
+                    .isDetailLink(false)
                 }
                 .onDelete(perform: deleteItems)
             }
@@ -46,8 +89,11 @@ struct ContentView: View {
 
     private func addItem() {
         withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+            let newItem = DayMO(context: viewContext)
+            newItem.date = Date().addingTimeInterval(-60.0 * 60 * 24.0)
+            newItem.active = Bool.random()
+            newItem.creative = Bool.random()
+            newItem.productive = Bool.random()
 
             do {
                 try viewContext.save()
@@ -62,7 +108,7 @@ struct ContentView: View {
 
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
+            offsets.map { allDays[$0] }.forEach(viewContext.delete)
 
             do {
                 try viewContext.save()
@@ -72,6 +118,22 @@ struct ContentView: View {
                 let nsError = error as NSError
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
+        }
+    }
+    
+    private func spaceFromButtonsToScreenBottom(_ geometry: GeometryProxy) -> Double {
+        let screenHeight = geometry.size.height
+        
+        if screenHeight < 696.0 {
+            return 140.0
+        } else if screenHeight < 763.0 {  // iPhone 13 mini
+            return 190.0
+        } else if screenHeight < 839.0 {  // iPhone 14
+            return 205.0
+        } else if screenHeight < 900.0 {  // iPhone 14 Pro Max
+            return 313.0
+        } else {
+            return 360.0
         }
     }
 }

@@ -13,9 +13,12 @@ struct PersistenceController {
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        for _ in 0..<10 {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+        for i in 0..<10 {
+            let newItem = DayMO(context: viewContext)
+            newItem.date = Date().addingTimeInterval(-Double(i+1) * 60.0 * 60.0 * 24.0)
+            newItem.active = Bool.random()
+            newItem.creative = Bool.random()
+            newItem.productive = Bool.random()
         }
         do {
             try viewContext.save()
