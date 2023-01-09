@@ -65,7 +65,7 @@ struct PastView: View {
     private func cell(isActive: Bool, _ color: Color, _ geometry: GeometryProxy) -> some View {
         Rectangle()
             .frame(width: 110, height: 66)
-            .opacity(isActive ? 1.0 : 0.2)
+            .opacity(isActive ? 1.0 : 0.15)
     }
     
     private func barWidthForScroll(_ geometry: GeometryProxy) -> Double {
