@@ -22,7 +22,7 @@ struct ContentView: View {
         GeometryReader { geometry in
             ScrollView {
                 VStack(spacing: 0) {
-                    Spacer(minLength: 200)
+                    dateView()
                     
                     ButtonCluster(dayStatus: $dayStatus)
                     
@@ -41,6 +41,19 @@ struct ContentView: View {
         }
         .onAppear() {
             getDayStatus()
+        }
+    }
+    
+    private func dateView() -> some View {
+        ZStack {
+            Text("\(Date(), formatter: dayFormatter)")
+                .font(.system(size: 50, weight: .light))
+                .monospacedDigit()
+                .frame(height: 200)
+            Line()
+                .stroke(.primary, style: StrokeStyle(lineWidth: 1, dash: [6]))
+                .frame(width: 150, height: 1)
+                .offset(y: 35)
         }
     }
     
@@ -137,6 +150,12 @@ struct ContentView: View {
         }
     }
 }
+
+private let dayFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.setLocalizedDateFormatFromTemplate("EE M/d")
+    return formatter
+}()
 
 private let itemFormatter: DateFormatter = {
     let formatter = DateFormatter()
