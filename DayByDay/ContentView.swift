@@ -30,7 +30,7 @@ struct ContentView: View {
                     
                     PastView(dayStatus: $dayStatus)
                     
-                    Button("Past Days") { showingPastPage.toggle() }
+                    Button("🦥") { showingPastPage.toggle() }
                         .foregroundColor(.primary)
                         .sheet(isPresented: $showingPastPage) { pastPage }
                 }
@@ -82,7 +82,6 @@ struct ContentView: View {
                     }
                 }
             }
-            Text("Select an item")
         }
     }
 
