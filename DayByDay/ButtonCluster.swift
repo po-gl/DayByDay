@@ -31,6 +31,7 @@ struct ButtonCluster: View {
                     withAnimation {
                         dayStatus.active.toggle()
                         saveDay()
+                        haptic()
                     }
                 }
                 .opacity(opacity(for: .topLeft, geometry))
@@ -40,6 +41,7 @@ struct ButtonCluster: View {
                     withAnimation {
                         dayStatus.creative.toggle()
                         saveDay()
+                        haptic()
                     }
                 }
                 .opacity(opacity(for: .topRight, geometry))
@@ -49,6 +51,7 @@ struct ButtonCluster: View {
                     withAnimation {
                         dayStatus.productive.toggle()
                         saveDay()
+                        haptic()
                     }
                 }
                 .opacity(opacity(for: .bottom, geometry))
@@ -76,6 +79,14 @@ struct ButtonCluster: View {
             // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             let nsError = error as NSError
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
+    }
+    
+    private func haptic() {
+        if dayStatus.active && dayStatus.creative && dayStatus.productive {
+            completeHaptic()
+        } else {
+            basicHaptic()
         }
     }
     
