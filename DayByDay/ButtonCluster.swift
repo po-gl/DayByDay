@@ -28,21 +28,30 @@ struct ButtonCluster: View {
         GeometryReader { geometry in
             Group {
                 button("Active", gradient: dayStatus.active ? Color.pink.gradient : Color.gray.gradient, startAngle: .topLeft, geometry: geometry) {
-                    dayStatus.active.toggle()
-                    saveDay()
+                    withAnimation {
+                        dayStatus.active.toggle()
+                        saveDay()
+                    }
                 }
+                .opacity(opacity(for: .topLeft, geometry))
                 .position(animPosition(for: .topLeft, geometry))
                 
                 button("Creative", gradient: dayStatus.creative ? Color.purple.gradient : Color.gray.gradient, startAngle: .topRight, geometry: geometry) {
-                    dayStatus.creative.toggle()
-                    saveDay()
+                    withAnimation {
+                        dayStatus.creative.toggle()
+                        saveDay()
+                    }
                 }
+                .opacity(opacity(for: .topRight, geometry))
                 .position(animPosition(for: .topRight, geometry))
                 
                 button("Productive", gradient: dayStatus.productive ? Color.green.gradient : Color.gray.gradient, startAngle: .bottom, geometry: geometry) {
-                    dayStatus.productive.toggle()
-                    saveDay()
+                    withAnimation {
+                        dayStatus.productive.toggle()
+                        saveDay()
+                    }
                 }
+                .opacity(opacity(for: .bottom, geometry))
                 .position(animPosition(for: .bottom, geometry))
             }
             .position(x: geometry.size.width/2, y: geometry.size.height/2)
@@ -122,6 +131,20 @@ struct ButtonCluster: View {
         }
     }
     
+    private func opacity(for startAngle: AngleStart, _ geometry: GeometryProxy) -> Double {
+        let scrollOffset = scrollOffset(geometry)
+        switch startAngle {
+        case .topLeft:
+            return 1.0 + scrollOffset / 230
+        case .topRight:
+            return 1.0 + scrollOffset / 290
+        case .bottom:
+            return 1.0 + scrollOffset / 320
+        case .top:
+            return 1.0
+        }
+    }
+
     private func diameterForScroll(_ geometry: GeometryProxy) -> Double {
         let scrollOffset = scrollOffset(geometry)
         return max(min(diameter, diameter + scrollOffset), ButtonCluster.lowerBoundDiameter)
