@@ -34,7 +34,6 @@ struct ContentView: View {
                         .foregroundColor(.primary)
                         .sheet(isPresented: $showingPastPage) { pastPage }
                 }
-                .frame(width: 400)
                 .padding()
             }
             .position(x: geometry.size.width/2, y: geometry.size.height/2)
@@ -64,7 +63,7 @@ struct ContentView: View {
                     NavigationLink {
                         Text("Item at \(item.date!, formatter: itemFormatter)")
                     } label: {
-                        Text("\(item.date!, formatter: itemFormatter)  \(item.active ? "🕺" : "_") \(item.creative ? "🎨" : "_") \(item.productive ? "💻" : "_")")
+                        Text("\(item.date!, formatter: itemFormatter)  \(item.active ? "🕺" : "_") \(item.productive ? "💻" : "_") \(item.creative ? "🎨" : "_")")
                             .monospacedDigit()
                     }
                     .isDetailLink(false)
@@ -89,11 +88,13 @@ struct ContentView: View {
 
     private func addItem() {
         withAnimation {
-            let newItem = DayMO(context: viewContext)
-            newItem.date = Date().addingTimeInterval(-60.0 * 60 * 24.0)
-            newItem.active = Bool.random()
-            newItem.creative = Bool.random()
-            newItem.productive = Bool.random()
+            for i in 0..<5 {
+                let newItem = DayMO(context: viewContext)
+                newItem.date = Date().addingTimeInterval(-60.0 * 60 * 24.0 * Double(i+1)*2.0)
+                newItem.active = Bool.random()
+                newItem.creative = Bool.random()
+                newItem.productive = Bool.random()
+            }
 
             do {
                 try viewContext.save()
