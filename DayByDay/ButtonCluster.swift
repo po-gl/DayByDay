@@ -27,7 +27,7 @@ struct ButtonCluster: View {
     var body: some View {
         GeometryReader { geometry in
             Group {
-                button("Active", gradient: dayStatus.active ? Color.pink.gradient : Color.gray.gradient, startAngle: .topLeft, geometry: geometry) {
+                button("Active", isOn: dayStatus.active, status: .active, startAngle: .topLeft, geometry: geometry) {
                     withAnimation {
                         dayStatus.active.toggle()
                         saveDay()
@@ -37,7 +37,7 @@ struct ButtonCluster: View {
                 .opacity(opacity(for: .topLeft, geometry))
                 .position(animPosition(for: .topLeft, geometry))
                 
-                button("Creative", gradient: dayStatus.creative ? Color.purple.gradient : Color.gray.gradient, startAngle: .topRight, geometry: geometry) {
+                button("Creative", isOn: dayStatus.creative, status: .creative, startAngle: .topRight, geometry: geometry) {
                     withAnimation {
                         dayStatus.creative.toggle()
                         saveDay()
@@ -47,7 +47,7 @@ struct ButtonCluster: View {
                 .opacity(opacity(for: .topRight, geometry))
                 .position(animPosition(for: .topRight, geometry))
                 
-                button("Productive", gradient: dayStatus.productive ? Color.green.gradient : Color.gray.gradient, startAngle: .bottom, geometry: geometry) {
+                button("Productive", isOn: dayStatus.productive, status: .productive, startAngle: .bottom, geometry: geometry) {
                     withAnimation {
                         dayStatus.productive.toggle()
                         saveDay()
@@ -90,16 +90,15 @@ struct ButtonCluster: View {
         }
     }
     
-    private func button(_ text: String, gradient: AnyGradient, startAngle: AngleStart, geometry: GeometryProxy, action: @escaping () -> Void) -> some View {
+    private func button(_ text: String, isOn: Bool, status: AnimCategory, startAngle: AngleStart, geometry: GeometryProxy, action: @escaping () -> Void) -> some View {
         let diameter = diameterForScroll(geometry)
         return Button(action: action) {
                     CircleLabelView(radius: diameter/2, size: CGSize(width: diameter + fontSize*2 + 5, height: diameter + fontSize*2 + 5), startAngle: startAngle, text: text)
                         .font(.system(size: fontSize, weight: .semibold, design: .monospaced))
                         .opacity(scrollOffset(geometry) * 0.02 + 1.0)
                 }
-                .foregroundStyle(gradient)
-                .buttonStyle(CircleStyle())
-                .frame(width: diameter, height: diameter)
+        .buttonStyle(!isOn ? SwirlStyle(category: status) : SwirlStyle(category: .none))
+        .frame(width: diameter, height: diameter)
     }
     
     
