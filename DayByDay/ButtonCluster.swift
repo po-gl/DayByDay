@@ -27,33 +27,36 @@ struct ButtonCluster: View {
     var body: some View {
         GeometryReader { geometry in
             Group {
-                button("Active", isOn: dayStatus.active, status: .active, startAngle: .topLeft, geometry: geometry) {
+                button("Active", status: .active, startAngle: .topLeft, geometry: geometry) {
                     withAnimation {
                         dayStatus.active.toggle()
                         saveDay()
                         haptic()
                     }
                 }
+                .saturation(dayStatus.active ? 1.0 : 0.0)
                 .opacity(opacity(for: .topLeft, geometry))
                 .position(animPosition(for: .topLeft, geometry))
                 
-                button("Creative", isOn: dayStatus.creative, status: .creative, startAngle: .topRight, geometry: geometry) {
+                button("Creative", status: .creative, startAngle: .topRight, geometry: geometry) {
                     withAnimation {
                         dayStatus.creative.toggle()
                         saveDay()
                         haptic()
                     }
                 }
+                .saturation(dayStatus.creative ? 1.0 : 0.0)
                 .opacity(opacity(for: .topRight, geometry))
                 .position(animPosition(for: .topRight, geometry))
                 
-                button("Productive", isOn: dayStatus.productive, status: .productive, startAngle: .bottom, geometry: geometry) {
+                button("Productive", status: .productive, startAngle: .bottom, geometry: geometry) {
                     withAnimation {
                         dayStatus.productive.toggle()
                         saveDay()
                         haptic()
                     }
                 }
+                .saturation(dayStatus.productive ? 1.0 : 0.0)
                 .opacity(opacity(for: .bottom, geometry))
                 .position(animPosition(for: .bottom, geometry))
             }
@@ -90,14 +93,14 @@ struct ButtonCluster: View {
         }
     }
     
-    private func button(_ text: String, isOn: Bool, status: AnimCategory, startAngle: AngleStart, geometry: GeometryProxy, action: @escaping () -> Void) -> some View {
+    private func button(_ text: String, status: AnimCategory, startAngle: AngleStart, geometry: GeometryProxy, action: @escaping () -> Void) -> some View {
         let diameter = diameterForScroll(geometry)
         return Button(action: action) {
                     CircleLabelView(radius: diameter/2, size: CGSize(width: diameter + fontSize*2 + 5, height: diameter + fontSize*2 + 5), startAngle: startAngle, text: text)
                         .font(.system(size: fontSize, weight: .semibold, design: .monospaced))
                         .opacity(scrollOffset(geometry) * 0.02 + 1.0)
                 }
-        .buttonStyle(!isOn ? SwirlStyle(category: status) : SwirlStyle(category: .none))
+        .buttonStyle(SwirlStyle(category: status))
         .frame(width: diameter, height: diameter)
     }
     
