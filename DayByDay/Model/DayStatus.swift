@@ -12,3 +12,9 @@ public struct DayStatus {
     var creative = false
     var productive = false
 }
+
+public enum Category {
+    case active
+    case creative
+    case productive
+}
