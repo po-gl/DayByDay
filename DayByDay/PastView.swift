@@ -141,7 +141,7 @@ struct PastView: View {
     private func cell(isActive: Bool, _ color: Color, _ geometry: GeometryProxy) -> some View {
         Rectangle()
             .frame(width: 110, height: cellHeight)
-            .opacity(isActive ? 1.0 : 0.15)
+            .opacity(isActive ? 1.0 : 0.40)
     }
     
     private func gradient(for category: Category) -> LinearGradient {
