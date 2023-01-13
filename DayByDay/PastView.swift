@@ -28,8 +28,7 @@ struct PastView: View {
                             Spacer()
                         }
                     )
-                dates()
-                dividers()
+                datesAndDividers()
                 eyes(geometry)
             }
             .position(x: geometry.size.width/2, y: geometry.size.height/2)
@@ -65,27 +64,21 @@ struct PastView: View {
         .offset(y: barWidthForScroll(geometry)/2)
     }
     
-    private func dates() -> some View {
+    private func datesAndDividers() -> some View {
         VStack(spacing: cellHeight-1) {
             ForEach(0..<30) { i in
-                Text("\(Date(timeInterval: -Double(60*60*24*i), since: Date()), formatter: dayFormatter)")
-                    .font(.system(size: 14, weight: .light))
-                    .offset(x: -90.0*1.5, y: 18)
-                    .frame(height: 1)
+                ZStack {
+                    Text("\(Date(timeInterval: -Double(60*60*24*i), since: Date()), formatter: dayFormatter)")
+                        .font(.system(size: 14, weight: .light))
+                        .offset(x: -90.0*1.5, y: 12)
+                        .frame(height: 1)
+                    Line()
+                        .stroke(.primary, style: StrokeStyle(lineWidth: Date(timeInterval: -Double(60*60*24*i), since: Date()).isMonday() ? 2.5 : 1, lineCap: .round))
+                        .frame(width: 3*(90.0+22), height: 1)
+                        .offset(y: 30.0)
+                        .opacity(0.7)
+                }
             }
-        }
-    }
-    
-    private func dividers() -> some View {
-        return VStack(spacing: cellHeight-1) {
-            ForEach(0..<30) { _ in
-                Line()
-                    .stroke(.primary, style: StrokeStyle(lineWidth: 1))
-                    .frame(width: 3*(90.0+22), height: 1)
-                    .opacity(0.4)
-            }
-            .offset(y: cellHeight)
-            Spacer()
         }
     }
     
