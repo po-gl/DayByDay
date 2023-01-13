@@ -148,18 +148,21 @@ struct PastView: View {
         switch category {
         case .active:
             return LinearGradient(stops: [.init(color: Color(hex: 0xE69F1E), location: 0),
-                                          .init(color: Color(hex: 0xE63C5C), location: 0.5),
-                                          .init(color: Color(hex: 0xB04386), location: 1)],
+                                          .init(color: Color(hex: 0xF23336), location: 0.2),
+                                          .init(color: Color(hex: 0xB04386), location: 0.8),
+                                          .init(color: Color(hex: 0xB3F2B7), location: 1)],
                                   startPoint: .leading, endPoint: .trailing)
         case .creative:
-            return LinearGradient(stops: [.init(color: Color(hex: 0xFF7676), location: -0.2),
+            return LinearGradient(stops: [.init(color: Color(hex: 0xFF7676), location: -0.1),
                                           .init(color: Color(hex: 0xB7ED51), location: 0.6),
                                           .init(color: Color(hex: 0xFFF074), location: 1)],
                                   startPoint: .leading, endPoint: .trailing)
         case .productive:
-            return LinearGradient(stops: [.init(color: Color(hex: 0xBAE1E5), location: -0.2),
-                                          .init(color: Color(hex: 0xC96FC3), location: 0.6),
-                                          .init(color: Color(hex: 0xF0BE83), location: 1.2)],
+            return LinearGradient(stops: [.init(color: Color(hex: 0xFCEBD6), location: 0.0),
+                                          .init(color: Color(hex: 0xBAE1E5), location: 0.2),
+                                          .init(color: Color(hex: 0xC96FC3), location: 0.5),
+                                          .init(color: Color(hex: 0xC33FDB), location: 0.8),
+                                          .init(color: Color(hex: 0xF0BE83), location: 1.1)],
                                   startPoint: .leading, endPoint: .trailing)
         }
     }
