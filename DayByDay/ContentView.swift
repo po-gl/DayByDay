@@ -9,6 +9,7 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
+    @Environment(\.scenePhase) private var scenePhase
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(sortDescriptors: [SortDescriptor(\DayMO.date, order: .reverse)], animation: .default)
@@ -39,8 +40,10 @@ struct ContentView: View {
             .position(x: geometry.size.width/2, y: geometry.size.height/2)
             .coordinateSpace(name: "scroll")
         }
-        .onAppear() {
-            getDayStatus()
+        .onChange(of: scenePhase) { newPhase in
+            if newPhase == .active {
+                getDayStatus()
+            }
         }
     }
     
