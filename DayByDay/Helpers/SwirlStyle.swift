@@ -14,7 +14,7 @@ struct SwirlStyle: ButtonStyle {
     
     func makeBody(configuration: Configuration) -> some View {
         Circle()
-            .fill()
+            .fill(.white)
             .overlay(
                 SwirlAnimation(for: category)
                     .mask(
