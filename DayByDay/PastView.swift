@@ -80,7 +80,7 @@ struct PastView: View {
         return VStack(spacing: cellHeight-1) {
             ForEach(0..<30) { _ in
                 Line()
-                    .stroke(.primary, style: StrokeStyle(lineWidth: 1, dash: [2.5]))
+                    .stroke(.primary, style: StrokeStyle(lineWidth: 1))
                     .frame(width: 3*(90.0+22), height: 1)
                     .opacity(0.4)
             }
