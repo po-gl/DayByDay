@@ -18,4 +18,8 @@ extension Date {
     func hasSame(_ component: Calendar.Component, as date: Date) -> Bool {
         return distance(from: date, only: component) == 0
     }
+    
+    func isMonday(calendar: Calendar = .current) -> Bool {
+        return calendar.component(.weekday, from: self) == 2
+    }
 }
