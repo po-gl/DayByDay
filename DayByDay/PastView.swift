@@ -30,6 +30,7 @@ struct PastView: View {
                     )
                 dates()
                 dividers()
+                eyes(geometry)
             }
             .position(x: geometry.size.width/2, y: geometry.size.height/2)
         }
@@ -88,6 +89,45 @@ struct PastView: View {
         }
     }
     
+    private func eyes(_ geometry: GeometryProxy) -> some View {
+        let eyeSize = 7.0
+        let eyeWidth = 38.0
+        let eyeDepth = 8.0
+        return VStack {
+            HStack(spacing: 25) {
+                HStack {
+                    Circle()
+                        .frame(width: eyeSize)
+                        .padding(.trailing, eyeWidth)
+                    Circle()
+                        .frame(width: eyeSize)
+                }
+                .frame(width: barWidthForScroll(geometry))
+                .padding(.top, eyeDepth)
+                HStack {
+                    Circle()
+                        .frame(width: eyeSize)
+                        .padding(.trailing, eyeWidth + 20)
+                    Circle()
+                        .frame(width: eyeSize)
+                }
+                .frame(width: barWidthForScroll(geometry))
+                .padding(.top, eyeDepth + 10)
+                HStack {
+                    Circle()
+                        .frame(width: eyeSize)
+                        .padding(.trailing, eyeWidth)
+                    Circle()
+                        .frame(width: eyeSize)
+                }
+                .frame(width: barWidthForScroll(geometry))
+                .padding(.top, eyeDepth - 10)
+            }
+            Spacer()
+        }
+    }
+    
+    
     private func row(_ day: DayStatus, _ geometry: GeometryProxy) -> some View {
         HStack(spacing: 5) {
             cell(isActive: day.active, Color.pink, geometry)
@@ -116,8 +156,8 @@ struct PastView: View {
                                   startPoint: .leading, endPoint: .trailing)
         case .productive:
             return LinearGradient(stops: [.init(color: Color(hex: 0xBAE1E5), location: -0.2),
-                                          .init(color: Color(hex: 0xBE59D5), location: 0.6),
-                                          .init(color: Color(hex: 0xF0BE83), location: 1.1)],
+                                          .init(color: Color(hex: 0xC96FC3), location: 0.6),
+                                          .init(color: Color(hex: 0xF0BE83), location: 1.2)],
                                   startPoint: .leading, endPoint: .trailing)
         }
     }
