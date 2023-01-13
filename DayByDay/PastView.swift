@@ -75,7 +75,7 @@ struct PastView: View {
                     
                     if Date(timeInterval: -Double(60*60*24*i), since: Date()).isMonday() {
                         Line()
-                            .stroke(.primary, style: StrokeStyle(lineWidth: 2.5, lineCap: .round, dash: [8]))
+                            .stroke(.primary, style: StrokeStyle(lineWidth: 2.5, lineCap: .round, dash: [10]))
                             .frame(width: 3*(90.0+22), height: 1)
                             .offset(y: 30.0)
                             .opacity(0.7)
