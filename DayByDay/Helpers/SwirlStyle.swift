@@ -20,7 +20,7 @@ struct SwirlStyle: ButtonStyle {
                     .mask(
                     Circle()
                         .fill(.white)
-                        .opacity(configuration.isPressed ? 0.8 : 1.0)
+                        .opacity(configuration.isPressed ? 0.9 : 1.0)
                     )
             )
             .overlay(
