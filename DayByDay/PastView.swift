@@ -69,8 +69,8 @@ struct PastView: View {
             ForEach(0..<30) { i in
                 ZStack {
                     Text("\(Date(timeInterval: -Double(60*60*24*i), since: Date()), formatter: dayFormatter)")
-                        .font(.system(size: 14, weight: .light))
-                        .offset(x: -90.0*1.5, y: 12)
+                        .font(.system(size: 14, weight: .regular, design: .monospaced))
+                        .offset(x: -90.0*1.5, y: 14)
                         .frame(height: 1)
                     
                     if Date(timeInterval: -Double(60*60*24*i), since: Date()).isMonday() {

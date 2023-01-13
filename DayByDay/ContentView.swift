@@ -50,8 +50,7 @@ struct ContentView: View {
     private func dateView() -> some View {
         ZStack {
             Text("\(Date(), formatter: dayFormatter)")
-                .font(.system(size: 45, weight: .light))
-                .monospacedDigit()
+                .font(.system(size: 40, weight: .light, design: .monospaced))
                 .frame(height: 200)
             Line()
                 .stroke(.primary, style: StrokeStyle(lineWidth: 3, lineCap: .round))
