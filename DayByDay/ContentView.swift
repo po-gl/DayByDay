@@ -51,7 +51,7 @@ struct ContentView: View {
                 .monospacedDigit()
                 .frame(height: 200)
             Line()
-                .stroke(.primary, style: StrokeStyle(lineWidth: 1, dash: [6]))
+                .stroke(.primary, style: StrokeStyle(lineWidth: 3, lineCap: .round))
                 .frame(width: 150, height: 1)
                 .offset(y: 35)
         }
