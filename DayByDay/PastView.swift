@@ -55,10 +55,10 @@ struct PastView: View {
                 .stroke(gradient(for: .active), style: StrokeStyle(lineWidth: barWidthForScroll(geometry), lineCap: .round))
                 .frame(width: barWidthForScroll(geometry))
             WigglePath(shiftX: shiftX, shiftY: shiftY)
-                .stroke(gradient(for: .creative), style: StrokeStyle(lineWidth: barWidthForScroll(geometry), lineCap: .round))
+                .stroke(gradient(for: .productive), style: StrokeStyle(lineWidth: barWidthForScroll(geometry), lineCap: .round))
                 .frame(width: barWidthForScroll(geometry))
             WigglePath(shiftX: shiftX, shiftY: shiftY)
-                .stroke(gradient(for: .productive), style: StrokeStyle(lineWidth: barWidthForScroll(geometry), lineCap: .round))
+                .stroke(gradient(for: .creative), style: StrokeStyle(lineWidth: barWidthForScroll(geometry), lineCap: .round))
                 .frame(width: barWidthForScroll(geometry))
         }
         .offset(y: barWidthForScroll(geometry)/2)
@@ -152,13 +152,13 @@ struct PastView: View {
                                           .init(color: Color(hex: 0xB04386), location: 0.8),
                                           .init(color: Color(hex: 0xB3F2B7), location: 1.0)],
                                   startPoint: .leading, endPoint: .trailing)
-        case .creative:
+        case .productive:
             return LinearGradient(stops: [.init(color: Color(hex: 0xC62379), location: 0.0),
                                           .init(color: Color(hex: 0xF77756), location: 0.2),
                                           .init(color: Color(hex: 0xA8E712), location: 0.6),
                                           .init(color: Color(hex: 0xD8F7EC), location: 1.1)],
                                   startPoint: .leading, endPoint: .trailing)
-        case .productive:
+        case .creative:
             return LinearGradient(stops: [.init(color: Color(hex: 0xFCEBD6), location: 0.0),
                                           .init(color: Color(hex: 0xBAE1E5), location: 0.2),
                                           .init(color: Color(hex: 0xC96FC3), location: 0.5),
