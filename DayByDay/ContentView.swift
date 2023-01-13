@@ -50,12 +50,12 @@ struct ContentView: View {
     private func dateView() -> some View {
         ZStack {
             Text("\(Date(), formatter: dayFormatter)")
-                .font(.system(size: 50, weight: .light))
+                .font(.system(size: 45, weight: .light))
                 .monospacedDigit()
                 .frame(height: 200)
             Line()
                 .stroke(.primary, style: StrokeStyle(lineWidth: 3, lineCap: .round))
-                .frame(width: 150, height: 1)
+                .frame(width: 200, height: 1)
                 .offset(y: 35)
         }
     }
@@ -156,7 +156,7 @@ struct ContentView: View {
 
 private let dayFormatter: DateFormatter = {
     let formatter = DateFormatter()
-    formatter.setLocalizedDateFormatFromTemplate("EE M/d")
+    formatter.setLocalizedDateFormatFromTemplate("EEEE M/d")
     return formatter
 }()
 
