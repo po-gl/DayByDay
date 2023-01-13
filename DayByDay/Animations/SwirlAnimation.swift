@@ -24,7 +24,7 @@ struct SwirlAnimation: View {
     }
     
     var body: some View {
-        AnimatedImage(imageNames: imageNames, interval: 0.016, loops: true)
+        AnimatedImage(imageNames: imageNames, interval: 0.032, loops: true)
     }
 }
 
