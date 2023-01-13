@@ -52,13 +52,13 @@ struct PastView: View {
         let shiftY = 90.0
         return HStack(spacing: 25) {
             WigglePath(shiftX: shiftX, shiftY: shiftY)
-                .stroke(.pink.gradient, style: StrokeStyle(lineWidth: barWidthForScroll(geometry), lineCap: .round))
+                .stroke(Color(hex: 0xE63C5C).gradient, style: StrokeStyle(lineWidth: barWidthForScroll(geometry), lineCap: .round))
                 .frame(width: barWidthForScroll(geometry))
             WigglePath(shiftX: shiftX, shiftY: shiftY)
-                .stroke(.green.gradient, style: StrokeStyle(lineWidth: barWidthForScroll(geometry), lineCap: .round))
+                .stroke(Color(hex: 0xB7ED51).gradient, style: StrokeStyle(lineWidth: barWidthForScroll(geometry), lineCap: .round))
                 .frame(width: barWidthForScroll(geometry))
             WigglePath(shiftX: shiftX, shiftY: shiftY)
-                .stroke(.purple.gradient, style: StrokeStyle(lineWidth: barWidthForScroll(geometry), lineCap: .round))
+                .stroke(Color(hex: 0xBE59D5).gradient, style: StrokeStyle(lineWidth: barWidthForScroll(geometry), lineCap: .round))
                 .frame(width: barWidthForScroll(geometry))
         }
         .offset(y: barWidthForScroll(geometry)/2)
