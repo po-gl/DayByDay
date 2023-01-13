@@ -52,13 +52,13 @@ struct PastView: View {
         let shiftY = 90.0
         return HStack(spacing: 25) {
             WigglePath(shiftX: shiftX, shiftY: shiftY)
-                .stroke(Color(hex: 0xE63C5C).gradient, style: StrokeStyle(lineWidth: barWidthForScroll(geometry), lineCap: .round))
+                .stroke(gradient(for: .active), style: StrokeStyle(lineWidth: barWidthForScroll(geometry), lineCap: .round))
                 .frame(width: barWidthForScroll(geometry))
             WigglePath(shiftX: shiftX, shiftY: shiftY)
-                .stroke(Color(hex: 0xB7ED51).gradient, style: StrokeStyle(lineWidth: barWidthForScroll(geometry), lineCap: .round))
+                .stroke(gradient(for: .creative), style: StrokeStyle(lineWidth: barWidthForScroll(geometry), lineCap: .round))
                 .frame(width: barWidthForScroll(geometry))
             WigglePath(shiftX: shiftX, shiftY: shiftY)
-                .stroke(Color(hex: 0xBE59D5).gradient, style: StrokeStyle(lineWidth: barWidthForScroll(geometry), lineCap: .round))
+                .stroke(gradient(for: .productive), style: StrokeStyle(lineWidth: barWidthForScroll(geometry), lineCap: .round))
                 .frame(width: barWidthForScroll(geometry))
         }
         .offset(y: barWidthForScroll(geometry)/2)
@@ -100,6 +100,26 @@ struct PastView: View {
         Rectangle()
             .frame(width: 110, height: cellHeight)
             .opacity(isActive ? 1.0 : 0.15)
+    }
+    
+    private func gradient(for category: Category) -> LinearGradient {
+        switch category {
+        case .active:
+            return LinearGradient(stops: [.init(color: Color(hex: 0xE69F1E), location: 0),
+                                          .init(color: Color(hex: 0xE63C5C), location: 0.5),
+                                          .init(color: Color(hex: 0xB04386), location: 1)],
+                                  startPoint: .leading, endPoint: .trailing)
+        case .creative:
+            return LinearGradient(stops: [.init(color: Color(hex: 0xFF7676), location: -0.2),
+                                          .init(color: Color(hex: 0xB7ED51), location: 0.6),
+                                          .init(color: Color(hex: 0xFFF074), location: 1)],
+                                  startPoint: .leading, endPoint: .trailing)
+        case .productive:
+            return LinearGradient(stops: [.init(color: Color(hex: 0xBAE1E5), location: -0.2),
+                                          .init(color: Color(hex: 0xBE59D5), location: 0.6),
+                                          .init(color: Color(hex: 0xF0BE83), location: 1.1)],
+                                  startPoint: .leading, endPoint: .trailing)
+        }
     }
     
     private func barWidthForScroll(_ geometry: GeometryProxy) -> Double {
