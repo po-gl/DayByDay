@@ -18,6 +18,7 @@ struct ButtonCluster: View {
     }
     
     @Binding public var dayStatus: DayStatus
+    @Binding public var haptics: Haptics
     
     let diameter = 140.0
     let fontSize = 15.0
@@ -93,7 +94,7 @@ struct ButtonCluster: View {
     
     private func haptic() {
         if dayStatus.active && dayStatus.creative && dayStatus.productive {
-            completeHaptic()
+            haptics.workHaptic()
         } else {
             basicHaptic()
         }
