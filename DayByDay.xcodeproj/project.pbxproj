@@ -37,6 +37,8 @@
 		614EE40A296AC9E7001FB19D /* DayStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614EE408296AC9E7001FB19D /* DayStatus.swift */; };
 		614EE40C296AF187001FB19D /* PastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614EE40B296AF187001FB19D /* PastView.swift */; };
 		614EE40D296AF187001FB19D /* PastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614EE40B296AF187001FB19D /* PastView.swift */; };
+		6155DB3D2972599C00256A5A /* BurstAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6155DB3C2972599C00256A5A /* BurstAnimation.swift */; };
+		6155DB3E2972599C00256A5A /* BurstAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6155DB3C2972599C00256A5A /* BurstAnimation.swift */; };
 		615CC1F8296CC354004DEE47 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615CC1F7296CC354004DEE47 /* Haptics.swift */; };
 		615CC1F9296CC354004DEE47 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615CC1F7296CC354004DEE47 /* Haptics.swift */; };
 		615CC1FA296CC354004DEE47 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615CC1F7296CC354004DEE47 /* Haptics.swift */; };
@@ -83,6 +85,7 @@
 		614EE405296AC978001FB19D /* ButtonCluster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCluster.swift; sourceTree = "<group>"; };
 		614EE408296AC9E7001FB19D /* DayStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayStatus.swift; sourceTree = "<group>"; };
 		614EE40B296AF187001FB19D /* PastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastView.swift; sourceTree = "<group>"; };
+		6155DB3C2972599C00256A5A /* BurstAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BurstAnimation.swift; sourceTree = "<group>"; };
 		615CC1F7296CC354004DEE47 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -197,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				61188D3C2970E8D900BF77B5 /* SwirlAnimation.swift */,
+				6155DB3C2972599C00256A5A /* BurstAnimation.swift */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -358,6 +362,7 @@
 				610AF8FE296A5A99001E50A6 /* ContentView.swift in Sources */,
 				610AF8F9296A5A99001E50A6 /* Persistence.swift in Sources */,
 				61188D3D2970E8D900BF77B5 /* SwirlAnimation.swift in Sources */,
+				6155DB3D2972599C00256A5A /* BurstAnimation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,6 +385,7 @@
 				610AF91A296A5A9A001E50A6 /* DayByDayUITestsLaunchTests.swift in Sources */,
 				614EE404296ABA43001FB19D /* CircleLabelView.swift in Sources */,
 				61188D3E2970E8D900BF77B5 /* SwirlAnimation.swift in Sources */,
+				6155DB3E2972599C00256A5A /* BurstAnimation.swift in Sources */,
 				61188D4429710D8000BF77B5 /* Color+hex.swift in Sources */,
 				610AF918296A5A9A001E50A6 /* DayByDayUITests.swift in Sources */,
 				614EE40A296AC9E7001FB19D /* DayStatus.swift in Sources */,

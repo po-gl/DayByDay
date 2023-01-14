@@ -26,7 +26,13 @@ struct ButtonCluster: View {
     
     var body: some View {
         GeometryReader { geometry in
-            Group {
+            ZStack {
+                if dayStatus.active && dayStatus.creative && dayStatus.productive {
+                    BurstAnimation()
+                        .offset(y: 12)
+                        .scaleEffect(1.6)
+                }
+                
                 button("Active", status: .active, startAngle: .topLeft, geometry: geometry) {
                     withAnimation {
                         dayStatus.active.toggle()
