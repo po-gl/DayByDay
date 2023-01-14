@@ -30,7 +30,7 @@ struct ButtonCluster: View {
             ZStack {
                 if dayStatus.active && dayStatus.creative && dayStatus.productive {
                     BurstAnimation()
-                        .offset(y: 12)
+                        .offset(x: -3, y: 12)
                         .scaleEffect(1.6)
                 }
                 
