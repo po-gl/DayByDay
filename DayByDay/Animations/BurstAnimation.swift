@@ -15,6 +15,6 @@ struct BurstAnimation: View {
     }
     
     var body: some View {
-        AnimatedImage(imageNames: imageNames, interval: 0.016, loops: false)
+        AnimatedImage(imageNames: imageNames, interval: 0.006, loops: false)
     }
 }
