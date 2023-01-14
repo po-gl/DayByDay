@@ -25,10 +25,12 @@ struct ButtonCluster: View {
     
     static let lowerBoundDiameter = 90.0
     
+    @State private var showBurst = false
+    
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                if dayStatus.active && dayStatus.creative && dayStatus.productive {
+                if showBurst {
                     BurstAnimation()
                         .offset(x: -3, y: 12)
                         .scaleEffect(1.6)
@@ -39,6 +41,11 @@ struct ButtonCluster: View {
                         dayStatus.active.toggle()
                         saveDay()
                         haptic()
+                        if dayStatus.active && dayStatus.creative && dayStatus.productive {
+                            showBurst = true
+                        } else {
+                            showBurst = false
+                        }
                     }
                 }
                 .saturation(dayStatus.active ? 1.0 : 0.0)
@@ -50,6 +57,11 @@ struct ButtonCluster: View {
                         dayStatus.creative.toggle()
                         saveDay()
                         haptic()
+                        if dayStatus.active && dayStatus.creative && dayStatus.productive {
+                            showBurst = true
+                        } else {
+                            showBurst = false
+                        }
                     }
                 }
                 .saturation(dayStatus.creative ? 1.0 : 0.0)
@@ -61,6 +73,11 @@ struct ButtonCluster: View {
                         dayStatus.productive.toggle()
                         saveDay()
                         haptic()
+                        if dayStatus.active && dayStatus.creative && dayStatus.productive {
+                            showBurst = true
+                        } else {
+                            showBurst = false
+                        }
                     }
                 }
                 .saturation(dayStatus.productive ? 1.0 : 0.0)
