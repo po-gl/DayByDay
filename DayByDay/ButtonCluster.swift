@@ -24,12 +24,11 @@ struct ButtonCluster: View {
     
     static let lowerBoundDiameter = 90.0
     
-    @State private var showBurst = false
     
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                if showBurst {
+                if dayStatus.active && dayStatus.creative && dayStatus.productive {
                     CompleteBackgroundView()
                 }
                 
@@ -38,11 +37,6 @@ struct ButtonCluster: View {
                         dayStatus.active.toggle()
                         saveDay()
                         haptic()
-                        if dayStatus.active && dayStatus.creative && dayStatus.productive {
-                            showBurst = true
-                        } else {
-                            showBurst = false
-                        }
                     }
                 }
                 .saturation(dayStatus.active ? 1.0 : 0.0)
@@ -54,11 +48,6 @@ struct ButtonCluster: View {
                         dayStatus.creative.toggle()
                         saveDay()
                         haptic()
-                        if dayStatus.active && dayStatus.creative && dayStatus.productive {
-                            showBurst = true
-                        } else {
-                            showBurst = false
-                        }
                     }
                 }
                 .saturation(dayStatus.creative ? 1.0 : 0.0)
@@ -70,11 +59,6 @@ struct ButtonCluster: View {
                         dayStatus.productive.toggle()
                         saveDay()
                         haptic()
-                        if dayStatus.active && dayStatus.creative && dayStatus.productive {
-                            showBurst = true
-                        } else {
-                            showBurst = false
-                        }
                     }
                 }
                 .saturation(dayStatus.productive ? 1.0 : 0.0)
@@ -84,13 +68,6 @@ struct ButtonCluster: View {
             .position(x: geometry.size.width/2, y: geometry.size.height/2)
         }
         .frame(width: 360, height: 360)
-        .onAppear {
-            if dayStatus.active && dayStatus.creative && dayStatus.productive {
-                showBurst = true
-            } else {
-                showBurst = false
-            }
-        }
     }
     
     
