@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		6101CA242975FB7D00B12C68 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6101CA232975FB7D00B12C68 /* Notifications.swift */; };
-		6101CA252975FB7D00B12C68 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6101CA232975FB7D00B12C68 /* Notifications.swift */; };
 		6101CA262975FB7D00B12C68 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6101CA232975FB7D00B12C68 /* Notifications.swift */; };
 		6104E56B296B1A580034B9E3 /* Date+compare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6104E56A296B1A580034B9E3 /* Date+compare.swift */; };
 		6104E56C296B1A580034B9E3 /* Date+compare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6104E56A296B1A580034B9E3 /* Date+compare.swift */; };
@@ -45,8 +44,55 @@
 		6155DB3D2972599C00256A5A /* BurstAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6155DB3C2972599C00256A5A /* BurstAnimation.swift */; };
 		6155DB3E2972599C00256A5A /* BurstAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6155DB3C2972599C00256A5A /* BurstAnimation.swift */; };
 		615CC1F8296CC354004DEE47 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615CC1F7296CC354004DEE47 /* Haptics.swift */; };
-		615CC1F9296CC354004DEE47 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615CC1F7296CC354004DEE47 /* Haptics.swift */; };
 		615CC1FA296CC354004DEE47 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615CC1F7296CC354004DEE47 /* Haptics.swift */; };
+		61D469C929760854009CB8C3 /* DayByDayWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D469C829760854009CB8C3 /* DayByDayWatchApp.swift */; };
+		61D469CB29760854009CB8C3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D469CA29760854009CB8C3 /* ContentView.swift */; };
+		61D469D029760855009CB8C3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61D469CF29760855009CB8C3 /* Preview Assets.xcassets */; };
+		61D469DA29760855009CB8C3 /* DayByDayWatch_Watch_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D469D929760855009CB8C3 /* DayByDayWatch_Watch_AppTests.swift */; };
+		61D469E429760855009CB8C3 /* DayByDayWatch_Watch_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D469E329760855009CB8C3 /* DayByDayWatch_Watch_AppUITests.swift */; };
+		61D469E629760855009CB8C3 /* DayByDayWatch_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D469E529760855009CB8C3 /* DayByDayWatch_Watch_AppUITestsLaunchTests.swift */; };
+		61D469E929760855009CB8C3 /* DayByDayWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 61D469C629760854009CB8C3 /* DayByDayWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		61D469F5297608AB009CB8C3 /* ButtonCluster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D469F4297608AB009CB8C3 /* ButtonCluster.swift */; };
+		61D469F6297608AB009CB8C3 /* ButtonCluster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D469F4297608AB009CB8C3 /* ButtonCluster.swift */; };
+		61D469F7297608CE009CB8C3 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610AF8F8296A5A99001E50A6 /* Persistence.swift */; };
+		61D469F8297608D1009CB8C3 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610AF8F8296A5A99001E50A6 /* Persistence.swift */; };
+		61D469F9297608D5009CB8C3 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610AF8F8296A5A99001E50A6 /* Persistence.swift */; };
+		61D469FA297608DB009CB8C3 /* DayStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614EE408296AC9E7001FB19D /* DayStatus.swift */; };
+		61D469FB297608DC009CB8C3 /* DayStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614EE408296AC9E7001FB19D /* DayStatus.swift */; };
+		61D469FE297608E9009CB8C3 /* Date+compare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6104E56A296B1A580034B9E3 /* Date+compare.swift */; };
+		61D469FF297608EA009CB8C3 /* Date+compare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6104E56A296B1A580034B9E3 /* Date+compare.swift */; };
+		61D46A00297608EA009CB8C3 /* Date+compare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6104E56A296B1A580034B9E3 /* Date+compare.swift */; };
+		61D46A01297608EF009CB8C3 /* Color+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61188D4229710D8000BF77B5 /* Color+hex.swift */; };
+		61D46A02297608EF009CB8C3 /* Color+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61188D4229710D8000BF77B5 /* Color+hex.swift */; };
+		61D46A03297608F0009CB8C3 /* Color+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61188D4229710D8000BF77B5 /* Color+hex.swift */; };
+		61D46A04297608F1009CB8C3 /* Color+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61188D4229710D8000BF77B5 /* Color+hex.swift */; };
+		61D46A05297608F6009CB8C3 /* CircleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614EE3FF296A838D001FB19D /* CircleStyle.swift */; };
+		61D46A06297608F7009CB8C3 /* CircleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614EE3FF296A838D001FB19D /* CircleStyle.swift */; };
+		61D46A07297608FA009CB8C3 /* SwirlStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61188D3F2970F51B00BF77B5 /* SwirlStyle.swift */; };
+		61D46A08297608FA009CB8C3 /* SwirlStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61188D3F2970F51B00BF77B5 /* SwirlStyle.swift */; };
+		61D46A0B29760909009CB8C3 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6101CA232975FB7D00B12C68 /* Notifications.swift */; };
+		61D46A0C2976090B009CB8C3 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6101CA232975FB7D00B12C68 /* Notifications.swift */; };
+		61D46A0D29760917009CB8C3 /* CircleLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614EE402296ABA43001FB19D /* CircleLabelView.swift */; };
+		61D46A0E29760918009CB8C3 /* CircleLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614EE402296ABA43001FB19D /* CircleLabelView.swift */; };
+		61D46A0F2976091B009CB8C3 /* AnimatedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61188D382970E88E00BF77B5 /* AnimatedImage.swift */; };
+		61D46A102976091C009CB8C3 /* AnimatedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61188D382970E88E00BF77B5 /* AnimatedImage.swift */; };
+		61D46A112976092D009CB8C3 /* CompleteBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614AE46A2974C27900F24397 /* CompleteBackgroundView.swift */; };
+		61D46A122976092F009CB8C3 /* CompleteBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614AE46A2974C27900F24397 /* CompleteBackgroundView.swift */; };
+		61D46A1329760938009CB8C3 /* SwirlAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61188D3C2970E8D900BF77B5 /* SwirlAnimation.swift */; };
+		61D46A142976093A009CB8C3 /* SwirlAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61188D3C2970E8D900BF77B5 /* SwirlAnimation.swift */; };
+		61D46A152976093D009CB8C3 /* BurstAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6155DB3C2972599C00256A5A /* BurstAnimation.swift */; };
+		61D46A162976093E009CB8C3 /* BurstAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6155DB3C2972599C00256A5A /* BurstAnimation.swift */; };
+		61D46A1729760990009CB8C3 /* DayByDay.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 610AF8FA296A5A99001E50A6 /* DayByDay.xcdatamodeld */; };
+		61D46A1829760993009CB8C3 /* DayByDay.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 610AF8FA296A5A99001E50A6 /* DayByDay.xcdatamodeld */; };
+		61D46A1929760993009CB8C3 /* DayByDay.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 610AF8FA296A5A99001E50A6 /* DayByDay.xcdatamodeld */; };
+		61D46A1A29760995009CB8C3 /* DayByDay.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 610AF8FA296A5A99001E50A6 /* DayByDay.xcdatamodeld */; };
+		61D46A1B29760996009CB8C3 /* DayByDay.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 610AF8FA296A5A99001E50A6 /* DayByDay.xcdatamodeld */; };
+		61D46A1C297609E4009CB8C3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D469CA29760854009CB8C3 /* ContentView.swift */; };
+		61D46A1F29760A40009CB8C3 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D46A1E29760A40009CB8C3 /* Haptics.swift */; };
+		61D46A2029760A40009CB8C3 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D46A1E29760A40009CB8C3 /* Haptics.swift */; };
+		61D46A2329760B5D009CB8C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 610AF8FF296A5A9A001E50A6 /* Assets.xcassets */; };
+		61D46A2629761033009CB8C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 610AF8FF296A5A9A001E50A6 /* Assets.xcassets */; };
+		61D46A2729761034009CB8C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 610AF8FF296A5A9A001E50A6 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +110,42 @@
 			remoteGlobalIDString = 610AF8F2296A5A99001E50A6;
 			remoteInfo = DayByDay;
 		};
+		61D469D629760855009CB8C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 610AF8EB296A5A99001E50A6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 61D469C529760854009CB8C3;
+			remoteInfo = "DayByDayWatch Watch App";
+		};
+		61D469E029760855009CB8C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 610AF8EB296A5A99001E50A6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 61D469C529760854009CB8C3;
+			remoteInfo = "DayByDayWatch Watch App";
+		};
+		61D469E729760855009CB8C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 610AF8EB296A5A99001E50A6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 61D469C529760854009CB8C3;
+			remoteInfo = "DayByDayWatch Watch App";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		61D469EA29760855009CB8C3 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				61D469E929760855009CB8C3 /* DayByDayWatch Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		6101CA232975FB7D00B12C68 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
@@ -94,6 +175,18 @@
 		614EE40B296AF187001FB19D /* PastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastView.swift; sourceTree = "<group>"; };
 		6155DB3C2972599C00256A5A /* BurstAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BurstAnimation.swift; sourceTree = "<group>"; };
 		615CC1F7296CC354004DEE47 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
+		61D469C629760854009CB8C3 /* DayByDayWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DayByDayWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		61D469C829760854009CB8C3 /* DayByDayWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayByDayWatchApp.swift; sourceTree = "<group>"; };
+		61D469CA29760854009CB8C3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		61D469CF29760855009CB8C3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		61D469D529760855009CB8C3 /* DayByDayWatch Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DayByDayWatch Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		61D469D929760855009CB8C3 /* DayByDayWatch_Watch_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayByDayWatch_Watch_AppTests.swift; sourceTree = "<group>"; };
+		61D469DF29760855009CB8C3 /* DayByDayWatch Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DayByDayWatch Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		61D469E329760855009CB8C3 /* DayByDayWatch_Watch_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayByDayWatch_Watch_AppUITests.swift; sourceTree = "<group>"; };
+		61D469E529760855009CB8C3 /* DayByDayWatch_Watch_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayByDayWatch_Watch_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		61D469F4297608AB009CB8C3 /* ButtonCluster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCluster.swift; sourceTree = "<group>"; };
+		61D46A1E29760A40009CB8C3 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
+		61D46A28297615B8009CB8C3 /* DayByDayWatch Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DayByDayWatch Watch App.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +211,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		61D469C329760854009CB8C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61D469D229760855009CB8C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61D469DC29760855009CB8C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -134,8 +248,11 @@
 			isa = PBXGroup;
 			children = (
 				610AF8F5296A5A99001E50A6 /* DayByDay */,
+				61D469C729760854009CB8C3 /* DayByDayWatch Watch App */,
 				610AF90C296A5A9A001E50A6 /* DayByDayTests */,
 				610AF916296A5A9A001E50A6 /* DayByDayUITests */,
+				61D469D829760855009CB8C3 /* DayByDayWatch Watch AppTests */,
+				61D469E229760855009CB8C3 /* DayByDayWatch Watch AppUITests */,
 				610AF8F4296A5A99001E50A6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -146,6 +263,9 @@
 				610AF8F3296A5A99001E50A6 /* DayByDay.app */,
 				610AF909296A5A9A001E50A6 /* DayByDayTests.xctest */,
 				610AF913296A5A9A001E50A6 /* DayByDayUITests.xctest */,
+				61D469C629760854009CB8C3 /* DayByDayWatch Watch App.app */,
+				61D469D529760855009CB8C3 /* DayByDayWatch Watch AppTests.xctest */,
+				61D469DF29760855009CB8C3 /* DayByDayWatch Watch AppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -153,6 +273,7 @@
 		610AF8F5296A5A99001E50A6 /* DayByDay */ = {
 			isa = PBXGroup;
 			children = (
+				610AF901296A5A9A001E50A6 /* DayByDay.entitlements */,
 				610AF8F6296A5A99001E50A6 /* DayByDayApp.swift */,
 				610AF92B296A6D81001E50A6 /* Model */,
 				610AF8FD296A5A99001E50A6 /* ContentView.swift */,
@@ -162,7 +283,6 @@
 				614EE3FE296A8344001FB19D /* Helpers */,
 				61188D3B2970E89C00BF77B5 /* Animations */,
 				610AF8FF296A5A9A001E50A6 /* Assets.xcassets */,
-				610AF901296A5A9A001E50A6 /* DayByDay.entitlements */,
 				610AF8FA296A5A99001E50A6 /* DayByDay.xcdatamodeld */,
 				610AF902296A5A9A001E50A6 /* Preview Content */,
 			);
@@ -226,6 +346,52 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		61D469C729760854009CB8C3 /* DayByDayWatch Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				61D46A28297615B8009CB8C3 /* DayByDayWatch Watch App.entitlements */,
+				61D469C829760854009CB8C3 /* DayByDayWatchApp.swift */,
+				61D469CA29760854009CB8C3 /* ContentView.swift */,
+				61D469F4297608AB009CB8C3 /* ButtonCluster.swift */,
+				61D46A1D29760A2F009CB8C3 /* Helpers */,
+				61D469CE29760855009CB8C3 /* Preview Content */,
+			);
+			path = "DayByDayWatch Watch App";
+			sourceTree = "<group>";
+		};
+		61D469CE29760855009CB8C3 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				61D469CF29760855009CB8C3 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		61D469D829760855009CB8C3 /* DayByDayWatch Watch AppTests */ = {
+			isa = PBXGroup;
+			children = (
+				61D469D929760855009CB8C3 /* DayByDayWatch_Watch_AppTests.swift */,
+			);
+			path = "DayByDayWatch Watch AppTests";
+			sourceTree = "<group>";
+		};
+		61D469E229760855009CB8C3 /* DayByDayWatch Watch AppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				61D469E329760855009CB8C3 /* DayByDayWatch_Watch_AppUITests.swift */,
+				61D469E529760855009CB8C3 /* DayByDayWatch_Watch_AppUITestsLaunchTests.swift */,
+			);
+			path = "DayByDayWatch Watch AppUITests";
+			sourceTree = "<group>";
+		};
+		61D46A1D29760A2F009CB8C3 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				61D46A1E29760A40009CB8C3 /* Haptics.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -236,10 +402,12 @@
 				610AF8EF296A5A99001E50A6 /* Sources */,
 				610AF8F0296A5A99001E50A6 /* Frameworks */,
 				610AF8F1296A5A99001E50A6 /* Resources */,
+				61D469EA29760855009CB8C3 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				61D469E829760855009CB8C3 /* PBXTargetDependency */,
 			);
 			name = DayByDay;
 			productName = DayByDay;
@@ -282,6 +450,59 @@
 			productReference = 610AF913296A5A9A001E50A6 /* DayByDayUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		61D469C529760854009CB8C3 /* DayByDayWatch Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 61D469F129760855009CB8C3 /* Build configuration list for PBXNativeTarget "DayByDayWatch Watch App" */;
+			buildPhases = (
+				61D469C229760854009CB8C3 /* Sources */,
+				61D469C329760854009CB8C3 /* Frameworks */,
+				61D469C429760854009CB8C3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "DayByDayWatch Watch App";
+			productName = "DayByDayWatch Watch App";
+			productReference = 61D469C629760854009CB8C3 /* DayByDayWatch Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		61D469D429760855009CB8C3 /* DayByDayWatch Watch AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 61D469F229760855009CB8C3 /* Build configuration list for PBXNativeTarget "DayByDayWatch Watch AppTests" */;
+			buildPhases = (
+				61D469D129760855009CB8C3 /* Sources */,
+				61D469D229760855009CB8C3 /* Frameworks */,
+				61D469D329760855009CB8C3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				61D469D729760855009CB8C3 /* PBXTargetDependency */,
+			);
+			name = "DayByDayWatch Watch AppTests";
+			productName = "DayByDayWatch Watch AppTests";
+			productReference = 61D469D529760855009CB8C3 /* DayByDayWatch Watch AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		61D469DE29760855009CB8C3 /* DayByDayWatch Watch AppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 61D469F329760855009CB8C3 /* Build configuration list for PBXNativeTarget "DayByDayWatch Watch AppUITests" */;
+			buildPhases = (
+				61D469DB29760855009CB8C3 /* Sources */,
+				61D469DC29760855009CB8C3 /* Frameworks */,
+				61D469DD29760855009CB8C3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				61D469E129760855009CB8C3 /* PBXTargetDependency */,
+			);
+			name = "DayByDayWatch Watch AppUITests";
+			productName = "DayByDayWatch Watch AppUITests";
+			productReference = 61D469DF29760855009CB8C3 /* DayByDayWatch Watch AppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -303,6 +524,17 @@
 						CreatedOnToolsVersion = 14.1;
 						TestTargetID = 610AF8F2296A5A99001E50A6;
 					};
+					61D469C529760854009CB8C3 = {
+						CreatedOnToolsVersion = 14.1;
+					};
+					61D469D429760855009CB8C3 = {
+						CreatedOnToolsVersion = 14.1;
+						TestTargetID = 61D469C529760854009CB8C3;
+					};
+					61D469DE29760855009CB8C3 = {
+						CreatedOnToolsVersion = 14.1;
+						TestTargetID = 61D469C529760854009CB8C3;
+					};
 				};
 			};
 			buildConfigurationList = 610AF8EE296A5A99001E50A6 /* Build configuration list for PBXProject "DayByDay" */;
@@ -321,6 +553,9 @@
 				610AF8F2296A5A99001E50A6 /* DayByDay */,
 				610AF908296A5A9A001E50A6 /* DayByDayTests */,
 				610AF912296A5A9A001E50A6 /* DayByDayUITests */,
+				61D469C529760854009CB8C3 /* DayByDayWatch Watch App */,
+				61D469D429760855009CB8C3 /* DayByDayWatch Watch AppTests */,
+				61D469DE29760855009CB8C3 /* DayByDayWatch Watch AppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -346,6 +581,31 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61D46A2329760B5D009CB8C3 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61D469C429760854009CB8C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61D46A2629761033009CB8C3 /* Assets.xcassets in Resources */,
+				61D469D029760855009CB8C3 /* Preview Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61D469D329760855009CB8C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61D469DD29760855009CB8C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61D46A2729761034009CB8C3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,8 +641,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6101CA252975FB7D00B12C68 /* Notifications.swift in Sources */,
-				615CC1F9296CC354004DEE47 /* Haptics.swift in Sources */,
+				61D46A1B29760996009CB8C3 /* DayByDay.xcdatamodeld in Sources */,
+				61D46A02297608EF009CB8C3 /* Color+hex.swift in Sources */,
 				610AF90E296A5A9A001E50A6 /* DayByDayTests.swift in Sources */,
 				6104E56C296B1A580034B9E3 /* Date+compare.swift in Sources */,
 			);
@@ -392,8 +652,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61D46A1829760993009CB8C3 /* DayByDay.xcdatamodeld in Sources */,
 				614AE46C2974C27900F24397 /* CompleteBackgroundView.swift in Sources */,
 				615CC1FA296CC354004DEE47 /* Haptics.swift in Sources */,
+				61D469F9297608D5009CB8C3 /* Persistence.swift in Sources */,
 				614EE407296AC978001FB19D /* ButtonCluster.swift in Sources */,
 				610AF91A296A5A9A001E50A6 /* DayByDayUITestsLaunchTests.swift in Sources */,
 				614EE404296ABA43001FB19D /* CircleLabelView.swift in Sources */,
@@ -411,6 +673,66 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		61D469C229760854009CB8C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61D46A1F29760A40009CB8C3 /* Haptics.swift in Sources */,
+				61D46A1729760990009CB8C3 /* DayByDay.xcdatamodeld in Sources */,
+				61D46A1329760938009CB8C3 /* SwirlAnimation.swift in Sources */,
+				61D46A112976092D009CB8C3 /* CompleteBackgroundView.swift in Sources */,
+				61D46A0B29760909009CB8C3 /* Notifications.swift in Sources */,
+				61D469CB29760854009CB8C3 /* ContentView.swift in Sources */,
+				61D46A01297608EF009CB8C3 /* Color+hex.swift in Sources */,
+				61D46A0F2976091B009CB8C3 /* AnimatedImage.swift in Sources */,
+				61D46A05297608F6009CB8C3 /* CircleStyle.swift in Sources */,
+				61D469F7297608CE009CB8C3 /* Persistence.swift in Sources */,
+				61D469FA297608DB009CB8C3 /* DayStatus.swift in Sources */,
+				61D469F5297608AB009CB8C3 /* ButtonCluster.swift in Sources */,
+				61D469FE297608E9009CB8C3 /* Date+compare.swift in Sources */,
+				61D469C929760854009CB8C3 /* DayByDayWatchApp.swift in Sources */,
+				61D46A152976093D009CB8C3 /* BurstAnimation.swift in Sources */,
+				61D46A07297608FA009CB8C3 /* SwirlStyle.swift in Sources */,
+				61D46A0D29760917009CB8C3 /* CircleLabelView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61D469D129760855009CB8C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61D46A1A29760995009CB8C3 /* DayByDay.xcdatamodeld in Sources */,
+				61D46A03297608F0009CB8C3 /* Color+hex.swift in Sources */,
+				61D469DA29760855009CB8C3 /* DayByDayWatch_Watch_AppTests.swift in Sources */,
+				61D469FF297608EA009CB8C3 /* Date+compare.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61D469DB29760855009CB8C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61D46A1929760993009CB8C3 /* DayByDay.xcdatamodeld in Sources */,
+				61D46A142976093A009CB8C3 /* SwirlAnimation.swift in Sources */,
+				61D46A122976092F009CB8C3 /* CompleteBackgroundView.swift in Sources */,
+				61D46A0C2976090B009CB8C3 /* Notifications.swift in Sources */,
+				61D469E429760855009CB8C3 /* DayByDayWatch_Watch_AppUITests.swift in Sources */,
+				61D46A04297608F1009CB8C3 /* Color+hex.swift in Sources */,
+				61D46A102976091C009CB8C3 /* AnimatedImage.swift in Sources */,
+				61D46A1C297609E4009CB8C3 /* ContentView.swift in Sources */,
+				61D46A06297608F7009CB8C3 /* CircleStyle.swift in Sources */,
+				61D469F8297608D1009CB8C3 /* Persistence.swift in Sources */,
+				61D469FB297608DC009CB8C3 /* DayStatus.swift in Sources */,
+				61D469F6297608AB009CB8C3 /* ButtonCluster.swift in Sources */,
+				61D46A00297608EA009CB8C3 /* Date+compare.swift in Sources */,
+				61D469E629760855009CB8C3 /* DayByDayWatch_Watch_AppUITestsLaunchTests.swift in Sources */,
+				61D46A162976093E009CB8C3 /* BurstAnimation.swift in Sources */,
+				61D46A2029760A40009CB8C3 /* Haptics.swift in Sources */,
+				61D46A08297608FA009CB8C3 /* SwirlStyle.swift in Sources */,
+				61D46A0E29760918009CB8C3 /* CircleLabelView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -423,6 +745,21 @@
 			isa = PBXTargetDependency;
 			target = 610AF8F2296A5A99001E50A6 /* DayByDay */;
 			targetProxy = 610AF914296A5A9A001E50A6 /* PBXContainerItemProxy */;
+		};
+		61D469D729760855009CB8C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 61D469C529760854009CB8C3 /* DayByDayWatch Watch App */;
+			targetProxy = 61D469D629760855009CB8C3 /* PBXContainerItemProxy */;
+		};
+		61D469E129760855009CB8C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 61D469C529760854009CB8C3 /* DayByDayWatch Watch App */;
+			targetProxy = 61D469E029760855009CB8C3 /* PBXContainerItemProxy */;
+		};
+		61D469E829760855009CB8C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 61D469C529760854009CB8C3 /* DayByDayWatch Watch App */;
+			targetProxy = 61D469E729760855009CB8C3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -539,6 +876,7 @@
 		610AF91E296A5A9A001E50A6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DayByDay/DayByDay.entitlements;
@@ -577,6 +915,7 @@
 		610AF91F296A5A9A001E50A6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DayByDay/DayByDay.entitlements;
@@ -702,6 +1041,153 @@
 			};
 			name = Release;
 		};
+		61D469EB29760855009CB8C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = WatchAppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "DayByDayWatch Watch App/DayByDayWatch Watch App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"DayByDayWatch Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = 53572NHTYS;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = DayByDayWatch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.po-gl-dev.DayByDay";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.po-gl-dev.DayByDay.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Debug;
+		};
+		61D469EC29760855009CB8C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = WatchAppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "DayByDayWatch Watch App/DayByDayWatch Watch App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"DayByDayWatch Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = 53572NHTYS;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = DayByDayWatch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.po-gl-dev.DayByDay";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.po-gl-dev.DayByDay.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Release;
+		};
+		61D469ED29760855009CB8C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 53572NHTYS;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.po-gl-dev.DayByDayWatch-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DayByDayWatch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DayByDayWatch Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Debug;
+		};
+		61D469EE29760855009CB8C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 53572NHTYS;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.po-gl-dev.DayByDayWatch-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DayByDayWatch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DayByDayWatch Watch App";
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Release;
+		};
+		61D469EF29760855009CB8C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 53572NHTYS;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.po-gl-dev.DayByDayWatch-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "DayByDayWatch Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Debug;
+		};
+		61D469F029760855009CB8C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 53572NHTYS;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.po-gl-dev.DayByDayWatch-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "DayByDayWatch Watch App";
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -737,6 +1223,33 @@
 			buildConfigurations = (
 				610AF924296A5A9A001E50A6 /* Debug */,
 				610AF925296A5A9A001E50A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		61D469F129760855009CB8C3 /* Build configuration list for PBXNativeTarget "DayByDayWatch Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61D469EB29760855009CB8C3 /* Debug */,
+				61D469EC29760855009CB8C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		61D469F229760855009CB8C3 /* Build configuration list for PBXNativeTarget "DayByDayWatch Watch AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61D469ED29760855009CB8C3 /* Debug */,
+				61D469EE29760855009CB8C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		61D469F329760855009CB8C3 /* Build configuration list for PBXNativeTarget "DayByDayWatch Watch AppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61D469EF29760855009CB8C3 /* Debug */,
+				61D469F029760855009CB8C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
