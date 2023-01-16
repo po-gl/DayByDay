@@ -29,7 +29,7 @@ struct ButtonCluster: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                if dayStatus.active && dayStatus.creative && dayStatus.productive {
+                if showBurst {
                     CompleteBackgroundView()
                 }
                 
@@ -84,6 +84,13 @@ struct ButtonCluster: View {
             .position(x: geometry.size.width/2, y: geometry.size.height/2)
         }
         .frame(width: 360, height: 360)
+        .onAppear {
+            if dayStatus.active && dayStatus.creative && dayStatus.productive {
+                showBurst = true
+            } else {
+                showBurst = false
+            }
+        }
     }
     
     
