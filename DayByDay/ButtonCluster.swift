@@ -30,11 +30,6 @@ struct ButtonCluster: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                if showBurst {
-                    BurstAnimation()
-                        .offset(x: -3, y: 12)
-                        .scaleEffect(1.6)
-                }
                 if dayStatus.active && dayStatus.creative && dayStatus.productive {
                     CompleteBackgroundView()
                 }
