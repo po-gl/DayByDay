@@ -43,7 +43,6 @@ struct CompleteBackgroundView: View {
                 .foregroundColor(Color(hex: 0x90D794))
                 .blurAndBrighten(radius: 40)
                 .opacity(0.9)
-            
             Circle()
                 .scaleEffect(0.4)
                 .offset(x: moving ? -30 : -30, y: moving ? -260 : -200)
@@ -68,11 +67,11 @@ struct CompleteBackgroundView: View {
             
             Circle()
                 .scaleEffect(0.5)
-                .offset(x: moving ? 200 : 60, y: moving ? 0 : 50)
+                .offset(x: moving ? 200 : 50, y: moving ? 0 : -100)
                 .animation(.easeInOut(duration: 8.0).repeatForever(), value: moving)
                 .foregroundColor(Color(hex: 0xD2E6F3))
                 .blurAndBrighten(radius: 40)
-                .opacity(0.3)
+                .opacity(0.7)
         }
     }
     
@@ -86,6 +85,14 @@ struct CompleteBackgroundView: View {
                 .foregroundStyle(Gradient(colors: [Color(hex: 0xF77756), Color(hex: 0xA8E712)]))
                 .blurAndBrighten(radius: 80)
                 .opacity(0.7)
+            
+            Circle()
+                .scaleEffect(0.4)
+                .offset(x: moving ? 0 : 30, y: moving ? 100 : 160)
+                .animation(.easeInOut(duration: 9.0).repeatForever(), value: moving)
+                .foregroundColor(Color(hex: 0xFF7676))
+                .blurAndBrighten(radius: 40)
+                .opacity(0.8)
         }
     }
 }
