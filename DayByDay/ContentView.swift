@@ -42,7 +42,9 @@ struct ContentView: View {
         }
         .onChange(of: scenePhase) { newPhase in
             if newPhase == .active {
-                getDayStatus()
+                withAnimation {
+                    getDayStatus()
+                }
             }
         }
     }
