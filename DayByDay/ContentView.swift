@@ -37,11 +37,17 @@ struct ContentView: View {
             .position(x: geometry.size.width/2, y: geometry.size.height/2)
             .coordinateSpace(name: "scroll")
         }
+        .onAppear {
+            getNotificationPermissions()
+        }
         .onChange(of: scenePhase) { newPhase in
             if newPhase == .active {
                 withAnimation {
                     getDayStatus()
                 }
+                cancelPendingNotifications()
+            } else if newPhase == .inactive {
+                setupNotifications(dayStatus)
             }
         }
     }

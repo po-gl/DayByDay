@@ -22,4 +22,8 @@ extension Date {
     func isMonday(calendar: Calendar = .current) -> Bool {
         return calendar.component(.weekday, from: self) == 2
     }
+    
+    func atHour(_ hour: Double, calendar: Calendar = .current) -> Date {
+        calendar.startOfDay(for: self).addingTimeInterval(hour * 60 * 60)
+    }
 }
