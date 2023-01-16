@@ -15,7 +15,6 @@ struct ContentView: View {
     @FetchRequest(sortDescriptors: [SortDescriptor(\DayMO.date, order: .reverse)], animation: .default)
     private var allDays: FetchedResults<DayMO>
     
-    @State private var haptics = Haptics()
     @State private var showingPastPage = false
     
     @State private var dayStatus = DayStatus()
@@ -26,7 +25,7 @@ struct ContentView: View {
                 VStack(spacing: 0) {
                     dateView()
                     
-                    ButtonCluster(dayStatus: $dayStatus, haptics: $haptics)
+                    ButtonCluster(dayStatus: $dayStatus)
                     
                     Spacer(minLength: spaceFromButtonsToScreenBottom(geometry))
                     
@@ -44,7 +43,6 @@ struct ContentView: View {
         .onChange(of: scenePhase) { newPhase in
             if newPhase == .active {
                 getDayStatus()
-                haptics.prepareHaptics()
             }
         }
     }

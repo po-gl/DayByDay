@@ -22,6 +22,8 @@ class Haptics {
         } catch {
             print("There was an error creating the haptics engine: \(error.localizedDescription)")
         }
+        engine?.isAutoShutdownEnabled = true
+        engine?.stop()
     }
     
     
@@ -49,7 +51,12 @@ class Haptics {
         do {
             let pattern = try CHHapticPattern(events: events, parameters: [])
             let player = try engine?.makePlayer(with: pattern)
-            try player?.start(atTime: 0.0)
+            engine?.notifyWhenPlayersFinished { error in
+                self.engine?.stop()
+                return .stopEngine
+            }
+            try engine?.start()
+            try player?.start(atTime: CHHapticTimeImmediate)
         } catch {
             print("Failed to play pattern: \(error.localizedDescription)")
         }
@@ -64,4 +71,6 @@ public func basicHaptic() {
 public func completeHaptic() {
     let generator = UINotificationFeedbackGenerator()
     generator.notificationOccurred(.success)
+    let generator2 = UIImpactFeedbackGenerator(style: .heavy)
+    generator2.impactOccurred()
 }
