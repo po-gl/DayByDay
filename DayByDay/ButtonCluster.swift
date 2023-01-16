@@ -35,9 +35,12 @@ struct ButtonCluster: View {
                         .offset(x: -3, y: 12)
                         .scaleEffect(1.6)
                 }
+                if dayStatus.active && dayStatus.creative && dayStatus.productive {
+                    CompleteBackgroundView()
+                }
                 
                 button("Active", status: .active, startAngle: .topLeft, geometry: geometry) {
-                    withAnimation {
+                    withAnimation(.easeOut(duration: 0.3)) {
                         dayStatus.active.toggle()
                         saveDay()
                         haptic()
@@ -53,7 +56,7 @@ struct ButtonCluster: View {
                 .position(animPosition(for: .topLeft, geometry))
                 
                 button("Creative", status: .creative, startAngle: .topRight, geometry: geometry) {
-                    withAnimation {
+                    withAnimation(.easeOut(duration: 0.3)) {
                         dayStatus.creative.toggle()
                         saveDay()
                         haptic()
@@ -69,7 +72,7 @@ struct ButtonCluster: View {
                 .position(animPosition(for: .topRight, geometry))
                 
                 button("Productive", status: .productive, startAngle: .bottom, geometry: geometry) {
-                    withAnimation {
+                    withAnimation(.easeOut(duration: 0.3)) {
                         dayStatus.productive.toggle()
                         saveDay()
                         haptic()
