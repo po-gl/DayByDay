@@ -27,6 +27,8 @@ func setupNotifications(_ dayStatus: DayStatus) {
     
     for i in 0..<7 {
         let nextNotificationTime = today.addingTimeInterval(TimeInterval(i*60*60*24))
+        guard nextNotificationTime.timeIntervalSinceNow > 0.0 else { continue }
+        
         let content = UNMutableNotificationContent()
         content.title = "Check your orbs 🌚🌝🌞"
         content.sound = UNNotificationSound.default
