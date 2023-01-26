@@ -24,16 +24,17 @@ struct ButtonCluster: View {
     
     static let lowerBoundDiameter = 90.0
     
+    func isDayComplete() -> Bool { return dayStatus.active && dayStatus.creative && dayStatus.productive }
     
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                if dayStatus.active && dayStatus.creative && dayStatus.productive {
-                    CompleteBackgroundView()
-                }
+                CompleteBackgroundView()
+                    .opacity(isDayComplete() ? 1.0 : 0.0)
+                    .animation(.easeOut(duration: 3.0), value: isDayComplete())
                 
                 button("Active", status: .active, startAngle: .topLeft, geometry: geometry) {
-                    withAnimation(.easeOut(duration: 0.3)) {
+                    withAnimation(.easeOut(duration: 0.2)) {
                         dayStatus.active.toggle()
                         saveDay()
                         haptic()
@@ -44,7 +45,7 @@ struct ButtonCluster: View {
                 .position(animPosition(for: .topLeft, geometry))
                 
                 button("Creative", status: .creative, startAngle: .topRight, geometry: geometry) {
-                    withAnimation(.easeOut(duration: 0.3)) {
+                    withAnimation(.easeOut(duration: 0.2)) {
                         dayStatus.creative.toggle()
                         saveDay()
                         haptic()
@@ -55,7 +56,7 @@ struct ButtonCluster: View {
                 .position(animPosition(for: .topRight, geometry))
                 
                 button("Productive", status: .productive, startAngle: .bottom, geometry: geometry) {
-                    withAnimation(.easeOut(duration: 0.3)) {
+                    withAnimation(.easeOut(duration: 0.2)) {
                         dayStatus.productive.toggle()
                         saveDay()
                         haptic()
