@@ -13,7 +13,7 @@ struct CompleteBackgroundView: View {
     @State var moving = false
     
     private var brightenBy: Double {
-        return colorScheme == .dark ? 0.06 : 0.13
+        return colorScheme == .dark ? -0.40 : 0.13
     }
     private var saturateBy: Double {
         return colorScheme == .dark ? 1.1 : 1.2
