@@ -13,23 +13,24 @@ struct PastView: View {
     
     @Binding var dayStatus: DayStatus
     
+    private let daysToDisplay: Int = 30
     private let height = 30 * 66.0
     private let cellHeight = 66.0
     
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                wiggleBars(geometry)
+                WiggleBars(geometry)
                     .mask(
                         VStack(spacing: 0) {
-                            ForEach(0..<30) { i in
-                                row(getDayStatus(for: Date(timeInterval: -Double(60*60*24*i), since: Date())), geometry)
+                            ForEach(0..<daysToDisplay, id: \.self) { i in
+                                Row(getDayStatus(for: Date(timeInterval: -Double(60*60*24*i), since: Date())), geometry)
                             }
                             Spacer()
                         }
                     )
-                datesAndDividers()
-                eyes(geometry)
+                DatesAndDividers()
+                Eyes(geometry)
             }
             .position(x: geometry.size.width/2, y: geometry.size.height/2)
         }
@@ -47,10 +48,28 @@ struct PastView: View {
     }
     
     
-    private func wiggleBars(_ geometry: GeometryProxy) -> some View {
+    @ViewBuilder
+    private func Row(_ day: DayStatus, _ geometry: GeometryProxy) -> some View {
+        HStack(spacing: 5) {
+            Cell(isActive: day.active, Color.pink, geometry)
+            Cell(isActive: day.productive, Color.green, geometry)
+            Cell(isActive: day.creative, Color.purple, geometry)
+        }
+    }
+    
+    @ViewBuilder
+    private func Cell(isActive: Bool, _ color: Color, _ geometry: GeometryProxy) -> some View {
+        Rectangle()
+            .frame(width: 110, height: cellHeight)
+            .opacity(isActive ? 1.0 : 0.40)
+    }
+    
+    
+    @ViewBuilder
+    private func WiggleBars(_ geometry: GeometryProxy) -> some View {
         let shiftX = 5.0
         let shiftY = 90.0
-        return HStack(spacing: 25) {
+        HStack(spacing: 25) {
             WigglePath(shiftX: shiftX, shiftY: shiftY)
                 .stroke(gradient(for: .active), style: StrokeStyle(lineWidth: barWidthForScroll(geometry), lineCap: .round))
                 .frame(width: barWidthForScroll(geometry))
@@ -64,9 +83,10 @@ struct PastView: View {
         .offset(y: barWidthForScroll(geometry)/2)
     }
     
-    private func datesAndDividers() -> some View {
+    @ViewBuilder
+    private func DatesAndDividers() -> some View {
         VStack(spacing: cellHeight-1) {
-            ForEach(0..<30) { i in
+            ForEach(0..<daysToDisplay, id: \.self) { i in
                 ZStack {
                     Text("\(Date(timeInterval: -Double(60*60*24*i), since: Date()), formatter: dayFormatter)")
                         .font(.system(size: 14, weight: .regular, design: .monospaced))
@@ -91,11 +111,12 @@ struct PastView: View {
         }
     }
     
-    private func eyes(_ geometry: GeometryProxy) -> some View {
+    @ViewBuilder
+    private func Eyes(_ geometry: GeometryProxy) -> some View {
         let eyeSize = 7.0
         let eyeWidth = 38.0
         let eyeDepth = 8.0
-        return VStack {
+        VStack {
             HStack(spacing: 25) {
                 HStack {
                     Circle()
@@ -129,20 +150,6 @@ struct PastView: View {
         }
     }
     
-    
-    private func row(_ day: DayStatus, _ geometry: GeometryProxy) -> some View {
-        HStack(spacing: 5) {
-            cell(isActive: day.active, Color.pink, geometry)
-            cell(isActive: day.productive, Color.green, geometry)
-            cell(isActive: day.creative, Color.purple, geometry)
-        }
-    }
-    
-    private func cell(isActive: Bool, _ color: Color, _ geometry: GeometryProxy) -> some View {
-        Rectangle()
-            .frame(width: 110, height: cellHeight)
-            .opacity(isActive ? 1.0 : 0.40)
-    }
     
     private func gradient(for category: Category) -> LinearGradient {
         switch category {
@@ -179,6 +186,7 @@ struct PastView: View {
     }
 }
 
+
 struct WigglePath: Shape {
     var shiftX: Double
     var shiftY: Double
@@ -211,11 +219,13 @@ struct Line: Shape {
     }
 }
 
+
 private let dayFormatter: DateFormatter = {
     let formatter = DateFormatter()
     formatter.setLocalizedDateFormatFromTemplate("EE M/d")
     return formatter
 }()
+
 
 struct PastView_Previews: PreviewProvider {
     static var previews: some View {
