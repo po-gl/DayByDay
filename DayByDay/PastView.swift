@@ -14,8 +14,8 @@ struct PastView: View {
     @Binding var dayStatus: DayStatus
     
     private let daysToDisplay: Int = 30
-    private var height: Double { Double(daysToDisplay) * 66.0 }
     private let cellHeight = 66.0
+    private var height: Double { Double(daysToDisplay) * cellHeight }
     
     var body: some View {
         GeometryReader { geometry in
@@ -26,7 +26,6 @@ struct PastView: View {
                             ForEach(0..<daysToDisplay, id: \.self) { i in
                                 Row(getDayStatus(for: Date(timeInterval: -Double(60*60*24*i), since: Date())), geometry)
                             }
-                            Spacer()
                         }
                     )
                 DatesAndDividers()
@@ -91,19 +90,19 @@ struct PastView: View {
                     Text("\(Date(timeInterval: -Double(60*60*24*i), since: Date()), formatter: dayFormatter)")
                         .font(.system(size: 14, weight: .regular, design: .monospaced))
                         .offset(x: -90.0*1.5, y: 14)
-                        .frame(height: 1)
+                        .frame(height: 0)
                     
                     if Date(timeInterval: -Double(60*60*24*i), since: Date()).isMonday() {
                         Line()
                             .stroke(.primary, style: StrokeStyle(lineWidth: 2.5, lineCap: .round, dash: [10]))
                             .frame(width: 3*(90.0+22), height: 1)
-                            .offset(y: 30.0)
+                            .offset(y: cellHeight/2)
                             .opacity(0.7)
                     } else {
                         Line()
                             .stroke(.primary, style: StrokeStyle(lineWidth: 1.0, lineCap: .round))
                             .frame(width: 3*(90.0+22), height: 1)
-                            .offset(y: 30.0)
+                            .offset(y: cellHeight/2)
                             .opacity(0.3)
                     }
                 }
