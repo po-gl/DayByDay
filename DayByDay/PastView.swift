@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct PastView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    
     @FetchRequest(sortDescriptors: [SortDescriptor(\DayMO.date, order: .reverse)])
     private var allDays: FetchedResults<DayMO>
     
@@ -21,15 +23,10 @@ struct PastView: View {
         GeometryReader { geometry in
             ZStack {
                 WiggleBars(geometry)
-                    .mask(
-                        VStack(spacing: 0) {
-                            ForEach(0..<daysToDisplay, id: \.self) { i in
-                                Row(getDayStatus(for: Date(timeInterval: -Double(60*60*24*i), since: Date())), geometry)
-                            }
-                        }
-                    )
+                    .mask(Cells(isMask: true, geometry))
                 DatesAndDividers()
                 Eyes(geometry)
+                Cells(geometry)
             }
             .position(x: geometry.size.width/2, y: geometry.size.height/2)
         }
@@ -37,32 +34,74 @@ struct PastView: View {
     }
     
     
-    private func getDayStatus(for date: Date) -> DayStatus {
+    private func getDay(for date: Date) -> DayMO? {
         for day in allDays {
             if day.date?.hasSame(.day, as: date) ?? false {
-                return DayStatus(active: day.active, creative: day.creative, productive: day.productive)
+                return day
             }
         }
-        return DayStatus()
+        return nil
     }
     
     
     @ViewBuilder
-    private func Row(_ day: DayStatus, _ geometry: GeometryProxy) -> some View {
-        HStack(spacing: 5) {
-            Cell(isActive: day.active, Color.pink, geometry)
-            Cell(isActive: day.productive, Color.green, geometry)
-            Cell(isActive: day.creative, Color.purple, geometry)
+    private func Cells(isMask: Bool = false, _ geometry: GeometryProxy) -> some View {
+        VStack(spacing: 0) {
+            ForEach(0..<daysToDisplay, id: \.self) { i in
+                let date = Date(timeInterval: -Double(60*60*24*i), since: Date())
+                HStack(spacing: 5) {
+                    Cell(category: .active, isMask, date: date)
+                    Cell(category: .productive, isMask, date: date)
+                    Cell(category: .creative, isMask, date: date)
+                }
+            }
         }
     }
     
     @ViewBuilder
-    private func Cell(isActive: Bool, _ color: Color, _ geometry: GeometryProxy) -> some View {
-        Rectangle()
-            .frame(width: 110, height: cellHeight)
-            .opacity(isActive ? 1.0 : 0.40)
+    private func Cell(category: StatusCategory, _ isMask: Bool, date: Date) -> some View {
+        let width: Double = 110
+        let day = getDay(for: date)
+        let isActive = day?.isActive(for: category) ?? false
+        
+        if isMask {
+            Rectangle()
+                .frame(width: width, height: cellHeight)
+                .opacity(isActive ? 1.0 : 0.40)
+        } else {
+            Rectangle()
+                .frame(width: width, height: cellHeight)
+                .foregroundColor(.clear)
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    withAnimation {
+                        heavyHaptic()
+                        if let day = day {
+                            day.toggle(category: category)
+                        } else {
+                            addDay(activeFor: category, date: date)
+                        }
+                        saveContext()
+                    }
+                }
+        }
     }
     
+    private func addDay(activeFor category: StatusCategory, date: Date) {
+        let newItem = DayMO(context: viewContext)
+        newItem.date = date
+        newItem.toggle(category: category)
+        saveContext()
+    }
+    
+    private func saveContext() {
+        do {
+            try viewContext.save()
+        } catch {
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
+    }
     
     @ViewBuilder
     private func WiggleBars(_ geometry: GeometryProxy) -> some View {
