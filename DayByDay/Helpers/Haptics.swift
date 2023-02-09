@@ -13,6 +13,11 @@ public func basicHaptic() {
     generator.impactOccurred()
 }
 
+public func heavyHaptic() {
+    let generator = UIImpactFeedbackGenerator(style: .heavy)
+    generator.impactOccurred()
+}
+
 public func completeHaptic() {
     let generator = UINotificationFeedbackGenerator()
     generator.notificationOccurred(.success)
