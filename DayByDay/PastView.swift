@@ -14,7 +14,7 @@ struct PastView: View {
     @Binding var dayStatus: DayStatus
     
     private let daysToDisplay: Int = 30
-    private let height = 30 * 66.0
+    private var height: Double { Double(daysToDisplay) * 66.0 }
     private let cellHeight = 66.0
     
     var body: some View {
