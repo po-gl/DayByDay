@@ -150,7 +150,7 @@ struct PastView: View {
     }
     
     
-    private func gradient(for category: Category) -> LinearGradient {
+    private func gradient(for category: StatusCategory) -> LinearGradient {
         switch category {
         case .active:
             return LinearGradient(stops: [.init(color: Color(hex: 0xE69F1E), location: 0.0),
