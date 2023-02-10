@@ -18,21 +18,22 @@ struct ButtonCluster: View {
         return allDays[0].date?.hasSame(.day, as: Date()) ?? false ? allDays[0] : nil
     }
     
-    public var dayStatus: DayStatus = DayStatus()
-    
     let diameter = 140.0
     let fontSize = 15.0
     
     static let lowerBoundDiameter = 90.0
     
-    func isDayComplete() -> Bool { return dayStatus.active && dayStatus.creative && dayStatus.productive }
+    var isDayComplete: Bool {
+        guard let latestDay = latestDay else { return false }
+        return latestDay.active && latestDay.creative && latestDay.productive
+    }
     
     var body: some View {
         GeometryReader { geometry in
             ZStack {
                 CompleteBackgroundView()
-                    .opacity(isDayComplete() ? 1.0 : 0.0)
-                    .animation(.easeOut(duration: 3.0), value: isDayComplete())
+                    .opacity(isDayComplete ? 1.0 : 0.0)
+                    .animation(.easeOut(duration: 3.0), value: isDayComplete)
                 
                 SwirlButton("Active", for: .active, startAngle: .topLeft, geometry)
                 SwirlButton("Creative", for: .creative, startAngle: .topRight, geometry)
@@ -89,7 +90,7 @@ struct ButtonCluster: View {
     }
     
     private func haptic() {
-        if dayStatus.active && dayStatus.creative && dayStatus.productive {
+        if isDayComplete {
             completeHaptic()
         } else {
             basicHaptic()
