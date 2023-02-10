@@ -118,7 +118,7 @@ struct PastView: View {
             ForEach(0..<daysToDisplay, id: \.self) { i in
                 ZStack {
                     Text("\(Date(timeInterval: -Double(60*60*24*i), since: Date()), formatter: dayFormatter)")
-                        .font(.system(size: 14, weight: .regular, design: .monospaced))
+                        .font(.system(size: 14, weight: .medium, design: .monospaced))
                         .offset(x: -90.0*1.5, y: 14)
                         .frame(height: 0)
                     
