@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SwirlStyle: ButtonStyle {
     
-    var category: AnimCategory
+    var category: StatusCategory
     
     func makeBody(configuration: Configuration) -> some View {
         Circle()

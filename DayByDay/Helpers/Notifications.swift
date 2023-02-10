@@ -22,7 +22,7 @@ func getNotificationPermissions() {
     }
 }
 
-func setupNotifications(_ dayStatus: DayStatus) {
+func setupNotifications() {
     let today = Date().atHour(20.25)
     
     for i in 0..<7 {

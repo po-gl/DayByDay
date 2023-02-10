@@ -95,7 +95,7 @@ struct ButtonCluster: View {
         }
     }
     
-    private func button(_ text: String, status: AnimCategory, startAngle: AngleStart, geometry: GeometryProxy, action: @escaping () -> Void) -> some View {
+    private func button(_ text: String, status: StatusCategory, startAngle: AngleStart, geometry: GeometryProxy, action: @escaping () -> Void) -> some View {
         return Button(action: action) {
                     CircleLabelView(radius: diameter/2, size: CGSize(width: diameter + fontSize*2 + 5, height: diameter + fontSize*2 + 5), startAngle: startAngle, text: text)
                         .font(.system(size: fontSize, weight: .semibold, design: .monospaced))

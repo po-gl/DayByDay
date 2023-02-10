@@ -14,10 +14,11 @@ struct ButtonCluster: View {
     @FetchRequest(sortDescriptors: [SortDescriptor(\DayMO.date, order: .reverse)])
     private var allDays: FetchedResults<DayMO>
     private var latestDay: DayMO? {
-        return allDays.count > 0 ? allDays[0] : nil
+        if allDays.isEmpty { return nil }
+        return allDays[0].date?.hasSame(.day, as: Date()) ?? false ? allDays[0] : nil
     }
     
-    @Binding public var dayStatus: DayStatus
+    public var dayStatus: DayStatus = DayStatus()
     
     let diameter = 140.0
     let fontSize = 15.0
@@ -33,38 +34,9 @@ struct ButtonCluster: View {
                     .opacity(isDayComplete() ? 1.0 : 0.0)
                     .animation(.easeOut(duration: 3.0), value: isDayComplete())
                 
-                button("Active", status: .active, startAngle: .topLeft, geometry: geometry) {
-                    withAnimation(.easeOut(duration: 0.2)) {
-                        dayStatus.active.toggle()
-                        saveDay()
-                        haptic()
-                    }
-                }
-                .saturation(dayStatus.active ? 1.0 : 0.0)
-                .opacity(opacity(for: .topLeft, geometry))
-                .position(animPosition(for: .topLeft, geometry))
-                
-                button("Creative", status: .creative, startAngle: .topRight, geometry: geometry) {
-                    withAnimation(.easeOut(duration: 0.2)) {
-                        dayStatus.creative.toggle()
-                        saveDay()
-                        haptic()
-                    }
-                }
-                .saturation(dayStatus.creative ? 1.0 : 0.0)
-                .opacity(opacity(for: .topRight, geometry))
-                .position(animPosition(for: .topRight, geometry))
-                
-                button("Productive", status: .productive, startAngle: .bottom, geometry: geometry) {
-                    withAnimation(.easeOut(duration: 0.2)) {
-                        dayStatus.productive.toggle()
-                        saveDay()
-                        haptic()
-                    }
-                }
-                .saturation(dayStatus.productive ? 1.0 : 0.0)
-                .opacity(opacity(for: .bottom, geometry))
-                .position(animPosition(for: .bottom, geometry))
+                SwirlButton("Active", for: .active, startAngle: .topLeft, geometry)
+                SwirlButton("Creative", for: .creative, startAngle: .topRight, geometry)
+                SwirlButton("Productive", for: .productive, startAngle: .bottom, geometry)
             }
             .position(x: geometry.size.width/2, y: geometry.size.height/2)
         }
@@ -72,15 +44,40 @@ struct ButtonCluster: View {
     }
     
     
-    private func saveDay() {
-        if latestDay?.date?.hasSame(.day, as: Date()) ?? false {
-            viewContext.delete(latestDay!)
+    @ViewBuilder
+    private func SwirlButton(_ text: String, for category: StatusCategory, startAngle: AngleStart, _ geometry: GeometryProxy) -> some View {
+        let diameter = diameterForScroll(geometry)
+        Button(action: {
+            haptic()
+            withAnimation(.easeOut(duration: 0.2)) {
+                if let day = latestDay {
+                    day.toggle(category: category)
+                } else {
+                    addDay(activeFor: category)
+                }
+                saveContext()
+            }
+        }) {
+            CircleLabelView(radius: diameter/2, size: CGSize(width: diameter + fontSize*2 + 5, height: diameter + fontSize*2 + 5), startAngle: startAngle, text: text)
+                .font(.system(size: fontSize, weight: .semibold, design: .monospaced))
+                .opacity(scrollOffset(geometry) * 0.02 + 1.0)
         }
+        .buttonStyle(SwirlStyle(category: category))
+        .frame(width: diameter, height: diameter)
+        .saturation(latestDay?.isActive(for: category) ?? false ? 1.0 : 0.0)
+        .opacity(opacity(for: startAngle, geometry))
+        .position(animPosition(for: startAngle, geometry))
+    }
+    
+    private func addDay(activeFor category: StatusCategory) {
         let newItem = DayMO(context: viewContext)
         newItem.date = Date()
-        newItem.active = dayStatus.active
-        newItem.creative = dayStatus.creative
-        newItem.productive = dayStatus.productive
+        newItem.toggle(category: category)
+        saveContext()
+    }
+    
+    
+    private func saveContext() {
         do {
             try viewContext.save()
         } catch {
@@ -97,17 +94,6 @@ struct ButtonCluster: View {
         } else {
             basicHaptic()
         }
-    }
-    
-    private func button(_ text: String, status: AnimCategory, startAngle: AngleStart, geometry: GeometryProxy, action: @escaping () -> Void) -> some View {
-        let diameter = diameterForScroll(geometry)
-        return Button(action: action) {
-                    CircleLabelView(radius: diameter/2, size: CGSize(width: diameter + fontSize*2 + 5, height: diameter + fontSize*2 + 5), startAngle: startAngle, text: text)
-                        .font(.system(size: fontSize, weight: .semibold, design: .monospaced))
-                        .opacity(scrollOffset(geometry) * 0.02 + 1.0)
-                }
-        .buttonStyle(SwirlStyle(category: status))
-        .frame(width: diameter, height: diameter)
     }
     
     

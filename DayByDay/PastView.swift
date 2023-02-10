@@ -13,7 +13,6 @@ struct PastView: View {
     @FetchRequest(sortDescriptors: [SortDescriptor(\DayMO.date, order: .reverse)])
     private var allDays: FetchedResults<DayMO>
     
-    @Binding var dayStatus: DayStatus
     
     private let daysToDisplay: Int = 30
     private let cellHeight = 66.0
@@ -172,23 +171,15 @@ private let dayFormatter: DateFormatter = {
 
 struct PastView_Previews: PreviewProvider {
     static var previews: some View {
-        Wrapper()
-    }
-    
-    struct Wrapper: View {
-        @State var status = DayStatus()
-        
-        var body: some View {
-            ScrollView {
-                VStack {
-                    Spacer()
-                    PastView(dayStatus: $status).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-                }
-                .frame(width: 400)
+        ScrollView {
+            VStack {
+                Spacer()
+                PastView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
             }
-            
-            .scrollIndicators(.never)
-            .ignoresSafeArea(edges: .bottom)
+            .frame(width: 400)
         }
+        
+        .scrollIndicators(.never)
+        .ignoresSafeArea(edges: .bottom)
     }
 }

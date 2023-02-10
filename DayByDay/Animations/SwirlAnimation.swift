@@ -10,7 +10,7 @@ import SwiftUI
 struct SwirlAnimation: View {
     var imageNames: [String]
     
-    init(for category: AnimCategory) {
+    init(for category: StatusCategory) {
         switch category {
         case .active:
             imageNames = (0...299).map{ String(format: "ActiveSwirl_%05d", $0) }
@@ -18,8 +18,6 @@ struct SwirlAnimation: View {
             imageNames = (0...359).map{ String(format: "CreativeSwirl_%05d", $0) }
         case .productive:
             imageNames = (0...419).map{ String(format: "ProductiveSwirl_%05d", $0) }
-        case .none:
-            imageNames = (0...0).map{ String(format: "ActiveSwirl_%05d", $0) }
         }
     }
     
@@ -28,9 +26,3 @@ struct SwirlAnimation: View {
     }
 }
 
-enum AnimCategory {
-    case active
-    case creative
-    case productive
-    case none
-}

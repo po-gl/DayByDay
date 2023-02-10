@@ -18,20 +18,15 @@ struct ContentView: View {
         return allDays.count > 0 ? allDays[0] : nil
     }
     
-    @State private var dayStatus = DayStatus()
-    
     var body: some View {
         GeometryReader { geometry in
             ScrollView {
                 VStack(spacing: 0) {
                     dateView()
-                    
-                    ButtonCluster(dayStatus: $dayStatus)
+                    ButtonCluster()
                         .zIndex(2)
-                    
                     Spacer(minLength: spaceFromButtonsToScreenBottom(geometry))
-                    
-                    PastView(dayStatus: $dayStatus)
+                    PastView()
                 }
                 .padding()
             }
@@ -43,12 +38,9 @@ struct ContentView: View {
         }
         .onChange(of: scenePhase) { newPhase in
             if newPhase == .active {
-                withAnimation {
-                    getDayStatus()
-                }
                 cancelPendingNotifications()
             } else if newPhase == .inactive {
-                setupNotifications(dayStatus)
+                setupNotifications()
             }
         }
     }
@@ -67,16 +59,6 @@ struct ContentView: View {
         }
     }
     
-    private func getDayStatus() {
-        guard latestDay?.date!.hasSame(.day, as: Date()) ?? false else {
-            dayStatus = DayStatus()
-            return
-        }
-        dayStatus.active = latestDay?.active ?? false
-        dayStatus.creative = latestDay?.creative ?? false
-        dayStatus.productive = latestDay?.productive ?? false
-    }
-
     private func spaceFromButtonsToScreenBottom(_ geometry: GeometryProxy) -> Double {
         let screenHeight = geometry.size.height
         if screenHeight < 696.0 {

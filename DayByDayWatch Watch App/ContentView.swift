@@ -31,7 +31,7 @@ struct ContentView: View {
                 }
                 cancelPendingNotifications()
             } else if newPhase == .inactive {
-                setupNotifications(dayStatus)
+                setupNotifications()
             }
         }
     }
