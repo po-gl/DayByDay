@@ -105,18 +105,10 @@ struct PastView: View {
     
     @ViewBuilder
     private func WiggleBars(_ geometry: GeometryProxy) -> some View {
-        let shiftX = 5.0
-        let shiftY = 90.0
         HStack(spacing: 25) {
-            WigglePath(shiftX: shiftX, shiftY: shiftY)
-                .stroke(gradient(for: .active), style: StrokeStyle(lineWidth: barWidthForScroll(geometry), lineCap: .round))
-                .frame(width: barWidthForScroll(geometry))
-            WigglePath(shiftX: shiftX, shiftY: shiftY)
-                .stroke(gradient(for: .productive), style: StrokeStyle(lineWidth: barWidthForScroll(geometry), lineCap: .round))
-                .frame(width: barWidthForScroll(geometry))
-            WigglePath(shiftX: shiftX, shiftY: shiftY)
-                .stroke(gradient(for: .creative), style: StrokeStyle(lineWidth: barWidthForScroll(geometry), lineCap: .round))
-                .frame(width: barWidthForScroll(geometry))
+            WiggleBar(category: .active, width: barWidthForScroll(geometry), geometry: geometry)
+            WiggleBar(category: .productive, width: barWidthForScroll(geometry), geometry: geometry)
+            WiggleBar(category: .creative, width: barWidthForScroll(geometry), geometry: geometry)
         }
         .offset(y: barWidthForScroll(geometry)/2)
     }
@@ -189,30 +181,6 @@ struct PastView: View {
     }
     
     
-    private func gradient(for category: StatusCategory) -> LinearGradient {
-        switch category {
-        case .active:
-            return LinearGradient(stops: [.init(color: Color(hex: 0xE69F1E), location: 0.0),
-                                          .init(color: Color(hex: 0xF23336), location: 0.2),
-                                          .init(color: Color(hex: 0xB04386), location: 0.8),
-                                          .init(color: Color(hex: 0xB3F2B7), location: 1.0)],
-                                  startPoint: .leading, endPoint: .trailing)
-        case .productive:
-            return LinearGradient(stops: [.init(color: Color(hex: 0xC62379), location: 0.0),
-                                          .init(color: Color(hex: 0xF77756), location: 0.2),
-                                          .init(color: Color(hex: 0xA8E712), location: 0.6),
-                                          .init(color: Color(hex: 0xD8F7EC), location: 1.1)],
-                                  startPoint: .leading, endPoint: .trailing)
-        case .creative:
-            return LinearGradient(stops: [.init(color: Color(hex: 0xFCEBD6), location: 0.0),
-                                          .init(color: Color(hex: 0xBAE1E5), location: 0.2),
-                                          .init(color: Color(hex: 0xC96FC3), location: 0.5),
-                                          .init(color: Color(hex: 0xC33FDB), location: 0.8),
-                                          .init(color: Color(hex: 0xF0BE83), location: 1.1)],
-                                  startPoint: .leading, endPoint: .trailing)
-        }
-    }
-    
     private func barWidthForScroll(_ geometry: GeometryProxy) -> Double {
         let diameter = ButtonCluster.lowerBoundDiameter
         let bound = 90.0
@@ -221,30 +189,6 @@ struct PastView: View {
     
     private func scrollOffset(_ geometry: GeometryProxy) -> Double {
         return geometry.frame(in: .named("scroll")).minY - 580.0
-    }
-}
-
-
-struct WigglePath: Shape {
-    var shiftX: Double
-    var shiftY: Double
-    
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        let point = CGPoint(x: rect.midX, y: rect.minY)
-        path.move(to: point)
-        wiggle(path: &path, in: rect, current: point)
-        return path
-    }
-    
-    private func wiggle(path: inout Path, in rect: CGRect, current: CGPoint) {
-        var point = current
-        var leftOrRight = true
-        while point.y < rect.maxY {
-            point.y += shiftY
-            path.addQuadCurve(to: point, control: CGPoint(x: point.x + shiftX * (leftOrRight ? 1.0 : -1.0), y: point.y-shiftY/2))
-            leftOrRight.toggle()
-        }
     }
 }
 

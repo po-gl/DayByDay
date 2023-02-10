@@ -27,6 +27,7 @@ struct ContentView: View {
                     dateView()
                     
                     ButtonCluster(dayStatus: $dayStatus)
+                        .zIndex(2)
                     
                     Spacer(minLength: spaceFromButtonsToScreenBottom(geometry))
                     
