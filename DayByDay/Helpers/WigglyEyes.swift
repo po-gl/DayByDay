@@ -27,7 +27,7 @@ struct WigglyEyes: View {
                     .offset(x: animate ? -animateOffset : animateOffset)
                 pairOfEyes(width: eyeWidth + 20, depth: eyeDepth + 10)
                     .offset(x: animate ? -animateOffset : animateOffset)
-                pairOfEyes(width: eyeWidth + 20, depth: eyeDepth + 10)
+                pairOfEyes(width: eyeWidth +  0, depth: eyeDepth - 10)
                     .offset(x: -offset)
                     .offset(x: animate ? animateOffset : -animateOffset)
             }
