@@ -24,7 +24,7 @@ struct PastView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                WiggleBars(geometry)
+                WigglyBars(geometry)
                     .mask(Cells(isMask: true, geometry))
                 DatesAndDividers()
                 WigglyEyes(barWidth: barWidthForScroll(geometry))
@@ -108,11 +108,11 @@ struct PastView: View {
     }
     
     @ViewBuilder
-    private func WiggleBars(_ geometry: GeometryProxy) -> some View {
+    private func WigglyBars(_ geometry: GeometryProxy) -> some View {
         HStack(spacing: 25) {
-            WiggleBar(category: .active, width: barWidthForScroll(geometry), geometry: geometry)
-            WiggleBar(category: .productive, width: barWidthForScroll(geometry), geometry: geometry)
-            WiggleBar(category: .creative, width: barWidthForScroll(geometry), geometry: geometry)
+            WigglyBar(category: .active, width: barWidthForScroll(geometry), geometry: geometry)
+            WigglyBar(category: .productive, width: barWidthForScroll(geometry), geometry: geometry)
+            WigglyBar(category: .creative, width: barWidthForScroll(geometry), geometry: geometry)
         }
         .offset(y: barWidthForScroll(geometry)/2)
     }

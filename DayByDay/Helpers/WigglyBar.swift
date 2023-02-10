@@ -1,5 +1,5 @@
 //
-//  WiggleBar.swift
+//  WigglyBar.swift
 //  DayByDay
 //
 //  Created by Porter Glines on 2/9/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct WiggleBar: View {
+struct WigglyBar: View {
     let category: StatusCategory
     let width: Double
     let geometry: GeometryProxy
@@ -20,7 +20,7 @@ struct WiggleBar: View {
     var body: some View {
         ZStack {
             ZStack {
-                WigglePath(frequency: frequency, amplitude: amplitude)
+                WigglyPath(frequency: frequency, amplitude: amplitude)
                     .stroke(LinearGradient(for: category), style: StrokeStyle(lineWidth: width-amplitude-2, lineCap: .round))
                     .frame(width: width-amplitude-2)
                     .scaleEffect(y: 1.5)
@@ -45,7 +45,7 @@ struct WiggleBar: View {
 }
 
 
-struct WigglePath: Shape {
+struct WigglyPath: Shape {
     var frequency: Double = 60.0
     var amplitude: Double = 3.0
     
