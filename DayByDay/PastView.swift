@@ -19,16 +19,20 @@ struct PastView: View {
     private let cellHeight = 66.0
     private var height: Double { Double(daysToDisplay) * cellHeight }
     
+    @State var animate = false
+    
     var body: some View {
         GeometryReader { geometry in
             ZStack {
                 WiggleBars(geometry)
                     .mask(Cells(isMask: true, geometry))
                 DatesAndDividers()
-                Eyes(geometry)
+                WigglyEyes(barWidth: barWidthForScroll(geometry))
                 Cells(geometry)
             }
             .position(x: geometry.size.width/2, y: geometry.size.height/2)
+            .onAppear { animate = true }
+            .animation(.linear(duration: 2.0).repeatForever(autoreverses: false), value: animate)
         }
         .frame(height: height)
     }
@@ -138,45 +142,6 @@ struct PastView: View {
                     }
                 }
             }
-        }
-    }
-    
-    @ViewBuilder
-    private func Eyes(_ geometry: GeometryProxy) -> some View {
-        let eyeSize = 7.0
-        let eyeWidth = 38.0
-        let eyeDepth = 8.0
-        VStack {
-            HStack(spacing: 25) {
-                HStack {
-                    Circle()
-                        .frame(width: eyeSize)
-                        .padding(.trailing, eyeWidth)
-                    Circle()
-                        .frame(width: eyeSize)
-                }
-                .frame(width: barWidthForScroll(geometry))
-                .padding(.top, eyeDepth)
-                HStack {
-                    Circle()
-                        .frame(width: eyeSize)
-                        .padding(.trailing, eyeWidth + 20)
-                    Circle()
-                        .frame(width: eyeSize)
-                }
-                .frame(width: barWidthForScroll(geometry))
-                .padding(.top, eyeDepth + 10)
-                HStack {
-                    Circle()
-                        .frame(width: eyeSize)
-                        .padding(.trailing, eyeWidth)
-                    Circle()
-                        .frame(width: eyeSize)
-                }
-                .frame(width: barWidthForScroll(geometry))
-                .padding(.top, eyeDepth - 10)
-            }
-            Spacer()
         }
     }
     

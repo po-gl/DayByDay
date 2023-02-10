@@ -29,6 +29,12 @@
 		61188D412970F51B00BF77B5 /* SwirlStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61188D3F2970F51B00BF77B5 /* SwirlStyle.swift */; };
 		61188D4329710D8000BF77B5 /* Color+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61188D4229710D8000BF77B5 /* Color+hex.swift */; };
 		61188D4429710D8000BF77B5 /* Color+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61188D4229710D8000BF77B5 /* Color+hex.swift */; };
+		611A5F892995EDCE00E28A56 /* WigglyEyes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A5F882995EDCE00E28A56 /* WigglyEyes.swift */; };
+		611A5F8A2995EDCE00E28A56 /* WigglyEyes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A5F882995EDCE00E28A56 /* WigglyEyes.swift */; };
+		611A5F8B2995EDCE00E28A56 /* WigglyEyes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A5F882995EDCE00E28A56 /* WigglyEyes.swift */; };
+		611A5F8C2995EDCE00E28A56 /* WigglyEyes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A5F882995EDCE00E28A56 /* WigglyEyes.swift */; };
+		611A5F8D2995EDCE00E28A56 /* WigglyEyes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A5F882995EDCE00E28A56 /* WigglyEyes.swift */; };
+		611A5F8E2995EDCE00E28A56 /* WigglyEyes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A5F882995EDCE00E28A56 /* WigglyEyes.swift */; };
 		614AE46B2974C27900F24397 /* CompleteBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614AE46A2974C27900F24397 /* CompleteBackgroundView.swift */; };
 		614AE46C2974C27900F24397 /* CompleteBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614AE46A2974C27900F24397 /* CompleteBackgroundView.swift */; };
 		614EE400296A838D001FB19D /* CircleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614EE3FF296A838D001FB19D /* CircleStyle.swift */; };
@@ -180,6 +186,7 @@
 		61188D3C2970E8D900BF77B5 /* SwirlAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwirlAnimation.swift; sourceTree = "<group>"; };
 		61188D3F2970F51B00BF77B5 /* SwirlStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwirlStyle.swift; sourceTree = "<group>"; };
 		61188D4229710D8000BF77B5 /* Color+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+hex.swift"; sourceTree = "<group>"; };
+		611A5F882995EDCE00E28A56 /* WigglyEyes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WigglyEyes.swift; sourceTree = "<group>"; };
 		614AE46A2974C27900F24397 /* CompleteBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteBackgroundView.swift; sourceTree = "<group>"; };
 		614EE3FF296A838D001FB19D /* CircleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleStyle.swift; sourceTree = "<group>"; };
 		614EE402296ABA43001FB19D /* CircleLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleLabelView.swift; sourceTree = "<group>"; };
@@ -360,6 +367,7 @@
 				61188D382970E88E00BF77B5 /* AnimatedImage.swift */,
 				614AE46A2974C27900F24397 /* CompleteBackgroundView.swift */,
 				61DAE0582995D8F8006502BC /* WiggleBar.swift */,
+				611A5F882995EDCE00E28A56 /* WigglyEyes.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -649,6 +657,7 @@
 				61188D392970E88E00BF77B5 /* AnimatedImage.swift in Sources */,
 				6101CA242975FB7D00B12C68 /* Notifications.swift in Sources */,
 				614EE403296ABA43001FB19D /* CircleLabelView.swift in Sources */,
+				611A5F892995EDCE00E28A56 /* WigglyEyes.swift in Sources */,
 				610AF8FE296A5A99001E50A6 /* ContentView.swift in Sources */,
 				61DAE0602995DA41006502BC /* LinearGradient+ForCategory.swift in Sources */,
 				610AF8F9296A5A99001E50A6 /* Persistence.swift in Sources */,
@@ -662,6 +671,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				61D46A1B29760996009CB8C3 /* DayByDay.xcdatamodeld in Sources */,
+				611A5F8A2995EDCE00E28A56 /* WigglyEyes.swift in Sources */,
 				61D46A02297608EF009CB8C3 /* Color+hex.swift in Sources */,
 				610AF90E296A5A9A001E50A6 /* DayByDayTests.swift in Sources */,
 				6104E56C296B1A580034B9E3 /* Date+compare.swift in Sources */,
@@ -689,6 +699,7 @@
 				610AF918296A5A9A001E50A6 /* DayByDayUITests.swift in Sources */,
 				614EE40A296AC9E7001FB19D /* DayStatus.swift in Sources */,
 				6104E56D296B1A590034B9E3 /* Date+compare.swift in Sources */,
+				611A5F8B2995EDCE00E28A56 /* WigglyEyes.swift in Sources */,
 				614EE40D296AF187001FB19D /* PastView.swift in Sources */,
 				61DAE0622995DA41006502BC /* LinearGradient+ForCategory.swift in Sources */,
 				61188D412970F51B00BF77B5 /* SwirlStyle.swift in Sources */,
@@ -701,6 +712,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				611A5F8C2995EDCE00E28A56 /* WigglyEyes.swift in Sources */,
 				61D46A1F29760A40009CB8C3 /* Haptics.swift in Sources */,
 				61D46A1729760990009CB8C3 /* DayByDay.xcdatamodeld in Sources */,
 				61D46A1329760938009CB8C3 /* SwirlAnimation.swift in Sources */,
@@ -728,6 +740,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				61D46A1A29760995009CB8C3 /* DayByDay.xcdatamodeld in Sources */,
+				611A5F8D2995EDCE00E28A56 /* WigglyEyes.swift in Sources */,
 				61D46A03297608F0009CB8C3 /* Color+hex.swift in Sources */,
 				61D469DA29760855009CB8C3 /* DayByDayWatch_Watch_AppTests.swift in Sources */,
 				61D469FF297608EA009CB8C3 /* Date+compare.swift in Sources */,
@@ -755,6 +768,7 @@
 				61D469F6297608AB009CB8C3 /* ButtonCluster.swift in Sources */,
 				61D46A00297608EA009CB8C3 /* Date+compare.swift in Sources */,
 				61D469E629760855009CB8C3 /* DayByDayWatch_Watch_AppUITestsLaunchTests.swift in Sources */,
+				611A5F8E2995EDCE00E28A56 /* WigglyEyes.swift in Sources */,
 				61D46A162976093E009CB8C3 /* BurstAnimation.swift in Sources */,
 				61DAE0652995DA41006502BC /* LinearGradient+ForCategory.swift in Sources */,
 				61D46A2029760A40009CB8C3 /* Haptics.swift in Sources */,
