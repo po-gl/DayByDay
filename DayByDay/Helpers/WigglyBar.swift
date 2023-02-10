@@ -15,7 +15,7 @@ struct WigglyBar: View {
     @State var animate = false
     
     var frequency: Double = 100.0
-    var amplitude: Double = 2.0
+    var amplitude: Double = 3.0
     
     var body: some View {
         ZStack {
@@ -29,7 +29,7 @@ struct WigglyBar: View {
                 VStack {
                     VerticalLine()
                         .stroke(LinearGradient(for: category), style: StrokeStyle(lineWidth: width, lineCap: .round))
-                        .frame(width: width-amplitude-10, height: 1)
+                        .frame(width: width, height: 5)
                     Spacer()
                 }
             }
