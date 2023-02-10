@@ -25,7 +25,7 @@ struct WigglyBar: View {
                     .frame(width: width-amplitude-2)
                     .scaleEffect(y: 1.5)
                     .offset(y: animate ? geometry.size.height/frequency * .pi*2 * 1.5: 0)
-                    .zIndex(1)
+                    .zIndex(2)
                 VStack {
                     VerticalLine()
                         .stroke(LinearGradient(for: category), style: StrokeStyle(lineWidth: width, lineCap: .round))

@@ -34,10 +34,14 @@ struct ButtonCluster: View {
                 CompleteBackgroundView()
                     .opacity(isDayComplete ? 1.0 : 0.0)
                     .animation(.easeOut(duration: 3.0), value: isDayComplete)
+                    .zIndex(1)
                 
-                SwirlButton("Active", for: .active, startAngle: .topLeft, geometry)
-                SwirlButton("Creative", for: .creative, startAngle: .topRight, geometry)
-                SwirlButton("Productive", for: .productive, startAngle: .bottom, geometry)
+                Group {
+                    SwirlButton("Active", for: .active, startAngle: .topLeft, geometry)
+                    SwirlButton("Creative", for: .creative, startAngle: .topRight, geometry)
+                    SwirlButton("Productive", for: .productive, startAngle: .bottom, geometry)
+                }
+                .zIndex(3)
             }
             .position(x: geometry.size.width/2, y: geometry.size.height/2)
         }
