@@ -19,8 +19,6 @@ struct PastView: View {
     private let cellHeight = 66.0
     private var height: Double { Double(daysToDisplay) * cellHeight }
     
-    @State var animate = false
-    
     var body: some View {
         GeometryReader { geometry in
             ZStack {
@@ -31,8 +29,6 @@ struct PastView: View {
                 Cells(geometry)
             }
             .position(x: geometry.size.width/2, y: geometry.size.height/2)
-            .onAppear { animate = true }
-            .animation(.linear(duration: 2.0).repeatForever(autoreverses: false), value: animate)
         }
         .frame(height: height)
     }
