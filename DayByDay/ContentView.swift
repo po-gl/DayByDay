@@ -24,6 +24,7 @@ struct ContentView: View {
                 VStack(spacing: 0) {
                     dateView()
                     ButtonCluster()
+                        .zIndex(3)
                     Spacer(minLength: spaceFromButtonsToScreenBottom(geometry))
                     PastView()
                 }

@@ -36,12 +36,9 @@ struct ButtonCluster: View {
                     .animation(.easeOut(duration: 3.0), value: isDayComplete)
                     .zIndex(1)
                 
-                Group {
-                    SwirlButton("Active", for: .active, startAngle: .topLeft, geometry)
-                    SwirlButton("Creative", for: .creative, startAngle: .topRight, geometry)
-                    SwirlButton("Productive", for: .productive, startAngle: .bottom, geometry)
-                }
-                .zIndex(3)
+                SwirlButton("Active", for: .active, startAngle: .topLeft, geometry)
+                SwirlButton("Creative", for: .creative, startAngle: .topRight, geometry)
+                SwirlButton("Productive", for: .productive, startAngle: .bottom, geometry)
             }
             .position(x: geometry.size.width/2, y: geometry.size.height/2)
         }
