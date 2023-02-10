@@ -29,7 +29,7 @@ struct WiggleBar: View {
                 VStack {
                     VerticalLine()
                         .stroke(LinearGradient(for: category), style: StrokeStyle(lineWidth: width, lineCap: .round))
-                        .frame(width: width-amplitude-2, height: 1)
+                        .frame(width: width-amplitude-10, height: 1)
                     Spacer()
                 }
             }
