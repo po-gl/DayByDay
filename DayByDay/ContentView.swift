@@ -61,14 +61,14 @@ struct ContentView: View {
     
     private func spaceFromButtonsToScreenBottom(_ geometry: GeometryProxy) -> Double {
         let screenHeight = geometry.size.height
-        if screenHeight < 696.0 {
-            return 140.0
-        } else if screenHeight < 763.0 {  // iPhone 13 mini
-            return 190.0
-        } else if screenHeight < 839.0 {  // iPhone 14
-            return 205.0
-        } else if screenHeight < 900.0 {  // iPhone 14 Pro Max
-            return 313.0
+        if screenHeight < 750 {  // iPhone 13 mini
+            return 160.0
+        } else if screenHeight < 763.0 {  // iPhone 14 Pro
+            return 220.0
+        } else if screenHeight < 839.0 { // iPhone 14
+            return 220.0
+        } else if screenHeight < 900.0 {  // iPhone 14 Pro Max/Plus
+            return 305.0
         } else {
             return 360.0
         }
