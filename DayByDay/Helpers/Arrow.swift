@@ -14,7 +14,7 @@ struct Arrow: View {
     
     var body: some View {
         GeometryReader { geometry in
-            Image(systemName: "arrowshape.forward")
+            Image(systemName: "arrowshape.forward.fill")
                 .font(.system(size: 30))
                 .rotationEffect(.degrees(90))
                 .offset(y: 10)
