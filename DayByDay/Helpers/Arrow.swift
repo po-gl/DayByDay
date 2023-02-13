@@ -34,7 +34,7 @@ struct Arrow: View {
     
     private func getOpacity(_ geometry: GeometryProxy) -> Double {
         let offset = scrollOffset(geometry)
-        let opacity = colorScheme == .light ? 0.4 : 0.7
+        let opacity = colorScheme == .light ? 0.15 : 0.3
         if offset < 0 {
             return max(0, opacity + offset/1000)
         }
