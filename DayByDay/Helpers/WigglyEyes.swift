@@ -9,46 +9,50 @@ import SwiftUI
 
 struct WigglyEyes: View {
     let barWidth: Double
+    var width = 38.0
+    var depth = 8.0
     
-    var eyeSize = 7.0
-    var eyeWidth = 38.0
-    var eyeDepth = 8.0
+    var delay = 0.0
     
-    let animateOffset = 2.0
-    let offset = 4.0
+    var size = 7.0
+    let offset = -1.0
     
-    @State var animate = false
+    @State var blink = false
     
     var body: some View {
-        VStack {
-            HStack(spacing: 25) {
-                pairOfEyes(width: eyeWidth +  0, depth: eyeDepth +  0)
-                    .offset(x: offset)
-                    .offset(x: animate ? -animateOffset : animateOffset)
-                pairOfEyes(width: eyeWidth + 20, depth: eyeDepth + 10)
-                    .offset(x: animate ? -animateOffset : animateOffset)
-                pairOfEyes(width: eyeWidth +  0, depth: eyeDepth - 10)
-                    .offset(x: -offset)
-                    .offset(x: animate ? animateOffset : -animateOffset)
-            }
-            Spacer()
-        }
-        .onAppear { animate = true }
-        .animation(.easeInOut(duration: 1.0).repeatForever(), value: animate)
-    }
-    
-    @ViewBuilder
-    private func pairOfEyes(width: Double, depth: Double) -> some View {
         HStack {
             Circle()
-                .frame(width: eyeSize)
+                .frame(width: size)
                 .shadow(radius: 5)
                 .padding(.trailing, width)
+                .scaleEffect(y: blink ? 0.1 : 1.0)
             Circle()
-                .frame(width: eyeSize)
+                .frame(width: size)
                 .shadow(radius: 5)
+                .scaleEffect(y: blink ? 0.1 : 1.0)
         }
         .frame(width: barWidth)
         .padding(.top, depth)
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                startAnimation()
+            }
+        }
+    }
+    
+    private func startAnimation() {
+        let openLength = Double.random(in: 3.0..<4.0)
+        let blinkLength = 0.2
+        DispatchQueue.main.asyncAfter(deadline: .now() + openLength) {
+            withAnimation(.easeIn(duration: 0.1)) {
+                blink = true
+            }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + openLength + blinkLength) {
+            withAnimation(.easeIn(duration: 0.1)) {
+                blink = false
+                startAnimation()
+            }
+        }
     }
 }

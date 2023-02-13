@@ -23,10 +23,38 @@ struct PastView: View {
             WigglyBars()
                 .mask(Cells(isMask: true))
             DatesAndDividers()
-            WigglyEyes(barWidth: ButtonCluster.lowerBoundDiameter)
+            Eyes()
             Cells()
         }
         .frame(height: height)
+    }
+    
+    
+    @State var eyesAnim1 = false
+    @State var eyesAnim2 = false
+    @State var eyesAnim3 = false
+    
+    @ViewBuilder
+    private func Eyes() -> some View {
+        VStack {
+            HStack(spacing: 25) {
+                let barWidth = ButtonCluster.lowerBoundDiameter
+                let animateOffset = 2.0
+                let eyeWidth = 38.0
+                let eyeDepth = 8.0
+                WigglyEyes(barWidth: barWidth, width: eyeWidth, depth: eyeDepth, delay: 0.1)
+                    .animation(.easeInOut(duration: 1.0).repeatForever().delay(0.2), value: eyesAnim1)
+                    .offset(x: eyesAnim1 ? -animateOffset : animateOffset)
+                WigglyEyes(barWidth: barWidth, width: eyeWidth + 20, depth: eyeDepth + 10, delay: 2.5)
+                    .animation(.easeInOut(duration: 1.0).repeatForever().delay(0.3), value: eyesAnim2)
+                    .offset(x: eyesAnim2 ? -animateOffset : animateOffset)
+                WigglyEyes(barWidth: barWidth, width: eyeWidth +  0, depth: eyeDepth - 10, delay: 1.5)
+                    .offset(x: eyesAnim3 ? animateOffset : -animateOffset)
+                    .animation(.easeInOut(duration: 1.0).repeatForever().delay(0.4), value: eyesAnim3)
+            }
+            Spacer()
+        }
+        .onAppear { eyesAnim1 = true; eyesAnim2 = true; eyesAnim3 = true }
     }
     
     
