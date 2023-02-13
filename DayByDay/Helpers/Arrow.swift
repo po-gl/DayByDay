@@ -12,9 +12,14 @@ struct Arrow: View {
     
     @State private var animate = false
     
+    let gradient = LinearGradient(stops: [.init(color: .primary, location: 0.0),
+                                          .init(color: .primary.opacity(0.3), location: 1.0)],
+                                  startPoint: .leading, endPoint: .trailing)
+    
     var body: some View {
         GeometryReader { geometry in
             Image(systemName: "arrowshape.forward.fill")
+                .foregroundStyle(gradient)
                 .font(.system(size: 30))
                 .rotationEffect(.degrees(90))
                 .offset(y: 10)
@@ -29,7 +34,7 @@ struct Arrow: View {
     
     private func getOpacity(_ geometry: GeometryProxy) -> Double {
         let offset = scrollOffset(geometry)
-        let opacity = colorScheme == .light ? 0.1 : 0.2
+        let opacity = colorScheme == .light ? 0.4 : 0.7
         if offset < 0 {
             return max(0, opacity + offset/1000)
         }
