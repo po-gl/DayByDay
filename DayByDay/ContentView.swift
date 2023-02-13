@@ -22,10 +22,13 @@ struct ContentView: View {
         GeometryReader { geometry in
             ScrollView {
                 VStack(spacing: 0) {
-                    dateView()
+                    DateView()
                     ButtonCluster()
                         .zIndex(3)
-                    Spacer(minLength: spaceFromButtonsToScreenBottom(geometry))
+                    ZStack {
+                        BottomSpacer(geometry)
+                        Arrow()
+                    }
                     PastView()
                 }
                 .padding()
@@ -46,7 +49,8 @@ struct ContentView: View {
     }
     
     
-    private func dateView() -> some View {
+    @ViewBuilder
+    private func DateView() -> some View {
         ZStack {
             Text("\(Date(), formatter: dayFormatter)")
                 .font(.system(size: 44, weight: .light, design: .serif))
@@ -57,6 +61,13 @@ struct ContentView: View {
                 .frame(width: 200, height: 1)
                 .offset(y: 35)
         }
+    }
+    
+    @ViewBuilder
+    private func BottomSpacer(_ geometry: GeometryProxy) -> some View {
+        Rectangle()
+            .fill(.clear)
+            .frame(height: spaceFromButtonsToScreenBottom(geometry))
     }
     
     private func spaceFromButtonsToScreenBottom(_ geometry: GeometryProxy) -> Double {
