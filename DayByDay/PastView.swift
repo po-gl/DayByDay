@@ -19,15 +19,12 @@ struct PastView: View {
     private var height: Double { Double(daysToDisplay) * cellHeight }
     
     var body: some View {
-        GeometryReader { geometry in
-            ZStack {
-                WigglyBars(geometry)
-                    .mask(Cells(isMask: true, geometry))
-                DatesAndDividers()
-                WigglyEyes(barWidth: barWidthForScroll(geometry))
-                Cells(geometry)
-            }
-            .position(x: geometry.size.width/2, y: geometry.size.height/2)
+        ZStack {
+            WigglyBars()
+                .mask(Cells(isMask: true))
+            DatesAndDividers()
+            WigglyEyes(barWidth: ButtonCluster.lowerBoundDiameter)
+            Cells()
         }
         .frame(height: height)
     }
@@ -44,7 +41,7 @@ struct PastView: View {
     
     
     @ViewBuilder
-    private func Cells(isMask: Bool = false, _ geometry: GeometryProxy) -> some View {
+    private func Cells(isMask: Bool = false) -> some View {
         VStack(spacing: 0) {
             ForEach(0..<daysToDisplay, id: \.self) { i in
                 let date = Date(timeInterval: -Double(60*60*24*i), since: Date())
@@ -103,13 +100,13 @@ struct PastView: View {
     }
     
     @ViewBuilder
-    private func WigglyBars(_ geometry: GeometryProxy) -> some View {
+    private func WigglyBars() -> some View {
         HStack(spacing: 25) {
-            WigglyBar(category: .active, width: barWidthForScroll(geometry), geometry: geometry)
-            WigglyBar(category: .productive, width: barWidthForScroll(geometry), geometry: geometry)
-            WigglyBar(category: .creative, width: barWidthForScroll(geometry), geometry: geometry)
+            WigglyBar(category: .active, width: ButtonCluster.lowerBoundDiameter, height: height)
+            WigglyBar(category: .productive, width: ButtonCluster.lowerBoundDiameter, height: height)
+            WigglyBar(category: .creative, width: ButtonCluster.lowerBoundDiameter, height: height)
         }
-        .offset(y: barWidthForScroll(geometry)/2)
+        .offset(y: ButtonCluster.lowerBoundDiameter/2)
     }
     
     @ViewBuilder
@@ -138,17 +135,6 @@ struct PastView: View {
                 }
             }
         }
-    }
-    
-    
-    private func barWidthForScroll(_ geometry: GeometryProxy) -> Double {
-        let diameter = ButtonCluster.lowerBoundDiameter
-        let bound = 90.0
-        return min(diameter, max(diameter - scrollOffset(geometry) * 0.25, bound))
-    }
-    
-    private func scrollOffset(_ geometry: GeometryProxy) -> Double {
-        return geometry.frame(in: .named("scroll")).minY - 580.0
     }
 }
 

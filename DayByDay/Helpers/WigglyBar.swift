@@ -10,7 +10,7 @@ import SwiftUI
 struct WigglyBar: View {
     let category: StatusCategory
     let width: Double
-    let geometry: GeometryProxy
+    let height: Double
     
     @State var animate = false
     
@@ -24,7 +24,7 @@ struct WigglyBar: View {
                     .stroke(LinearGradient(for: category), style: StrokeStyle(lineWidth: width-amplitude-2, lineCap: .round))
                     .frame(width: width-amplitude-2)
                     .scaleEffect(y: 1.5)
-                    .offset(y: animate ? geometry.size.height/frequency * .pi*2 * 1.5: 0)
+                    .offset(y: animate ? height/frequency * .pi*2 * 1.5: 0)
                     .zIndex(2)
                 VStack {
                     VerticalLine()
