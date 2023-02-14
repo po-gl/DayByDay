@@ -33,7 +33,8 @@ struct Arrow: View {
     }
     
     private func getOpacity(_ geometry: GeometryProxy) -> Double {
-        let offset = scrollOffset(geometry)
+        FurthestOffset.value = min(scrollOffset(geometry), FurthestOffset.value)
+        let offset = FurthestOffset.value
         let opacity = colorScheme == .light ? 0.15 : 0.3
         if offset < 0 {
             return max(0, opacity + offset/1000)
@@ -44,4 +45,8 @@ struct Arrow: View {
     private func scrollOffset(_ geometry: GeometryProxy) -> Double {
         return geometry.frame(in: .named("scroll")).minY - 576.0
     }
+}
+
+fileprivate class FurthestOffset {
+    static var value: Double = 0.0
 }
