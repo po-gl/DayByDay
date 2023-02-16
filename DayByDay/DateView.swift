@@ -24,7 +24,21 @@ struct DateView: View {
             HorizontalLine()
                 .stroke(.primary, style: StrokeStyle(lineWidth: 3, lineCap: .round))
                 .frame(width: 200, height: 1)
-                .offset(y: 35)
+            ShineLines()
+                .offset(x: 40)
+        }
+    }
+    
+    @ViewBuilder
+    private func ShineLines() -> some View {
+        ZStack {
+            HorizontalLine()
+                .stroke(.background, style: StrokeStyle(lineWidth: 2, lineCap: .butt))
+                .frame(width: 20, height: 1)
+            HorizontalLine()
+                .stroke(.background, style: StrokeStyle(lineWidth: 2, lineCap: .butt))
+                .frame(width: 5, height: 1)
+                .offset(x: 18)
         }
     }
 }
