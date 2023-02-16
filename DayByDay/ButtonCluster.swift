@@ -53,7 +53,6 @@ struct ButtonCluster: View {
     private func SwirlButton(_ text: String, for category: StatusCategory, startAngle: AngleStart, _ geometry: GeometryProxy) -> some View {
         let diameter = diameterForScroll(geometry)
         Button(action: {
-            haptic()
             withAnimation(.easeOut(duration: 0.2)) {
                 if let day = latestDay {
                     day.toggle(category: category)
@@ -62,6 +61,7 @@ struct ButtonCluster: View {
                 }
                 saveContext()
             }
+            haptic()
         }) {
             CircleLabelView(radius: diameter/2, size: CGSize(width: diameter + fontSize*2 + 5, height: diameter + fontSize*2 + 5), startAngle: startAngle, text: text)
                 .font(.system(size: fontSize, weight: .semibold, design: .monospaced))
