@@ -139,14 +139,22 @@ struct PastView: View {
     
     @ViewBuilder
     private func DatesAndDividers() -> some View {
+        let width = 3*(90.0+22)
         VStack(spacing: cellHeight-1) {
             ForEach(0..<daysToDisplay, id: \.self) { i in
                 let day = Date(timeInterval: -Double(60*60*24*i), since: Date())
                 ZStack {
-                    Text("\(day, formatter: dayFormatter)")
-                        .font(.system(size: 14, weight: .medium, design: .monospaced))
-                        .offset(x: -90.0*1.5, y: 14)
-                        .frame(height: 0)
+                    HStack (spacing: 0){
+                        Text("\(day, formatter: weekdayFormatter)")
+                            .font(.system(size: 14, weight: .medium, design: .monospaced))
+                            .padding(.trailing, 10)
+                        Text("\(day, formatter: dayFormatter)")
+                            .font(.system(size: 12, weight: .regular, design: .monospaced))
+                            .opacity(0.6)
+                        Spacer()
+                    }
+                    .frame(width: width, height: 0)
+                    .offset(y: 14)
                     
                     if day.isMonday() {
                         HorizontalLine()
@@ -158,7 +166,7 @@ struct PastView: View {
                     } else {
                         HorizontalLine()
                             .stroke(.primary, style: StrokeStyle(lineWidth: 1.0, lineCap: .round))
-                            .frame(width: 3*(90.0+22), height: 1)
+                            .frame(width: width, height: 1)
                             .offset(y: cellHeight/2)
                             .opacity(0.3)
                     }
@@ -194,9 +202,14 @@ struct PastView: View {
 }
 
 
+private let weekdayFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.setLocalizedDateFormatFromTemplate("EE")
+    return formatter
+}()
 private let dayFormatter: DateFormatter = {
     let formatter = DateFormatter()
-    formatter.setLocalizedDateFormatFromTemplate("EE M/d")
+    formatter.setLocalizedDateFormatFromTemplate("M/d")
     return formatter
 }()
 
