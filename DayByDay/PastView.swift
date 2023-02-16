@@ -148,13 +148,13 @@ struct PastView: View {
                         .frame(height: 0)
                     
                     if Date(timeInterval: -Double(60*60*24*i), since: Date()).isMonday() {
-                        Line()
+                        HorizontalLine()
                             .stroke(.primary, style: StrokeStyle(lineWidth: 2.5, lineCap: .round, dash: [10]))
                             .frame(width: 3*(90.0+22), height: 1)
                             .offset(y: cellHeight/2)
                             .opacity(0.7)
                     } else {
-                        Line()
+                        HorizontalLine()
                             .stroke(.primary, style: StrokeStyle(lineWidth: 1.0, lineCap: .round))
                             .frame(width: 3*(90.0+22), height: 1)
                             .offset(y: cellHeight/2)
@@ -163,15 +163,6 @@ struct PastView: View {
                 }
             }
         }
-    }
-}
-
-struct Line: Shape {
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        path.move(to: CGPoint(x: 0, y: 0))
-        path.addLine(to: CGPoint(x: rect.width, y: 0))
-        return path
     }
 }
 

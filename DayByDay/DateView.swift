@@ -9,12 +9,19 @@ import SwiftUI
 
 struct DateView: View {
     var body: some View {
-        ZStack {
+        VStack (spacing: 8) {
             Text("\(Date(), formatter: dayFormatter)")
                 .font(.system(size: 44, weight: .light, design: .serif))
                 .monospacedDigit()
-                .frame(height: 200)
-            Line()
+            Underline()
+        }
+        .frame(height: 200)
+    }
+    
+    @ViewBuilder
+    private func Underline() -> some View {
+        ZStack {
+            HorizontalLine()
                 .stroke(.primary, style: StrokeStyle(lineWidth: 3, lineCap: .round))
                 .frame(width: 200, height: 1)
                 .offset(y: 35)
