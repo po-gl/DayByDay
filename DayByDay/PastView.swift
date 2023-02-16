@@ -153,7 +153,6 @@ struct PastView: View {
                             .stroke(.primary, style: StrokeStyle(lineWidth: 2.5, lineCap: .round))
                             .frame(width: 3*(90.0+22), height: 1)
                             .offset(y: cellHeight/2)
-                            .opacity(0.7)
                         WeekLineShine()
                             .offset(y: cellHeight/2)
                     } else {
