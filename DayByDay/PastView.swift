@@ -141,18 +141,21 @@ struct PastView: View {
     private func DatesAndDividers() -> some View {
         VStack(spacing: cellHeight-1) {
             ForEach(0..<daysToDisplay, id: \.self) { i in
+                let day = Date(timeInterval: -Double(60*60*24*i), since: Date())
                 ZStack {
-                    Text("\(Date(timeInterval: -Double(60*60*24*i), since: Date()), formatter: dayFormatter)")
+                    Text("\(day, formatter: dayFormatter)")
                         .font(.system(size: 14, weight: .medium, design: .monospaced))
                         .offset(x: -90.0*1.5, y: 14)
                         .frame(height: 0)
                     
-                    if Date(timeInterval: -Double(60*60*24*i), since: Date()).isMonday() {
+                    if day.isMonday() {
                         HorizontalLine()
-                            .stroke(.primary, style: StrokeStyle(lineWidth: 2.5, lineCap: .round, dash: [10]))
+                            .stroke(.primary, style: StrokeStyle(lineWidth: 2.5, lineCap: .round))
                             .frame(width: 3*(90.0+22), height: 1)
                             .offset(y: cellHeight/2)
                             .opacity(0.7)
+                        WeekLineShine()
+                            .offset(y: cellHeight/2)
                     } else {
                         HorizontalLine()
                             .stroke(.primary, style: StrokeStyle(lineWidth: 1.0, lineCap: .round))
@@ -162,6 +165,31 @@ struct PastView: View {
                     }
                 }
             }
+        }
+    }
+    
+    @ViewBuilder
+    private func WeekLineShine() -> some View {
+        let shine = ZStack {
+            HorizontalLine()
+                .stroke(.background, style: StrokeStyle(lineWidth: 2.0, lineCap: .butt))
+                .frame(width: 10, height: 1)
+                .offset(x: -30)
+            HorizontalLine()
+                .stroke(.background, style: StrokeStyle(lineWidth: 2.0, lineCap: .butt))
+                .frame(width: 15, height: 1)
+                .offset(x: 15)
+            HorizontalLine()
+                .stroke(.background, style: StrokeStyle(lineWidth: 2.0, lineCap: .butt))
+                .frame(width: 5, height: 1)
+                .offset(x: 30)
+        }
+            .frame(width: ButtonCluster.lowerBoundDiameter)
+        
+        HStack (spacing: 25) {
+            shine
+            shine
+            shine
         }
     }
 }
