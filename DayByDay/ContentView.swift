@@ -50,20 +50,6 @@ struct ContentView: View {
     
     
     @ViewBuilder
-    private func DateView() -> some View {
-        ZStack {
-            Text("\(Date(), formatter: dayFormatter)")
-                .font(.system(size: 44, weight: .light, design: .serif))
-                .monospacedDigit()
-                .frame(height: 200)
-            Line()
-                .stroke(.primary, style: StrokeStyle(lineWidth: 3, lineCap: .round))
-                .frame(width: 200, height: 1)
-                .offset(y: 35)
-        }
-    }
-    
-    @ViewBuilder
     private func BottomSpacer(_ geometry: GeometryProxy) -> some View {
         Rectangle()
             .fill(.clear)
@@ -85,12 +71,6 @@ struct ContentView: View {
         }
     }
 }
-
-private let dayFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.setLocalizedDateFormatFromTemplate("EEEE M/d")
-    return formatter
-}()
 
 
 struct ContentView_Previews: PreviewProvider {
