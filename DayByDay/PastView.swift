@@ -13,6 +13,7 @@ struct PastView: View {
     @FetchRequest(sortDescriptors: [SortDescriptor(\DayMO.date, order: .reverse)])
     private var allDays: FetchedResults<DayMO>
     
+    @State private var animate = false
     
     private let daysToDisplay: Int = 30
     private let cellHeight = 66.0
@@ -177,19 +178,21 @@ struct PastView: View {
     
     @ViewBuilder
     private func WeekLineShine() -> some View {
+        let animateShift: Double = animate ? 8 : 0
+        let animateStretch: Double = animate ? 4 : 0
         let shine = ZStack {
             HorizontalLine()
                 .stroke(.background, style: StrokeStyle(lineWidth: 2.0, lineCap: .butt))
-                .frame(width: 10, height: 1)
-                .offset(x: -30)
+                .frame(width: 8 + animateStretch, height: 1)
+                .offset(x: -38 + animateShift)
             HorizontalLine()
                 .stroke(.background, style: StrokeStyle(lineWidth: 2.0, lineCap: .butt))
-                .frame(width: 15, height: 1)
-                .offset(x: 15)
+                .frame(width: 16, height: 1)
+                .offset(x: 18 + animateShift + animateStretch*1.5)
             HorizontalLine()
                 .stroke(.background, style: StrokeStyle(lineWidth: 2.0, lineCap: .butt))
-                .frame(width: 5, height: 1)
-                .offset(x: 30)
+                .frame(width: 5 - animateStretch/2, height: 1)
+                .offset(x: 32 + animateShift)
         }
             .frame(width: ButtonCluster.lowerBoundDiameter)
         
@@ -197,6 +200,10 @@ struct PastView: View {
             shine
             shine
             shine
+        }
+        .animation(.easeInOut(duration: 2.0).repeatForever(), value: animate)
+        .onAppear {
+            animate = true
         }
     }
 }

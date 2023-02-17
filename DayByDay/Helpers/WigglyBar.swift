@@ -40,7 +40,7 @@ struct WigglyBar: View {
             }
         }
         .onAppear { animate = true }
-        .animation(.linear(duration: 2.0).repeatForever(autoreverses: false), value: animate)
+        .animation(.linear(duration: 4.0).repeatForever(autoreverses: false), value: animate)
     }
 }
 
