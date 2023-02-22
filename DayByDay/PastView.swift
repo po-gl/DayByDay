@@ -13,8 +13,6 @@ struct PastView: View {
     @FetchRequest(sortDescriptors: [SortDescriptor(\DayMO.date, order: .reverse)])
     private var allDays: FetchedResults<DayMO>
     
-    @State private var animate = false
-    
     private let daysToDisplay: Int = 30
     private let cellHeight = 66.0
     private var height: Double { Double(daysToDisplay) * cellHeight }
@@ -141,7 +139,7 @@ struct PastView: View {
     @ViewBuilder
     private func DatesAndDividers() -> some View {
         let width = 3*(90.0+22)
-        VStack(spacing: cellHeight-1) {
+        LazyVStack(spacing: cellHeight-1) {
             ForEach(0..<daysToDisplay, id: \.self) { i in
                 let day = Date(timeInterval: -Double(60*60*24*i), since: Date())
                 ZStack {
@@ -158,11 +156,8 @@ struct PastView: View {
                     .offset(y: 14)
                     
                     if day.isMonday() {
-                        HorizontalLine()
-                            .stroke(.primary, style: StrokeStyle(lineWidth: 2.5, lineCap: .round))
-                            .frame(width: 3*(90.0+22), height: 1)
-                            .offset(y: cellHeight/2)
-                        WeekLineShine()
+                        WeekLine(width: width)
+                            .frame(height: 1)
                             .offset(y: cellHeight/2)
                     } else {
                         HorizontalLine()
@@ -173,37 +168,6 @@ struct PastView: View {
                     }
                 }
             }
-        }
-    }
-    
-    @ViewBuilder
-    private func WeekLineShine() -> some View {
-        let animateShift: Double = animate ? 8 : 0
-        let animateStretch: Double = animate ? 4 : 0
-        let shine = ZStack {
-            HorizontalLine()
-                .stroke(.background, style: StrokeStyle(lineWidth: 2.0, lineCap: .butt))
-                .frame(width: 8 + animateStretch, height: 1)
-                .offset(x: -38 + animateShift)
-            HorizontalLine()
-                .stroke(.background, style: StrokeStyle(lineWidth: 2.0, lineCap: .butt))
-                .frame(width: 16, height: 1)
-                .offset(x: 18 + animateShift + animateStretch*1.5)
-            HorizontalLine()
-                .stroke(.background, style: StrokeStyle(lineWidth: 2.0, lineCap: .butt))
-                .frame(width: 5 - animateStretch/2, height: 1)
-                .offset(x: 32 + animateShift)
-        }
-            .frame(width: ButtonCluster.lowerBoundDiameter)
-        
-        HStack (spacing: 25) {
-            shine
-            shine
-            shine
-        }
-        .animation(.easeInOut(duration: 2.0).repeatForever(), value: animate)
-        .onAppear {
-            animate = true
         }
     }
 }
