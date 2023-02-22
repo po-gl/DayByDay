@@ -144,9 +144,15 @@ struct PastView: View {
                 let day = Date(timeInterval: -Double(60*60*24*i), since: Date())
                 ZStack {
                     HStack (spacing: 0){
-                        Text("\(day, formatter: weekdayFormatter)")
-                            .font(.system(size: 14, weight: .medium, design: .monospaced))
-                            .padding(.trailing, 10)
+                        if day.isToday() {
+                            Text("Today")
+                                .font(.system(size: 14, weight: .regular, design: .monospaced))
+                                .padding(.trailing, 10)
+                        } else {
+                            Text("\(day, formatter: weekdayFormatter)")
+                                .font(.system(size: 14, weight: .medium, design: .monospaced))
+                                .padding(.trailing, 10)
+                        }
                         Text("\(day, formatter: dayFormatter)")
                             .font(.system(size: 12, weight: .regular, design: .monospaced))
                             .opacity(0.6)

@@ -23,6 +23,10 @@ extension Date {
         return calendar.component(.weekday, from: self) == 2
     }
     
+    func isToday(calendar: Calendar = .current) -> Bool {
+        return self.hasSame(.day, as: Date())
+    }
+    
     func atHour(_ hour: Double, calendar: Calendar = .current) -> Date {
         calendar.startOfDay(for: self).addingTimeInterval(hour * 60 * 60)
     }
