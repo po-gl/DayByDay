@@ -42,6 +42,9 @@ struct ButtonCluster: View {
                     SwirlButton("Productive", for: .productive, startAngle: .bottom, geometry)
                 }
                 .zIndex(3)
+                .mask {
+                    WaveMask()
+                }
             }
             .position(x: geometry.size.width/2, y: geometry.size.height/2)
         }
@@ -101,6 +104,25 @@ struct ButtonCluster: View {
         }
     }
     
+    @ViewBuilder
+    private func WaveMask() -> some View {
+        ZStack {
+            Rectangle()
+                .frame(width: 360, height: 700)
+            ZStack {
+                WigglyBar(category: .active, width: 30, height: 400, frequency: 50, amplitude: 5, speed: 2.0)
+                    .frame(width: 200, height: 400)
+                    .rotationEffect(.degrees(90))
+                    .shadow(radius: 8)
+                WigglyBar(category: .active, width: 30, height: 400, frequency: 50, amplitude: 5, speed: 0.8)
+                    .frame(width: 200, height: 400)
+                    .rotationEffect(.degrees(90))
+                    .shadow(radius: 5)
+            }
+            .offset(y: 700/2)
+        }
+    }
+    
     
     private func animPosition(for startAngle: AngleStart, _ geometry: GeometryProxy) -> CGPoint {
         let start = startingPosition(for: startAngle, geometry)
@@ -145,11 +167,11 @@ struct ButtonCluster: View {
         let scrollOffset = scrollOffset(geometry)
         switch startAngle {
         case .topLeft:
-            return 1.0 + scrollOffset / 230
+            return 1.0 + scrollOffset / 330
         case .topRight:
-            return 1.0 + scrollOffset / 290
+            return 1.0 + scrollOffset / 390
         case .bottom:
-            return 1.0 + scrollOffset / 320
+            return 1.0 + scrollOffset / 420
         case .top:
             return 1.0
         }

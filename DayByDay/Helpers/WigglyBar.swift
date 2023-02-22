@@ -17,12 +17,14 @@ struct WigglyBar: View {
     var frequency: Double = 100.0
     var amplitude: Double = 3.0
     
+    var speed: Double = 4.0
+    
     var body: some View {
         ZStack {
             ZStack {
                 WigglyPath(frequency: frequency, amplitude: amplitude)
-                    .stroke(LinearGradient(for: category), style: StrokeStyle(lineWidth: width-amplitude-2, lineCap: .round))
-                    .frame(width: width-amplitude-2)
+                    .stroke(LinearGradient(for: category), style: StrokeStyle(lineWidth: width-amplitude*2, lineCap: .round))
+                    .frame(width: width-amplitude*2)
                     .scaleEffect(y: 1.5)
                     .offset(y: animate ? height/frequency * .pi*2 * 1.5: 0)
                     .zIndex(2)
@@ -40,7 +42,7 @@ struct WigglyBar: View {
             }
         }
         .onAppear { animate = true }
-        .animation(.linear(duration: 4.0).repeatForever(autoreverses: false), value: animate)
+        .animation(.linear(duration: speed).repeatForever(autoreverses: false), value: animate)
     }
 }
 
