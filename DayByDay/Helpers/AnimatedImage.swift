@@ -13,6 +13,8 @@ struct AnimatedImage: View {
     private let interval: Double
     private let loops: Bool
     
+    @State private var timer: Timer?
+    
     init(imageNames: [String], interval: Double = 0.1, loops: Bool = false) {
         self.imageNames = imageNames
         self.interval = interval
@@ -29,13 +31,16 @@ struct AnimatedImage: View {
         .onAppear {
             self.animate()
         }
+        .onDisappear {
+            self.timer?.invalidate()
+        }
     }
     
     private func animate() {
         var imageIndex: Int = 0
         self.image = Image(self.imageNames[0])
         
-        let timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { timer in
+        timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { timer in
             self.image = Image(self.imageNames[imageIndex])
             imageIndex = (imageIndex+1) % self.imageNames.count
             
@@ -43,6 +48,6 @@ struct AnimatedImage: View {
                 timer.invalidate()
             }
         }
-        RunLoop.current.add(timer, forMode: .common)
+        RunLoop.current.add(timer!, forMode: .common)
     }
 }
