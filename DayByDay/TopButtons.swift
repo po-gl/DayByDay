@@ -9,13 +9,25 @@ import SwiftUI
 import HorizonCalendar
 
 struct TopButtons: View {
+    @State var showingCalendar = false
     
     var body: some View {
         VStack {
             HStack {
                 Spacer()
-                NavigationLink(destination: DaysCalendarView()) {
-                    CalendarButton()
+                Button(action: { showingCalendar = true }) {
+                    Image(systemName: "calendar")
+                        .opacity(0.8)
+                }
+                .buttonStyle(MaterialStyle())
+                .frame(width: 50, height: 32)
+                .padding(.top, 20)
+                .padding(.trailing, 40)
+                .sheet(isPresented: $showingCalendar) {
+                    ZStack {
+                        DaysCalendarView()
+                        CalendarHeader()
+                    }
                 }
             }
             Spacer()
@@ -23,23 +35,20 @@ struct TopButtons: View {
     }
     
     @ViewBuilder
-    private func CalendarButton() -> some View {
-        Image(systemName: "calendar")
-            .foregroundColor(.primary)
-            .frame(width: 50, height: 32)
-            .opacity(0.8)
-            .background(RoundedRectangle(cornerRadius: 30).foregroundStyle(.thinMaterial))
-            .padding(.top, 20)
-            .padding(.trailing, 40)
-    }
-    
-    
-    @ViewBuilder
-    private func Calendar() -> some View {
-        let startDate = Date().addingTimeInterval(-60*60*24 * 365 * 1)
-        let endDate = Date()
-        
-        CalendarViewRepresentable(visibleDateRange: startDate...endDate, monthsLayout: .vertical(options: VerticalMonthsLayoutOptions(pinDaysOfWeekToTop: false)), dataDependency: .none)
+    private func CalendarHeader() -> some View {
+        VStack {
+            HStack {
+                Button("Cancel") { showingCalendar = false }
+                    .foregroundColor(Color(hex: 0xBE59D5))
+                    .brightness(0.07)
+                    .saturation(1.05)
+                    .padding()
+                Spacer()
+            }
+            .frame(height: 65)
+            .background(.thinMaterial)
+            Spacer()
+        }
     }
 }
 
