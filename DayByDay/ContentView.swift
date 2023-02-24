@@ -10,6 +10,7 @@ import CoreData
 
 struct ContentView: View {
     @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.colorScheme) private var colorScheme
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(sortDescriptors: [SortDescriptor(\DayMO.date, order: .reverse)])
@@ -37,6 +38,9 @@ struct ContentView: View {
                 }
             }
         }
+        .overlay(alignment: .top) {
+            StatusBarBlur()
+        }
     }
     
     
@@ -59,6 +63,14 @@ struct ContentView: View {
         .coordinateSpace(name: "scroll")
     }
     
+    @ViewBuilder
+    private func StatusBarBlur() -> some View {
+        Color.clear
+            .background(.ultraThinMaterial)
+            .brightness(colorScheme == .dark ? -0.1 : 0.1)
+            .edgesIgnoringSafeArea(.top)
+            .frame(height: 0)
+    }
     
     @ViewBuilder
     private func BottomSpacer(_ geometry: GeometryProxy) -> some View {
