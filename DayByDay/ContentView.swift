@@ -67,7 +67,7 @@ struct ContentView: View {
     private func StatusBarBlur() -> some View {
         Color.clear
             .background(.ultraThinMaterial)
-            .brightness(colorScheme == .dark ? -0.1 : 0.1)
+            .brightness(colorScheme == .dark ? -0.1 : 0.02)
             .edgesIgnoringSafeArea(.top)
             .frame(height: 0)
     }
