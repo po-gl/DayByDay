@@ -121,7 +121,7 @@ struct DaysCalendarSelectedView: View {
         RoundedRectangle(cornerRadius: 30)
             .frame(width: 50, height: 5)
             .opacity(0.2)
-            .padding(5)
+            .padding(.top, 10)
     }
     
     private func getDay(for date: Date) -> DayMO? {
