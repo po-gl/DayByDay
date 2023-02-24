@@ -19,6 +19,13 @@ extension Date {
         return distance(from: date, only: component) == 0
     }
     
+    func isSameDay(as date: Date) -> Bool {
+        let sameDay = distance(from: date, only: .day) == 0
+        let sameMonth = distance(from: date, only: .month) == 0
+        let sameYear = distance(from: date, only: .year) == 0
+        return sameDay && sameMonth && sameYear
+    }
+    
     func isMonday(calendar: Calendar = .current) -> Bool {
         return calendar.component(.weekday, from: self) == 2
     }

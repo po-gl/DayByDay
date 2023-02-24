@@ -59,7 +59,7 @@ struct PastView: View {
     
     private func getDay(for date: Date) -> DayMO? {
         for day in allDays {
-            if day.date?.hasSame(.day, as: date) ?? false {
+            if day.date?.isSameDay(as: date) ?? false {
                 return day
             }
         }
