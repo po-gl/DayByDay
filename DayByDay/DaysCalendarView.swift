@@ -117,10 +117,19 @@ class DaysCalendarViewController: UIViewController {
     
     @ViewBuilder
     private func DayView(_ day: Day) -> some View {
+        let date = calendar.date(from: day.components)!
         VStack (spacing: 0) {
             Text("\(day.day)")
                 .font(.system(size: 18))
                 .foregroundColor(.primary)
+                .background(
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(Color(hex: 0x90D794).gradient)
+                        .saturation(1.14)
+                        .brightness(-0.1)
+                        .opacity(date.isToday() ? 1.0 : 0.0)
+                        .scaleEffect(1.15)
+                )
             
             Orbs(day)
         }
