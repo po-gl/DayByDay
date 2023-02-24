@@ -123,55 +123,37 @@ class DaysCalendarViewController: UIViewController {
         let isActive = day?.isActive(for: .active) ?? false
         let isCreative = day?.isActive(for: .creative) ?? false
         let isProductive = day?.isActive(for: .productive) ?? false
+        let isComplete = isActive && isCreative && isProductive
+        
+        let activeColor = Color(hex: 0xE63C5C)
+        let creativeColor = Color(hex: 0xBE59D5)
+        let productiveColor = Color(hex: 0x97D327)
+        
         ZStack {
-            OrbsBackground()
-                .opacity(isActive && isCreative && isProductive ? 1.0 : 0.0)
             Group {
                 Circle()
-                    .fill(Color(hex: 0xE63C5C).gradient)
+                    .fill(activeColor.gradient)
                     .frame(width: orbWidth)
                     .offset(x: -spacing, y: -spacing)
                     .opacity(isActive ? 1.0 : 0.2)
+                    .shadow(color: isComplete ? activeColor : .clear, radius: 5)
                 Circle()
-                    .fill(Color(hex: 0xBE59D5).gradient)
+                    .fill(creativeColor.gradient)
                     .frame(width: orbWidth)
                     .offset(x: spacing, y: -spacing)
                     .opacity(isCreative ? 1.0 : 0.2)
+                    .shadow(color: isComplete ? creativeColor : .clear, radius: 5)
                 Circle()
-                    .fill(Color(hex: 0x97D327).gradient)
+                    .fill(productiveColor.gradient)
                     .frame(width: orbWidth)
                     .offset(y: spacing - 2)
                     .opacity(isProductive ? 1.0 : 0.2)
+                    .shadow(color: isComplete ? productiveColor : .clear, radius: 5)
             }
             .brightness(0.06)
             .saturation(1.05)
         }
         .frame(width: orbWidth*2 + spacing, height: orbWidth*2 + spacing)
-    }
-    
-    @ViewBuilder
-    private func OrbsBackground() -> some View {
-        let orbWidth: Double = 16
-        let spacing: Double = orbWidth/2 + 1
-        ZStack {
-            Circle()
-                .fill(Color(hex: 0xE63C5C))
-                .frame(width: 15)
-                .blur(radius: 8)
-                .offset(x: -spacing, y: -spacing)
-            Circle()
-                .fill(Color(hex: 0xBE59D5))
-                .frame(width: 15)
-                .blur(radius: 8)
-                .offset(x: spacing, y: -spacing)
-            Circle()
-                .fill(Color(hex: 0x97D327))
-                .frame(width: 15)
-                .blur(radius: 8)
-                .offset(y: spacing)
-        }
-        .brightness(0.13)
-        .saturation(1.1)
     }
     
     private func getDay(for date: Date) -> DayMO? {
