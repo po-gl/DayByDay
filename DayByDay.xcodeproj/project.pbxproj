@@ -66,6 +66,13 @@
 		615CC1FA296CC354004DEE47 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615CC1F7296CC354004DEE47 /* Haptics.swift */; };
 		6160099729A59ABC00A48560 /* WeekLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6160099629A59ABC00A48560 /* WeekLine.swift */; };
 		6160099929A59ABC00A48560 /* WeekLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6160099629A59ABC00A48560 /* WeekLine.swift */; };
+		616009A229A5AF5700A48560 /* TopButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616009A129A5AF5700A48560 /* TopButtons.swift */; };
+		616009A329A5AF5700A48560 /* TopButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616009A129A5AF5700A48560 /* TopButtons.swift */; };
+		616009A429A5AF5700A48560 /* TopButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616009A129A5AF5700A48560 /* TopButtons.swift */; };
+		616009AB29A7189F00A48560 /* HorizonCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 616009AA29A7189F00A48560 /* HorizonCalendar */; };
+		616009AD29A825D500A48560 /* DaysCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616009AC29A825D500A48560 /* DaysCalendarView.swift */; };
+		616009AE29A825D500A48560 /* DaysCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616009AC29A825D500A48560 /* DaysCalendarView.swift */; };
+		616009AF29A825D500A48560 /* DaysCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616009AC29A825D500A48560 /* DaysCalendarView.swift */; };
 		61D469C929760854009CB8C3 /* DayByDayWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D469C829760854009CB8C3 /* DayByDayWatchApp.swift */; };
 		61D469CB29760854009CB8C3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D469CA29760854009CB8C3 /* ContentView.swift */; };
 		61D469D029760855009CB8C3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61D469CF29760855009CB8C3 /* Preview Assets.xcassets */; };
@@ -214,6 +221,8 @@
 		6155DB3C2972599C00256A5A /* BurstAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BurstAnimation.swift; sourceTree = "<group>"; };
 		615CC1F7296CC354004DEE47 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		6160099629A59ABC00A48560 /* WeekLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekLine.swift; sourceTree = "<group>"; };
+		616009A129A5AF5700A48560 /* TopButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopButtons.swift; sourceTree = "<group>"; };
+		616009AC29A825D500A48560 /* DaysCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysCalendarView.swift; sourceTree = "<group>"; };
 		61D469C629760854009CB8C3 /* DayByDayWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DayByDayWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		61D469C829760854009CB8C3 /* DayByDayWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayByDayWatchApp.swift; sourceTree = "<group>"; };
 		61D469CA29760854009CB8C3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -235,6 +244,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				616009AB29A7189F00A48560 /* HorizonCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +332,8 @@
 				610AF8FD296A5A99001E50A6 /* ContentView.swift */,
 				610F7019299EB68700F1BE72 /* DateView.swift */,
 				614EE405296AC978001FB19D /* ButtonCluster.swift */,
+				616009A129A5AF5700A48560 /* TopButtons.swift */,
+				616009AC29A825D500A48560 /* DaysCalendarView.swift */,
 				614EE40B296AF187001FB19D /* PastView.swift */,
 				6104E569296B1A1A0034B9E3 /* Extensions */,
 				614EE3FE296A8344001FB19D /* Helpers */,
@@ -459,6 +471,9 @@
 				61D469E829760855009CB8C3 /* PBXTargetDependency */,
 			);
 			name = DayByDay;
+			packageProductDependencies = (
+				616009AA29A7189F00A48560 /* HorizonCalendar */,
+			);
 			productName = DayByDay;
 			productReference = 610AF8F3296A5A99001E50A6 /* DayByDay.app */;
 			productType = "com.apple.product-type.application";
@@ -595,6 +610,9 @@
 				Base,
 			);
 			mainGroup = 610AF8EA296A5A99001E50A6;
+			packageReferences = (
+				616009A929A7189F00A48560 /* XCRemoteSwiftPackageReference "HorizonCalendar" */,
+			);
 			productRefGroup = 610AF8F4296A5A99001E50A6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -675,11 +693,13 @@
 				610AF8FC296A5A99001E50A6 /* DayByDay.xcdatamodeld in Sources */,
 				615CC1F8296CC354004DEE47 /* Haptics.swift in Sources */,
 				610AF8F7296A5A99001E50A6 /* DayByDayApp.swift in Sources */,
+				616009AD29A825D500A48560 /* DaysCalendarView.swift in Sources */,
 				614EE400296A838D001FB19D /* CircleStyle.swift in Sources */,
 				61188D4329710D8000BF77B5 /* Color+hex.swift in Sources */,
 				614EE409296AC9E7001FB19D /* DayStatus.swift in Sources */,
 				6104E56B296B1A580034B9E3 /* Date+compare.swift in Sources */,
 				614EE40C296AF187001FB19D /* PastView.swift in Sources */,
+				616009A229A5AF5700A48560 /* TopButtons.swift in Sources */,
 				61188D392970E88E00BF77B5 /* AnimatedImage.swift in Sources */,
 				6101CA242975FB7D00B12C68 /* Notifications.swift in Sources */,
 				614EE403296ABA43001FB19D /* CircleLabelView.swift in Sources */,
@@ -700,12 +720,14 @@
 				61D46A1B29760996009CB8C3 /* DayByDay.xcdatamodeld in Sources */,
 				611A5F8A2995EDCE00E28A56 /* WigglyEyes.swift in Sources */,
 				615465F42999F6CD00FB1F03 /* Arrow.swift in Sources */,
+				616009AE29A825D500A48560 /* DaysCalendarView.swift in Sources */,
 				61D46A02297608EF009CB8C3 /* Color+hex.swift in Sources */,
 				610AF90E296A5A9A001E50A6 /* DayByDayTests.swift in Sources */,
 				6104E56C296B1A580034B9E3 /* Date+compare.swift in Sources */,
 				61DAE0612995DA41006502BC /* LinearGradient+ForCategory.swift in Sources */,
 				610F701D299EC11B00F1BE72 /* HorizontalLine.swift in Sources */,
 				61DAE05A2995D8F8006502BC /* WigglyBar.swift in Sources */,
+				616009A329A5AF5700A48560 /* TopButtons.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -717,6 +739,7 @@
 				61DAE05B2995D8F8006502BC /* WigglyBar.swift in Sources */,
 				6160099929A59ABC00A48560 /* WeekLine.swift in Sources */,
 				615465F52999F6CD00FB1F03 /* Arrow.swift in Sources */,
+				616009A429A5AF5700A48560 /* TopButtons.swift in Sources */,
 				614AE46C2974C27900F24397 /* CompleteBackgroundView.swift in Sources */,
 				615CC1FA296CC354004DEE47 /* Haptics.swift in Sources */,
 				61D469F9297608D5009CB8C3 /* Persistence.swift in Sources */,
@@ -735,6 +758,7 @@
 				61DAE0622995DA41006502BC /* LinearGradient+ForCategory.swift in Sources */,
 				61188D412970F51B00BF77B5 /* SwirlStyle.swift in Sources */,
 				610F701E299EC11B00F1BE72 /* HorizontalLine.swift in Sources */,
+				616009AF29A825D500A48560 /* DaysCalendarView.swift in Sources */,
 				61188D3A2970E88E00BF77B5 /* AnimatedImage.swift in Sources */,
 				614EE401296A838D001FB19D /* CircleStyle.swift in Sources */,
 			);
@@ -1355,6 +1379,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		616009A929A7189F00A48560 /* XCRemoteSwiftPackageReference "HorizonCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/HorizonCalendar.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		616009AA29A7189F00A48560 /* HorizonCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 616009A929A7189F00A48560 /* XCRemoteSwiftPackageReference "HorizonCalendar" */;
+			productName = HorizonCalendar;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		610AF8FA296A5A99001E50A6 /* DayByDay.xcdatamodeld */ = {

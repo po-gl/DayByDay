@@ -20,32 +20,43 @@ struct ContentView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            ScrollView {
-                VStack(spacing: 0) {
-                    DateView()
-                    ButtonCluster()
-                        .zIndex(3)
-                    ZStack {
-                        BottomSpacer(geometry)
-                        Arrow()
-                    }
-                    PastView()
+            NavigationView {
+                ZStack {
+                    MainPage(geometry)
+                    TopButtons()
                 }
-                .padding()
-            }
-            .position(x: geometry.size.width/2, y: geometry.size.height/2)
-            .coordinateSpace(name: "scroll")
-        }
-        .onAppear {
-            getNotificationPermissions()
-        }
-        .onChange(of: scenePhase) { newPhase in
-            if newPhase == .active {
-                cancelPendingNotifications()
-            } else if newPhase == .inactive {
-                setupNotifications()
+                .onAppear {
+                    getNotificationPermissions()
+                }
+                .onChange(of: scenePhase) { newPhase in
+                    if newPhase == .active {
+                        cancelPendingNotifications()
+                    } else if newPhase == .inactive {
+                        setupNotifications()
+                    }
+                }
             }
         }
+    }
+    
+    
+    @ViewBuilder
+    private func MainPage(_ geometry: GeometryProxy) -> some View {
+        ScrollView {
+            VStack(spacing: 0) {
+                DateView()
+                ButtonCluster()
+                    .zIndex(3)
+                ZStack {
+                    BottomSpacer(geometry)
+                    Arrow()
+                }
+                PastView()
+            }
+            .padding()
+        }
+        .position(x: geometry.size.width/2, y: geometry.size.height/2)
+        .coordinateSpace(name: "scroll")
     }
     
     
