@@ -8,14 +8,20 @@
 import SwiftUI
 
 struct DateView: View {
+    var date = Date()
+    var fontSize: Double = 44
+    var width: Double = 200
+    var shineOffset: Double = 40
+    
+    var formatter = dayFormatter
+    
     var body: some View {
         VStack (spacing: 8) {
-            Text("\(Date(), formatter: dayFormatter)")
-                .font(.system(size: 44, weight: .light, design: .serif))
-                .monospacedDigit()
+            Text("\(date, formatter: formatter)")
+                .font(.system(size: fontSize, weight: .light, design: .serif))
             Underline()
         }
-        .frame(height: 200)
+        .frame(height: width)
     }
     
     @ViewBuilder
@@ -23,9 +29,9 @@ struct DateView: View {
         ZStack {
             HorizontalLine()
                 .stroke(.primary, style: StrokeStyle(lineWidth: 3, lineCap: .round))
-                .frame(width: 200, height: 1)
+                .frame(width: width, height: 1)
             ShineLines()
-                .offset(x: 40)
+                .offset(x: shineOffset)
         }
     }
     

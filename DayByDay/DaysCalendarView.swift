@@ -29,6 +29,8 @@ class DaysCalendarViewController: UIViewController {
     lazy var calendarView = CalendarView(initialContent: makeContent())
     lazy var calendar = Calendar.current
     
+    private var selectedDay: Day?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,6 +50,16 @@ class DaysCalendarViewController: UIViewController {
             calendarView.widthAnchor.constraint(lessThanOrEqualToConstant: 375),
             calendarView.widthAnchor.constraint(equalToConstant: 375).prioritize(at: .defaultLow),
         ])
+        
+        calendarView.daySelectionHandler = { [weak self] day in
+            self?.selectedDay = day
+            
+            let vc = DaysCalendarSelectedViewController(date: (self?.calendar.date(from: day.components))!)
+            if let presentationController = vc.presentationController as? UISheetPresentationController {
+                presentationController.detents = [.medium()]
+            }
+            self?.present(vc, animated: true)
+        }
         
         calendarView.scroll(toDayContaining: Date(), scrollPosition: .centered, animated: false)
         
