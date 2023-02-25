@@ -18,7 +18,6 @@
 		610AF8FE296A5A99001E50A6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610AF8FD296A5A99001E50A6 /* ContentView.swift */; };
 		610AF900296A5A9A001E50A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 610AF8FF296A5A9A001E50A6 /* Assets.xcassets */; };
 		610AF904296A5A9A001E50A6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 610AF903296A5A9A001E50A6 /* Preview Assets.xcassets */; };
-		610AF90E296A5A9A001E50A6 /* DayByDayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610AF90D296A5A9A001E50A6 /* DayByDayTests.swift */; };
 		610AF918296A5A9A001E50A6 /* DayByDayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610AF917296A5A9A001E50A6 /* DayByDayUITests.swift */; };
 		610AF91A296A5A9A001E50A6 /* DayByDayUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610AF919296A5A9A001E50A6 /* DayByDayUITestsLaunchTests.swift */; };
 		610F337629A8831E00834E8E /* MaterialStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610F337529A8831E00834E8E /* MaterialStyle.swift */; };
@@ -66,6 +65,8 @@
 		613D54F629AAB12200A91942 /* SwirlAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61188D3C2970E8D900BF77B5 /* SwirlAnimation.swift */; };
 		613D54FC29AAB21600A91942 /* HorizonCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 613D54FB29AAB21600A91942 /* HorizonCalendar */; };
 		613D54FE29AAB21C00A91942 /* HorizonCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 613D54FD29AAB21C00A91942 /* HorizonCalendar */; };
+		613D550029AAB49100A91942 /* ColorHexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613D54FF29AAB49100A91942 /* ColorHexTests.swift */; };
+		613D550229AAB7E000A91942 /* DateCompareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613D550129AAB7E000A91942 /* DateCompareTests.swift */; };
 		6148F3D729A8A404009C35E5 /* DaysCalendarSelectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6148F3D629A8A404009C35E5 /* DaysCalendarSelectedView.swift */; };
 		6148F3D829A8A404009C35E5 /* DaysCalendarSelectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6148F3D629A8A404009C35E5 /* DaysCalendarSelectedView.swift */; };
 		6148F3D929A8A404009C35E5 /* DaysCalendarSelectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6148F3D629A8A404009C35E5 /* DaysCalendarSelectedView.swift */; };
@@ -223,7 +224,6 @@
 		610AF901296A5A9A001E50A6 /* DayByDay.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DayByDay.entitlements; sourceTree = "<group>"; };
 		610AF903296A5A9A001E50A6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		610AF909296A5A9A001E50A6 /* DayByDayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DayByDayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		610AF90D296A5A9A001E50A6 /* DayByDayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayByDayTests.swift; sourceTree = "<group>"; };
 		610AF913296A5A9A001E50A6 /* DayByDayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DayByDayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		610AF917296A5A9A001E50A6 /* DayByDayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayByDayUITests.swift; sourceTree = "<group>"; };
 		610AF919296A5A9A001E50A6 /* DayByDayUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayByDayUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -236,6 +236,8 @@
 		61188D4229710D8000BF77B5 /* Color+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+hex.swift"; sourceTree = "<group>"; };
 		611A5F882995EDCE00E28A56 /* WigglyEyes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WigglyEyes.swift; sourceTree = "<group>"; };
 		613D54E329AAAF9A00A91942 /* DayMOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayMOTests.swift; sourceTree = "<group>"; };
+		613D54FF29AAB49100A91942 /* ColorHexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHexTests.swift; sourceTree = "<group>"; };
+		613D550129AAB7E000A91942 /* DateCompareTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCompareTests.swift; sourceTree = "<group>"; };
 		6148F3D629A8A404009C35E5 /* DaysCalendarSelectedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysCalendarSelectedView.swift; sourceTree = "<group>"; };
 		614AE46A2974C27900F24397 /* CompleteBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteBackgroundView.swift; sourceTree = "<group>"; };
 		614EE3FF296A838D001FB19D /* CircleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleStyle.swift; sourceTree = "<group>"; };
@@ -384,8 +386,9 @@
 		610AF90C296A5A9A001E50A6 /* DayByDayTests */ = {
 			isa = PBXGroup;
 			children = (
-				610AF90D296A5A9A001E50A6 /* DayByDayTests.swift */,
 				613D54E329AAAF9A00A91942 /* DayMOTests.swift */,
+				613D550129AAB7E000A91942 /* DateCompareTests.swift */,
+				613D54FF29AAB49100A91942 /* ColorHexTests.swift */,
 			);
 			path = DayByDayTests;
 			sourceTree = "<group>";
@@ -772,8 +775,8 @@
 				616009AE29A825D500A48560 /* DaysCalendarView.swift in Sources */,
 				613D54F529AAB10100A91942 /* WeekLine.swift in Sources */,
 				613D54E429AAAF9A00A91942 /* DayMOTests.swift in Sources */,
+				613D550029AAB49100A91942 /* ColorHexTests.swift in Sources */,
 				61D46A02297608EF009CB8C3 /* Color+hex.swift in Sources */,
-				610AF90E296A5A9A001E50A6 /* DayByDayTests.swift in Sources */,
 				613D54E529AAB07700A91942 /* DayStatus.swift in Sources */,
 				610F337729A8831E00834E8E /* MaterialStyle.swift in Sources */,
 				6104E56C296B1A580034B9E3 /* Date+compare.swift in Sources */,
@@ -784,6 +787,7 @@
 				61DAE05A2995D8F8006502BC /* WigglyBar.swift in Sources */,
 				613D54F229AAB0F700A91942 /* CircleLabelView.swift in Sources */,
 				613D54F429AAB0FD00A91942 /* CompleteBackgroundView.swift in Sources */,
+				613D550229AAB7E000A91942 /* DateCompareTests.swift in Sources */,
 				613D54EF29AAB0EE00A91942 /* SwirlStyle.swift in Sources */,
 				613D54F629AAB12200A91942 /* SwirlAnimation.swift in Sources */,
 				616009A329A5AF5700A48560 /* TopButtons.swift in Sources */,
