@@ -124,7 +124,7 @@ class DaysCalendarViewController: UIViewController {
                 .foregroundColor(.primary)
                 .background(
                     RoundedRectangle(cornerRadius: 8)
-                        .fill(Color(hex: 0x90D794).gradient)
+                        .fill(.pink.gradient)
                         .saturation(1.14)
                         .brightness(-0.1)
                         .opacity(date.isToday() ? 1.0 : 0.0)
