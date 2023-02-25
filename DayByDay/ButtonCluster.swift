@@ -113,11 +113,11 @@ struct ButtonCluster: View {
                 WigglyBar(category: .active, width: 30, height: 400, frequency: 50, amplitude: 5, speed: 2.0)
                     .frame(width: 200, height: 400)
                     .rotationEffect(.degrees(90))
-                    .shadow(radius: 8)
+                    .shadow(radius: 14)
                 WigglyBar(category: .active, width: 30, height: 400, frequency: 50, amplitude: 5, speed: 0.8)
                     .frame(width: 200, height: 400)
                     .rotationEffect(.degrees(90))
-                    .shadow(radius: 5)
+                    .shadow(radius: 10)
             }
             .offset(y: 700/2)
         }
