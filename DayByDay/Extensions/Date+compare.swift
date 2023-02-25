@@ -35,6 +35,12 @@ extension Date {
     }
     
     func atHour(_ hour: Double, calendar: Calendar = .current) -> Date {
-        calendar.startOfDay(for: self).addingTimeInterval(hour * 60 * 60)
+        var safeHour: Double
+        if hour < 0 {
+            safeHour = 24 + min(max(-24, hour), -0.1)
+        } else {
+            safeHour = min(max(0, hour), 23.9)
+        }
+        return calendar.startOfDay(for: self).addingTimeInterval(safeHour * 60 * 60)
     }
 }
