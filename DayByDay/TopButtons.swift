@@ -19,6 +19,7 @@ struct TopButtons: View {
                     Image(systemName: "calendar")
                         .opacity(0.8)
                 }
+                .accessibilityIdentifier("CalendarButton")
                 .buttonStyle(MaterialStyle())
                 .frame(width: 50, height: 32)
                 .padding(.top, 20)
@@ -26,6 +27,7 @@ struct TopButtons: View {
                 .sheet(isPresented: $showingCalendar) {
                     ZStack {
                         DaysCalendarView()
+                            .accessibilityIdentifier("CalendarView")
                         CalendarHeader()
                     }
                 }

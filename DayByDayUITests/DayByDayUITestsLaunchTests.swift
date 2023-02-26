@@ -16,17 +16,65 @@ final class DayByDayUITestsLaunchTests: XCTestCase {
     override func setUpWithError() throws {
         continueAfterFailure = false
     }
+    
+    override func tearDownWithError() throws {
+        let app = XCUIApplication()
+        setDayState(on: false, app)
+    }
 
-    func testLaunch() throws {
+    func testLaunchScreen() throws {
         let app = XCUIApplication()
         app.launch()
-
-        // Insert steps here to perform after app launch but before taking a screenshot,
-        // such as logging into a test account or navigating somewhere in the app
 
         let attachment = XCTAttachment(screenshot: app.screenshot())
         attachment.name = "Launch Screen"
         attachment.lifetime = .keepAlways
         add(attachment)
+    }
+    
+    func testCompleteScreen() throws {
+        let app = XCUIApplication()
+        app.launch()
+        
+        setDayState(on: true, app)
+
+        let attachment = XCTAttachment(screenshot: app.screenshot())
+        attachment.name = "Completed Screen"
+        attachment.lifetime = .keepAlways
+        add(attachment)
+    }
+    
+    func testPastViewScreen() throws {
+        let app = XCUIApplication()
+        app.launch()
+        
+        app.swipeUp(velocity: .init(1000))
+
+        let attachment = XCTAttachment(screenshot: app.screenshot())
+        attachment.name = "PastView Screen"
+        attachment.lifetime = .keepAlways
+        add(attachment)
+    }
+    
+    func testCalendarScreen() throws {
+        let app = XCUIApplication()
+        app.launch()
+        
+        app.buttons["CalendarButton"].tap()
+
+        let attachment = XCTAttachment(screenshot: app.screenshot())
+        attachment.name = "Calendar Screen"
+        attachment.lifetime = .keepAlways
+        add(attachment)
+    }
+    
+    
+    func setDayState(on: Bool, _ app: XCUIApplication) {
+        for text in ["Active", "Creative", "Productive"] {
+            let button = app.buttons["\(text)Button_\(on ? "Off" : "On")"]
+            if button.exists {
+                button.tap()
+            }
+        }
     }
 }

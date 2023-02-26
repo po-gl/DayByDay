@@ -55,6 +55,7 @@ struct ButtonCluster: View {
     @ViewBuilder
     private func SwirlButton(_ text: String, for category: StatusCategory, startAngle: AngleStart, _ geometry: GeometryProxy) -> some View {
         let diameter = diameterForScroll(geometry)
+        let isOn = latestDay?.isActive(for: category) ?? false
         Button(action: {
             withAnimation(.easeOut(duration: 0.2)) {
                 if let day = latestDay {
@@ -72,9 +73,10 @@ struct ButtonCluster: View {
         }
         .buttonStyle(SwirlStyle(category: category))
         .frame(width: diameter, height: diameter)
-        .saturation(latestDay?.isActive(for: category) ?? false ? 1.0 : 0.0)
+        .saturation(isOn ? 1.0 : 0.0)
         .opacity(opacity(for: startAngle, geometry))
         .position(animPosition(for: startAngle, geometry))
+        .accessibilityIdentifier("\(text)Button_\(isOn ? "On" : "Off")") // for UITests
     }
     
     private func addDay(activeFor category: StatusCategory) {

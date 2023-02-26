@@ -74,8 +74,14 @@ struct PastView: View {
                 let date = Date(timeInterval: -Double(60*60*24*i), since: Date())
                 HStack(spacing: 5) {
                     Cell(category: .active, isMask, date: date)
+                        .accessibilityAddTraits(.isButton)
+                        .accessibilityIdentifier("PastViewRow\(i)_Col1")
                     Cell(category: .productive, isMask, date: date)
+                        .accessibilityAddTraits(.isButton)
+                        .accessibilityIdentifier("PastViewRow\(i)_Col2")
                     Cell(category: .creative, isMask, date: date)
+                        .accessibilityAddTraits(.isButton)
+                        .accessibilityIdentifier("PastViewRow\(i)_Col3")
                 }
             }
         }
