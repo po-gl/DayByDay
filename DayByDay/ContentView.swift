@@ -11,7 +11,9 @@ import CoreData
 struct ContentView: View {
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.colorScheme) private var colorScheme
+    
     @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.undoManager) private var undoManager
 
     @FetchRequest(sortDescriptors: [SortDescriptor(\DayMO.date, order: .reverse)])
     private var allDays: FetchedResults<DayMO>
@@ -28,6 +30,7 @@ struct ContentView: View {
                 }
                 .onAppear {
                     getNotificationPermissions()
+                    viewContext.undoManager = undoManager
                 }
                 .onChange(of: scenePhase) { newPhase in
                     if newPhase == .active {
