@@ -99,13 +99,12 @@
 		616009AD29A825D500A48560 /* DaysCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616009AC29A825D500A48560 /* DaysCalendarView.swift */; };
 		616009AE29A825D500A48560 /* DaysCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616009AC29A825D500A48560 /* DaysCalendarView.swift */; };
 		616009AF29A825D500A48560 /* DaysCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616009AC29A825D500A48560 /* DaysCalendarView.swift */; };
+		61677FDB29AC35920075C5AC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61D469CF29760855009CB8C3 /* Preview Assets.xcassets */; };
 		61D469C929760854009CB8C3 /* DayByDayWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D469C829760854009CB8C3 /* DayByDayWatchApp.swift */; };
 		61D469CB29760854009CB8C3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D469CA29760854009CB8C3 /* ContentView.swift */; };
-		61D469D029760855009CB8C3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61D469CF29760855009CB8C3 /* Preview Assets.xcassets */; };
 		61D469DA29760855009CB8C3 /* DayByDayWatch_Watch_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D469D929760855009CB8C3 /* DayByDayWatch_Watch_AppTests.swift */; };
 		61D469E429760855009CB8C3 /* DayByDayWatch_Watch_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D469E329760855009CB8C3 /* DayByDayWatch_Watch_AppUITests.swift */; };
 		61D469E629760855009CB8C3 /* DayByDayWatch_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D469E529760855009CB8C3 /* DayByDayWatch_Watch_AppUITestsLaunchTests.swift */; };
-		61D469E929760855009CB8C3 /* DayByDayWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 61D469C629760854009CB8C3 /* DayByDayWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		61D469F5297608AB009CB8C3 /* ButtonCluster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D469F4297608AB009CB8C3 /* ButtonCluster.swift */; };
 		61D469F6297608AB009CB8C3 /* ButtonCluster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D469F4297608AB009CB8C3 /* ButtonCluster.swift */; };
 		61D469F7297608CE009CB8C3 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610AF8F8296A5A99001E50A6 /* Persistence.swift */; };
@@ -188,28 +187,7 @@
 			remoteGlobalIDString = 61D469C529760854009CB8C3;
 			remoteInfo = "DayByDayWatch Watch App";
 		};
-		61D469E729760855009CB8C3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 610AF8EB296A5A99001E50A6 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 61D469C529760854009CB8C3;
-			remoteInfo = "DayByDayWatch Watch App";
-		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		61D469EA29760855009CB8C3 /* Embed Watch Content */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
-			dstSubfolderSpec = 16;
-			files = (
-				61D469E929760855009CB8C3 /* DayByDayWatch Watch App.app in Embed Watch Content */,
-			);
-			name = "Embed Watch Content";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		6101CA232975FB7D00B12C68 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
@@ -329,9 +307,9 @@
 			isa = PBXGroup;
 			children = (
 				610AF8F5296A5A99001E50A6 /* DayByDay */,
-				61D469C729760854009CB8C3 /* DayByDayWatch Watch App */,
 				610AF90C296A5A9A001E50A6 /* DayByDayTests */,
 				610AF916296A5A9A001E50A6 /* DayByDayUITests */,
+				61D469C729760854009CB8C3 /* DayByDayWatch Watch App */,
 				61D469D829760855009CB8C3 /* DayByDayWatch Watch AppTests */,
 				61D469E229760855009CB8C3 /* DayByDayWatch Watch AppUITests */,
 				610AF8F4296A5A99001E50A6 /* Products */,
@@ -503,12 +481,10 @@
 				610AF8EF296A5A99001E50A6 /* Sources */,
 				610AF8F0296A5A99001E50A6 /* Frameworks */,
 				610AF8F1296A5A99001E50A6 /* Resources */,
-				61D469EA29760855009CB8C3 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				61D469E829760855009CB8C3 /* PBXTargetDependency */,
 			);
 			name = DayByDay;
 			packageProductDependencies = (
@@ -702,8 +678,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61677FDB29AC35920075C5AC /* Preview Assets.xcassets in Resources */,
 				61D46A2629761033009CB8C3 /* Assets.xcassets in Resources */,
-				61D469D029760855009CB8C3 /* Preview Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -929,11 +905,6 @@
 			isa = PBXTargetDependency;
 			target = 61D469C529760854009CB8C3 /* DayByDayWatch Watch App */;
 			targetProxy = 61D469E029760855009CB8C3 /* PBXContainerItemProxy */;
-		};
-		61D469E829760855009CB8C3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 61D469C529760854009CB8C3 /* DayByDayWatch Watch App */;
-			targetProxy = 61D469E729760855009CB8C3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
