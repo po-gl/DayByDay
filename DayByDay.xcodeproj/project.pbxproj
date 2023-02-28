@@ -30,8 +30,6 @@
 		610F701F299EC11B00F1BE72 /* HorizontalLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610F701B299EC11B00F1BE72 /* HorizontalLine.swift */; };
 		610F7020299EC11B00F1BE72 /* HorizontalLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610F701B299EC11B00F1BE72 /* HorizontalLine.swift */; };
 		610F7021299EC11B00F1BE72 /* HorizontalLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610F701B299EC11B00F1BE72 /* HorizontalLine.swift */; };
-		61188D392970E88E00BF77B5 /* AnimatedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61188D382970E88E00BF77B5 /* AnimatedImage.swift */; };
-		61188D3A2970E88E00BF77B5 /* AnimatedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61188D382970E88E00BF77B5 /* AnimatedImage.swift */; };
 		61188D3D2970E8D900BF77B5 /* SwirlAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61188D3C2970E8D900BF77B5 /* SwirlAnimation.swift */; };
 		61188D3E2970E8D900BF77B5 /* SwirlAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61188D3C2970E8D900BF77B5 /* SwirlAnimation.swift */; };
 		61188D402970F51B00BF77B5 /* SwirlStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61188D3F2970F51B00BF77B5 /* SwirlStyle.swift */; };
@@ -59,7 +57,6 @@
 		613D54F029AAB0F100A91942 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615CC1F7296CC354004DEE47 /* Haptics.swift */; };
 		613D54F129AAB0F400A91942 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6101CA232975FB7D00B12C68 /* Notifications.swift */; };
 		613D54F229AAB0F700A91942 /* CircleLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614EE402296ABA43001FB19D /* CircleLabelView.swift */; };
-		613D54F329AAB0FA00A91942 /* AnimatedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61188D382970E88E00BF77B5 /* AnimatedImage.swift */; };
 		613D54F429AAB0FD00A91942 /* CompleteBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614AE46A2974C27900F24397 /* CompleteBackgroundView.swift */; };
 		613D54F529AAB10100A91942 /* WeekLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6160099629A59ABC00A48560 /* WeekLine.swift */; };
 		613D54F629AAB12200A91942 /* SwirlAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61188D3C2970E8D900BF77B5 /* SwirlAnimation.swift */; };
@@ -100,6 +97,12 @@
 		616009AE29A825D500A48560 /* DaysCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616009AC29A825D500A48560 /* DaysCalendarView.swift */; };
 		616009AF29A825D500A48560 /* DaysCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616009AC29A825D500A48560 /* DaysCalendarView.swift */; };
 		61677FDB29AC35920075C5AC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61D469CF29760855009CB8C3 /* Preview Assets.xcassets */; };
+		61A21D7A29ADF59900E5D113 /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A21D7929ADF59900E5D113 /* AnimationView.swift */; };
+		61A21D7B29ADF59900E5D113 /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A21D7929ADF59900E5D113 /* AnimationView.swift */; };
+		61A21D7C29ADF59900E5D113 /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A21D7929ADF59900E5D113 /* AnimationView.swift */; };
+		61A21D7D29ADF59900E5D113 /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A21D7929ADF59900E5D113 /* AnimationView.swift */; };
+		61A21D7E29ADF59900E5D113 /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A21D7929ADF59900E5D113 /* AnimationView.swift */; };
+		61A21D7F29ADF59900E5D113 /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A21D7929ADF59900E5D113 /* AnimationView.swift */; };
 		61D469C929760854009CB8C3 /* DayByDayWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D469C829760854009CB8C3 /* DayByDayWatchApp.swift */; };
 		61D469CB29760854009CB8C3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D469CA29760854009CB8C3 /* ContentView.swift */; };
 		61D469DA29760855009CB8C3 /* DayByDayWatch_Watch_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D469D929760855009CB8C3 /* DayByDayWatch_Watch_AppTests.swift */; };
@@ -127,8 +130,6 @@
 		61D46A0C2976090B009CB8C3 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6101CA232975FB7D00B12C68 /* Notifications.swift */; };
 		61D46A0D29760917009CB8C3 /* CircleLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614EE402296ABA43001FB19D /* CircleLabelView.swift */; };
 		61D46A0E29760918009CB8C3 /* CircleLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614EE402296ABA43001FB19D /* CircleLabelView.swift */; };
-		61D46A0F2976091B009CB8C3 /* AnimatedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61188D382970E88E00BF77B5 /* AnimatedImage.swift */; };
-		61D46A102976091C009CB8C3 /* AnimatedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61188D382970E88E00BF77B5 /* AnimatedImage.swift */; };
 		61D46A112976092D009CB8C3 /* CompleteBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614AE46A2974C27900F24397 /* CompleteBackgroundView.swift */; };
 		61D46A122976092F009CB8C3 /* CompleteBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614AE46A2974C27900F24397 /* CompleteBackgroundView.swift */; };
 		61D46A1329760938009CB8C3 /* SwirlAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61188D3C2970E8D900BF77B5 /* SwirlAnimation.swift */; };
@@ -156,6 +157,24 @@
 		61DAE0632995DA41006502BC /* LinearGradient+ForCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DAE05F2995DA41006502BC /* LinearGradient+ForCategory.swift */; };
 		61DAE0642995DA41006502BC /* LinearGradient+ForCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DAE05F2995DA41006502BC /* LinearGradient+ForCategory.swift */; };
 		61DAE0652995DA41006502BC /* LinearGradient+ForCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DAE05F2995DA41006502BC /* LinearGradient+ForCategory.swift */; };
+		61F2CDC229AE236400D11CA5 /* ActiveSwirl.mov in Resources */ = {isa = PBXBuildFile; fileRef = 61F2CDBF29AE236400D11CA5 /* ActiveSwirl.mov */; };
+		61F2CDC329AE236400D11CA5 /* ActiveSwirl.mov in Resources */ = {isa = PBXBuildFile; fileRef = 61F2CDBF29AE236400D11CA5 /* ActiveSwirl.mov */; };
+		61F2CDC429AE236400D11CA5 /* ActiveSwirl.mov in Resources */ = {isa = PBXBuildFile; fileRef = 61F2CDBF29AE236400D11CA5 /* ActiveSwirl.mov */; };
+		61F2CDC529AE236400D11CA5 /* ActiveSwirl.mov in Resources */ = {isa = PBXBuildFile; fileRef = 61F2CDBF29AE236400D11CA5 /* ActiveSwirl.mov */; };
+		61F2CDC629AE236400D11CA5 /* ActiveSwirl.mov in Resources */ = {isa = PBXBuildFile; fileRef = 61F2CDBF29AE236400D11CA5 /* ActiveSwirl.mov */; };
+		61F2CDC729AE236400D11CA5 /* ActiveSwirl.mov in Resources */ = {isa = PBXBuildFile; fileRef = 61F2CDBF29AE236400D11CA5 /* ActiveSwirl.mov */; };
+		61F2CDC829AE236400D11CA5 /* CreativeSwirl.mov in Resources */ = {isa = PBXBuildFile; fileRef = 61F2CDC029AE236400D11CA5 /* CreativeSwirl.mov */; };
+		61F2CDC929AE236400D11CA5 /* CreativeSwirl.mov in Resources */ = {isa = PBXBuildFile; fileRef = 61F2CDC029AE236400D11CA5 /* CreativeSwirl.mov */; };
+		61F2CDCA29AE236400D11CA5 /* CreativeSwirl.mov in Resources */ = {isa = PBXBuildFile; fileRef = 61F2CDC029AE236400D11CA5 /* CreativeSwirl.mov */; };
+		61F2CDCB29AE236400D11CA5 /* CreativeSwirl.mov in Resources */ = {isa = PBXBuildFile; fileRef = 61F2CDC029AE236400D11CA5 /* CreativeSwirl.mov */; };
+		61F2CDCC29AE236400D11CA5 /* CreativeSwirl.mov in Resources */ = {isa = PBXBuildFile; fileRef = 61F2CDC029AE236400D11CA5 /* CreativeSwirl.mov */; };
+		61F2CDCD29AE236400D11CA5 /* CreativeSwirl.mov in Resources */ = {isa = PBXBuildFile; fileRef = 61F2CDC029AE236400D11CA5 /* CreativeSwirl.mov */; };
+		61F2CDCE29AE236400D11CA5 /* ProductiveSwirl.mov in Resources */ = {isa = PBXBuildFile; fileRef = 61F2CDC129AE236400D11CA5 /* ProductiveSwirl.mov */; };
+		61F2CDCF29AE236400D11CA5 /* ProductiveSwirl.mov in Resources */ = {isa = PBXBuildFile; fileRef = 61F2CDC129AE236400D11CA5 /* ProductiveSwirl.mov */; };
+		61F2CDD029AE236400D11CA5 /* ProductiveSwirl.mov in Resources */ = {isa = PBXBuildFile; fileRef = 61F2CDC129AE236400D11CA5 /* ProductiveSwirl.mov */; };
+		61F2CDD129AE236400D11CA5 /* ProductiveSwirl.mov in Resources */ = {isa = PBXBuildFile; fileRef = 61F2CDC129AE236400D11CA5 /* ProductiveSwirl.mov */; };
+		61F2CDD229AE236400D11CA5 /* ProductiveSwirl.mov in Resources */ = {isa = PBXBuildFile; fileRef = 61F2CDC129AE236400D11CA5 /* ProductiveSwirl.mov */; };
+		61F2CDD329AE236400D11CA5 /* ProductiveSwirl.mov in Resources */ = {isa = PBXBuildFile; fileRef = 61F2CDC129AE236400D11CA5 /* ProductiveSwirl.mov */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -208,7 +227,6 @@
 		610F337529A8831E00834E8E /* MaterialStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialStyle.swift; sourceTree = "<group>"; };
 		610F7019299EB68700F1BE72 /* DateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateView.swift; sourceTree = "<group>"; };
 		610F701B299EC11B00F1BE72 /* HorizontalLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalLine.swift; sourceTree = "<group>"; };
-		61188D382970E88E00BF77B5 /* AnimatedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedImage.swift; sourceTree = "<group>"; };
 		61188D3C2970E8D900BF77B5 /* SwirlAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwirlAnimation.swift; sourceTree = "<group>"; };
 		61188D3F2970F51B00BF77B5 /* SwirlStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwirlStyle.swift; sourceTree = "<group>"; };
 		61188D4229710D8000BF77B5 /* Color+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+hex.swift"; sourceTree = "<group>"; };
@@ -228,6 +246,7 @@
 		6160099629A59ABC00A48560 /* WeekLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekLine.swift; sourceTree = "<group>"; };
 		616009A129A5AF5700A48560 /* TopButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopButtons.swift; sourceTree = "<group>"; };
 		616009AC29A825D500A48560 /* DaysCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysCalendarView.swift; sourceTree = "<group>"; };
+		61A21D7929ADF59900E5D113 /* AnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
 		61D469C629760854009CB8C3 /* DayByDayWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DayByDayWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		61D469C829760854009CB8C3 /* DayByDayWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayByDayWatchApp.swift; sourceTree = "<group>"; };
 		61D469CA29760854009CB8C3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -242,6 +261,9 @@
 		61D46A28297615B8009CB8C3 /* DayByDayWatch Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DayByDayWatch Watch App.entitlements"; sourceTree = "<group>"; };
 		61DAE0582995D8F8006502BC /* WigglyBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WigglyBar.swift; sourceTree = "<group>"; };
 		61DAE05F2995DA41006502BC /* LinearGradient+ForCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LinearGradient+ForCategory.swift"; sourceTree = "<group>"; };
+		61F2CDBF29AE236400D11CA5 /* ActiveSwirl.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = ActiveSwirl.mov; sourceTree = "<group>"; };
+		61F2CDC029AE236400D11CA5 /* CreativeSwirl.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = CreativeSwirl.mov; sourceTree = "<group>"; };
+		61F2CDC129AE236400D11CA5 /* ProductiveSwirl.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = ProductiveSwirl.mov; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -347,6 +369,7 @@
 				614EE3FE296A8344001FB19D /* Helpers */,
 				61188D3B2970E89C00BF77B5 /* Animations */,
 				610AF8FF296A5A9A001E50A6 /* Assets.xcassets */,
+				61A21D8029ADFFA100E5D113 /* Assets */,
 				610AF8FA296A5A99001E50A6 /* DayByDay.xcdatamodeld */,
 				610AF902296A5A9A001E50A6 /* Preview Content */,
 			);
@@ -393,6 +416,7 @@
 			isa = PBXGroup;
 			children = (
 				61188D3C2970E8D900BF77B5 /* SwirlAnimation.swift */,
+				61A21D7929ADF59900E5D113 /* AnimationView.swift */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -413,7 +437,6 @@
 				615CC1F7296CC354004DEE47 /* Haptics.swift */,
 				6101CA232975FB7D00B12C68 /* Notifications.swift */,
 				614EE402296ABA43001FB19D /* CircleLabelView.swift */,
-				61188D382970E88E00BF77B5 /* AnimatedImage.swift */,
 				614AE46A2974C27900F24397 /* CompleteBackgroundView.swift */,
 				610F701B299EC11B00F1BE72 /* HorizontalLine.swift */,
 				6160099629A59ABC00A48560 /* WeekLine.swift */,
@@ -423,6 +446,16 @@
 				6148F3D629A8A404009C35E5 /* DaysCalendarSelectedView.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		61A21D8029ADFFA100E5D113 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				61F2CDBF29AE236400D11CA5 /* ActiveSwirl.mov */,
+				61F2CDC029AE236400D11CA5 /* CreativeSwirl.mov */,
+				61F2CDC129AE236400D11CA5 /* ProductiveSwirl.mov */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		61D469C729760854009CB8C3 /* DayByDayWatch Watch App */ = {
@@ -655,7 +688,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				610AF904296A5A9A001E50A6 /* Preview Assets.xcassets in Resources */,
+				61F2CDC829AE236400D11CA5 /* CreativeSwirl.mov in Resources */,
 				610AF900296A5A9A001E50A6 /* Assets.xcassets in Resources */,
+				61F2CDC229AE236400D11CA5 /* ActiveSwirl.mov in Resources */,
+				61F2CDCE29AE236400D11CA5 /* ProductiveSwirl.mov in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -663,6 +699,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61F2CDC329AE236400D11CA5 /* ActiveSwirl.mov in Resources */,
+				61F2CDC929AE236400D11CA5 /* CreativeSwirl.mov in Resources */,
+				61F2CDCF29AE236400D11CA5 /* ProductiveSwirl.mov in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -670,7 +709,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61F2CDC429AE236400D11CA5 /* ActiveSwirl.mov in Resources */,
+				61F2CDD029AE236400D11CA5 /* ProductiveSwirl.mov in Resources */,
 				61D46A2329760B5D009CB8C3 /* Assets.xcassets in Resources */,
+				61F2CDCA29AE236400D11CA5 /* CreativeSwirl.mov in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -679,7 +721,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				61677FDB29AC35920075C5AC /* Preview Assets.xcassets in Resources */,
+				61F2CDCB29AE236400D11CA5 /* CreativeSwirl.mov in Resources */,
 				61D46A2629761033009CB8C3 /* Assets.xcassets in Resources */,
+				61F2CDC529AE236400D11CA5 /* ActiveSwirl.mov in Resources */,
+				61F2CDD129AE236400D11CA5 /* ProductiveSwirl.mov in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -687,6 +732,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61F2CDC629AE236400D11CA5 /* ActiveSwirl.mov in Resources */,
+				61F2CDCC29AE236400D11CA5 /* CreativeSwirl.mov in Resources */,
+				61F2CDD229AE236400D11CA5 /* ProductiveSwirl.mov in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -694,7 +742,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61F2CDC729AE236400D11CA5 /* ActiveSwirl.mov in Resources */,
+				61F2CDD329AE236400D11CA5 /* ProductiveSwirl.mov in Resources */,
 				61D46A2729761034009CB8C3 /* Assets.xcassets in Resources */,
+				61F2CDCD29AE236400D11CA5 /* CreativeSwirl.mov in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -708,6 +759,7 @@
 				6148F3D729A8A404009C35E5 /* DaysCalendarSelectedView.swift in Sources */,
 				614EE406296AC978001FB19D /* ButtonCluster.swift in Sources */,
 				610F701C299EC11B00F1BE72 /* HorizontalLine.swift in Sources */,
+				61A21D7A29ADF59900E5D113 /* AnimationView.swift in Sources */,
 				610F701A299EB68700F1BE72 /* DateView.swift in Sources */,
 				61DAE0592995D8F8006502BC /* WigglyBar.swift in Sources */,
 				615465F32999F6CD00FB1F03 /* Arrow.swift in Sources */,
@@ -724,7 +776,6 @@
 				6104E56B296B1A580034B9E3 /* Date+compare.swift in Sources */,
 				614EE40C296AF187001FB19D /* PastView.swift in Sources */,
 				616009A229A5AF5700A48560 /* TopButtons.swift in Sources */,
-				61188D392970E88E00BF77B5 /* AnimatedImage.swift in Sources */,
 				6101CA242975FB7D00B12C68 /* Notifications.swift in Sources */,
 				614EE403296ABA43001FB19D /* CircleLabelView.swift in Sources */,
 				611A5F892995EDCE00E28A56 /* WigglyEyes.swift in Sources */,
@@ -766,9 +817,9 @@
 				613D550229AAB7E000A91942 /* DateCompareTests.swift in Sources */,
 				613D54EF29AAB0EE00A91942 /* SwirlStyle.swift in Sources */,
 				613D54F629AAB12200A91942 /* SwirlAnimation.swift in Sources */,
+				61A21D7B29ADF59900E5D113 /* AnimationView.swift in Sources */,
 				616009A329A5AF5700A48560 /* TopButtons.swift in Sources */,
 				613D54EE29AAB0EB00A91942 /* CircleStyle.swift in Sources */,
-				613D54F329AAB0FA00A91942 /* AnimatedImage.swift in Sources */,
 				613D54F029AAB0F100A91942 /* Haptics.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -798,13 +849,13 @@
 				614EE40A296AC9E7001FB19D /* DayStatus.swift in Sources */,
 				6104E56D296B1A590034B9E3 /* Date+compare.swift in Sources */,
 				611A5F8B2995EDCE00E28A56 /* WigglyEyes.swift in Sources */,
+				61A21D7C29ADF59900E5D113 /* AnimationView.swift in Sources */,
 				614EE40D296AF187001FB19D /* PastView.swift in Sources */,
 				61DAE0622995DA41006502BC /* LinearGradient+ForCategory.swift in Sources */,
 				61188D412970F51B00BF77B5 /* SwirlStyle.swift in Sources */,
 				610F701E299EC11B00F1BE72 /* HorizontalLine.swift in Sources */,
 				613D54EB29AAB0DB00A91942 /* ContentView.swift in Sources */,
 				616009AF29A825D500A48560 /* DaysCalendarView.swift in Sources */,
-				61188D3A2970E88E00BF77B5 /* AnimatedImage.swift in Sources */,
 				614EE401296A838D001FB19D /* CircleStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -822,7 +873,6 @@
 				61D469CB29760854009CB8C3 /* ContentView.swift in Sources */,
 				61D46A01297608EF009CB8C3 /* Color+hex.swift in Sources */,
 				615465F62999F6CD00FB1F03 /* Arrow.swift in Sources */,
-				61D46A0F2976091B009CB8C3 /* AnimatedImage.swift in Sources */,
 				61D46A05297608F6009CB8C3 /* CircleStyle.swift in Sources */,
 				61D469F7297608CE009CB8C3 /* Persistence.swift in Sources */,
 				61D469FA297608DB009CB8C3 /* DayStatus.swift in Sources */,
@@ -832,6 +882,7 @@
 				61D469C929760854009CB8C3 /* DayByDayWatchApp.swift in Sources */,
 				61DAE0632995DA41006502BC /* LinearGradient+ForCategory.swift in Sources */,
 				61DAE05C2995D8F8006502BC /* WigglyBar.swift in Sources */,
+				61A21D7D29ADF59900E5D113 /* AnimationView.swift in Sources */,
 				61D46A07297608FA009CB8C3 /* SwirlStyle.swift in Sources */,
 				61D46A0D29760917009CB8C3 /* CircleLabelView.swift in Sources */,
 			);
@@ -849,6 +900,7 @@
 				61D469DA29760855009CB8C3 /* DayByDayWatch_Watch_AppTests.swift in Sources */,
 				61D469FF297608EA009CB8C3 /* Date+compare.swift in Sources */,
 				61DAE0642995DA41006502BC /* LinearGradient+ForCategory.swift in Sources */,
+				61A21D7E29ADF59900E5D113 /* AnimationView.swift in Sources */,
 				610F7020299EC11B00F1BE72 /* HorizontalLine.swift in Sources */,
 				61DAE05D2995D8F8006502BC /* WigglyBar.swift in Sources */,
 			);
@@ -866,13 +918,13 @@
 				61D46A0C2976090B009CB8C3 /* Notifications.swift in Sources */,
 				61D469E429760855009CB8C3 /* DayByDayWatch_Watch_AppUITests.swift in Sources */,
 				61D46A04297608F1009CB8C3 /* Color+hex.swift in Sources */,
-				61D46A102976091C009CB8C3 /* AnimatedImage.swift in Sources */,
 				61D46A1C297609E4009CB8C3 /* ContentView.swift in Sources */,
 				61D46A06297608F7009CB8C3 /* CircleStyle.swift in Sources */,
 				61D469F8297608D1009CB8C3 /* Persistence.swift in Sources */,
 				61D469FB297608DC009CB8C3 /* DayStatus.swift in Sources */,
 				61D469F6297608AB009CB8C3 /* ButtonCluster.swift in Sources */,
 				61D46A00297608EA009CB8C3 /* Date+compare.swift in Sources */,
+				61A21D7F29ADF59900E5D113 /* AnimationView.swift in Sources */,
 				61D469E629760855009CB8C3 /* DayByDayWatch_Watch_AppUITestsLaunchTests.swift in Sources */,
 				611A5F8E2995EDCE00E28A56 /* WigglyEyes.swift in Sources */,
 				61DAE0652995DA41006502BC /* LinearGradient+ForCategory.swift in Sources */,

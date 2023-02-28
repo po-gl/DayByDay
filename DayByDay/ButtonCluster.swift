@@ -54,7 +54,6 @@ struct ButtonCluster: View {
     
     @ViewBuilder
     private func SwirlButton(_ text: String, for category: StatusCategory, startAngle: AngleStart, _ geometry: GeometryProxy) -> some View {
-        let diameter = diameterForScroll(geometry)
         let isOn = latestDay?.isActive(for: category) ?? false
         Button(action: {
             withAnimation(.easeOut(duration: 0.2)) {
@@ -73,6 +72,7 @@ struct ButtonCluster: View {
         }
         .buttonStyle(SwirlStyle(category: category))
         .frame(width: diameter, height: diameter)
+        .scaleEffect(scaleForScroll(geometry))
         .saturation(isOn ? 1.0 : 0.0)
         .opacity(opacity(for: startAngle, geometry))
         .position(animPosition(for: startAngle, geometry))
@@ -179,9 +179,10 @@ struct ButtonCluster: View {
         }
     }
 
-    private func diameterForScroll(_ geometry: GeometryProxy) -> Double {
+    private func scaleForScroll(_ geometry: GeometryProxy) -> Double {
         let scrollOffset = scrollOffset(geometry)
-        return max(min(diameter, diameter + scrollOffset), ButtonCluster.lowerBoundDiameter)
+        let lowerBound = ButtonCluster.lowerBoundDiameter / diameter
+        return max(min(1.0, 1.0 + scrollOffset / 200), lowerBound)
     }
     
     private func scrollOffset(_ geometry: GeometryProxy) -> Double {

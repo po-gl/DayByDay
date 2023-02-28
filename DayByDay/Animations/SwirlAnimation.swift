@@ -8,21 +8,20 @@
 import SwiftUI
 
 struct SwirlAnimation: View {
-    var imageNames: [String]
+    var assetName: String
     
     init(for category: StatusCategory) {
         switch category {
         case .active:
-            imageNames = (0...299).map{ String(format: "ActiveSwirl_%05d", $0) }
+            assetName = "ActiveSwirl"
         case .creative:
-            imageNames = (0...359).map{ String(format: "CreativeSwirl_%05d", $0) }
+            assetName = "CreativeSwirl"
         case .productive:
-            imageNames = (0...419).map{ String(format: "ProductiveSwirl_%05d", $0) }
+            assetName = "ProductiveSwirl"
         }
     }
     
     var body: some View {
-        AnimatedImage(imageNames: imageNames, interval: 0.032, loops: true)
+        AnimationView(name: assetName)
     }
 }
-
