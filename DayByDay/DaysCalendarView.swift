@@ -54,8 +54,10 @@ class DaysCalendarViewController: UIViewController {
         
         calendarView.daySelectionHandler = { [weak self] day in
             self?.selectedDay = day
+            let date = (self?.calendar.date(from: day.components))!
+            guard date.isInPast() else { return }
             
-            let vc = DaysCalendarSelectedViewController(date: (self?.calendar.date(from: day.components))!, onDismiss: {
+            let vc = DaysCalendarSelectedViewController(date: date, onDismiss: {
                 self?.loadDaysData()
                 self?.calendarView.setContent((self?.calendarContent)!)
             })

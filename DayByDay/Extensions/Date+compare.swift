@@ -34,6 +34,10 @@ extension Date {
         return self.isSameDay(as: Date())
     }
     
+    func isInPast(calendar: Calendar = .current) -> Bool {
+        return self.timeIntervalSinceNow < 0.0
+    }
+    
     func atHour(_ hour: Double, calendar: Calendar = .current) -> Date {
         var safeHour: Double
         if hour < 0 {
