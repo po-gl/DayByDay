@@ -27,6 +27,7 @@ class DaysCalendarViewController: UIViewController {
     var allDays = [DayMO]()
     
     lazy var calendarView = CalendarView(initialContent: makeContent())
+    var calendarContent: CalendarViewContent?
     lazy var calendar = Calendar.current
     
     private var selectedDay: Day?
@@ -54,7 +55,10 @@ class DaysCalendarViewController: UIViewController {
         calendarView.daySelectionHandler = { [weak self] day in
             self?.selectedDay = day
             
-            let vc = DaysCalendarSelectedViewController(date: (self?.calendar.date(from: day.components))!)
+            let vc = DaysCalendarSelectedViewController(date: (self?.calendar.date(from: day.components))!, onDismiss: {
+                self?.loadDaysData()
+                self?.calendarView.setContent((self?.calendarContent)!)
+            })
             if let presentationController = vc.presentationController as? UISheetPresentationController {
                 presentationController.detents = [.medium()]
             }
@@ -76,7 +80,7 @@ class DaysCalendarViewController: UIViewController {
         
         let monthsLayout = MonthsLayout.vertical(options: VerticalMonthsLayoutOptions(pinDaysOfWeekToTop: false, alwaysShowCompleteBoundaryMonths: false))
         
-        return CalendarViewContent(
+        calendarContent = CalendarViewContent(
             visibleDateRange: startDate...endDate,
             monthsLayout: monthsLayout)
         .interMonthSpacing(30)
@@ -89,6 +93,7 @@ class DaysCalendarViewController: UIViewController {
             self.DayView(day)
                 .calendarItemModel
         }
+        return calendarContent!
     }
     
     private func loadDaysData() {

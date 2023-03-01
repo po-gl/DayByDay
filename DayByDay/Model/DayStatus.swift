@@ -31,6 +31,12 @@ extension DayMO {
         }
     }
     
+    func isComplete() -> Bool {
+        return self.isActive(for: .active)
+            && self.isActive(for: .creative)
+            && self.isActive(for: .productive)
+    }
+    
     func toggle(category: StatusCategory) {
         switch category {
         case .active:
