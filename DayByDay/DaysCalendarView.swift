@@ -157,24 +157,25 @@ class DaysCalendarViewController: UIViewController {
                     .frame(width: orbWidth)
                     .offset(x: -spacing, y: -spacing)
                     .opacity(isActive ? 1.0 : 0.2)
-                    .shadow(color: isComplete ? activeColor : .clear, radius: 5)
+                    .shadow(color: isComplete ? activeColor : .clear, radius: 2)
                 Circle()
                     .fill(creativeColor.gradient)
                     .frame(width: orbWidth)
                     .offset(x: spacing, y: -spacing)
                     .opacity(isCreative ? 1.0 : 0.2)
-                    .shadow(color: isComplete ? creativeColor : .clear, radius: 5)
+                    .shadow(color: isComplete ? creativeColor : .clear, radius: 2)
                 Circle()
                     .fill(productiveColor.gradient)
                     .frame(width: orbWidth)
                     .offset(y: spacing - 2)
                     .opacity(isProductive ? 1.0 : 0.2)
-                    .shadow(color: isComplete ? productiveColor : .clear, radius: 5)
+                    .shadow(color: isComplete ? productiveColor : .clear, radius: 2)
             }
             .brightness(0.06)
             .saturation(1.05)
         }
         .frame(width: orbWidth*2 + spacing, height: orbWidth*2 + spacing)
+        .drawingGroup()
     }
     
     private func getDay(for date: Date) -> DayMO? {
