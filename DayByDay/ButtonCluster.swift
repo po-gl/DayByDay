@@ -15,7 +15,7 @@ struct ButtonCluster: View {
     private var allDays: FetchedResults<DayMO>
     private var latestDay: DayMO? {
         if allDays.isEmpty { return nil }
-        return allDays[0].date?.hasSame(.day, as: Date()) ?? false ? allDays[0] : nil
+        return allDays[0].date?.isToday() ?? false ? allDays[0] : nil
     }
     
     let diameter = 140.0
