@@ -70,10 +70,9 @@ struct ButtonCluster: View {
                 .font(.system(size: fontSize, weight: .semibold, design: .monospaced))
                 .opacity(scrollOffset(geometry) * 0.02 + 1.0)
         }
-        .buttonStyle(SwirlStyle(category: category))
+        .buttonStyle(SwirlStyle(category: category, isOn: isOn))
         .frame(width: diameter, height: diameter)
         .scaleEffect(scaleForScroll(geometry))
-        .saturation(isOn ? 1.0 : 0.0)
         .opacity(opacity(for: startAngle, geometry))
         .position(animPosition(for: startAngle, geometry))
         .accessibilityIdentifier("\(text)Button_\(isOn ? "On" : "Off")") // for UITests
@@ -115,11 +114,11 @@ struct ButtonCluster: View {
                 WigglyBar(category: .active, width: 30, height: 400, frequency: 50, amplitude: 5, speed: 2.0)
                     .frame(width: 200, height: 400)
                     .rotationEffect(.degrees(90))
-                    .shadow(radius: 14)
+                    .shadow(radius: 22)
                 WigglyBar(category: .active, width: 30, height: 400, frequency: 50, amplitude: 5, speed: 0.8)
                     .frame(width: 200, height: 400)
                     .rotationEffect(.degrees(90))
-                    .shadow(radius: 10)
+                    .shadow(radius: 15)
             }
             .offset(y: 700/2)
         }

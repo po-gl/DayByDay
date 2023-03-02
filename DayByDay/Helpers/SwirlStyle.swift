@@ -9,12 +9,14 @@ import Foundation
 import SwiftUI
 
 struct SwirlStyle: ButtonStyle {
+    @Environment(\.colorScheme) private var colorScheme
     
     var category: StatusCategory
+    var isOn: Bool
     
     func makeBody(configuration: Configuration) -> some View {
         Circle()
-            .fill(.white)
+            .fill(.background)
             .overlay(
                 SwirlAnimation(for: category)
                     .mask(Circle().opacity(configuration.isPressed ? 0.7 : 1.0))
@@ -22,6 +24,9 @@ struct SwirlStyle: ButtonStyle {
                         BackgroundFrame(for: category)
                             .mask(Circle())
                     )
+                    .opacity(isOn ? 1.0 : 0.4)
+                    .saturation(isOn ? 1.0 : 0.7)
+                    .brightness(isOn ? 0.0 : colorScheme == .dark ? -0.1 : 0.1)
             )
             .overlay(
                 configuration.label
