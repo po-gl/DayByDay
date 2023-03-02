@@ -178,12 +178,26 @@ class DaysCalendarViewController: UIViewController {
                     .offset(y: spacing - 2)
                     .opacity(isProductive ? 1.0 : 0.2)
                     .shadow(color: isComplete ? productiveColor : .clear, radius: 2)
+                
+                NoteOrb(day, offset: orbWidth/2)
             }
             .brightness(0.06)
             .saturation(1.05)
         }
         .frame(width: orbWidth*2 + spacing, height: orbWidth*2 + spacing)
         .drawingGroup()
+    }
+    
+    @ViewBuilder
+    private func NoteOrb(_ day: DayMO?, offset: Double) -> some View {
+        let hasNote = !(day?.note?.isEmpty ?? true)
+        if hasNote {
+            Circle()
+                .fill(.orange.gradient)
+                .frame(width: 6)
+                .offset(x: -offset*2, y: offset-2)
+                .brightness(0.05)
+        }
     }
     
     private func getDay(for date: Date) -> DayMO? {
