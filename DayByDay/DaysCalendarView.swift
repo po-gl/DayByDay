@@ -136,6 +136,7 @@ class DaysCalendarViewController: UIViewController {
                         .brightness(-0.1)
                         .opacity(date.isToday() ? 1.0 : 0.0)
                         .scaleEffect(1.15)
+                        .frame(minWidth: 15)
                 )
             
             Orbs(day)
