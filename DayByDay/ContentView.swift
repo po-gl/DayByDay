@@ -18,15 +18,20 @@ struct ContentView: View {
     @FetchRequest(sortDescriptors: [SortDescriptor(\DayMO.date, order: .reverse)])
     private var allDays: FetchedResults<DayMO>
     private var latestDay: DayMO? {
-        return allDays.count > 0 ? allDays[0] : nil
+        if allDays.isEmpty { return nil }
+        return allDays[0].date?.isToday() ?? false ? allDays[0] : nil
     }
+    
+    @State private var showingNoteEditor = false
+    
     
     var body: some View {
         GeometryReader { geometry in
             NavigationView {
                 ZStack {
                     MainPage(geometry)
-                    TopButtons()
+                    TopButtons(showingNoteEditor: $showingNoteEditor)
+                        .zIndex(5)
                 }
                 .onAppear {
                     getNotificationPermissions()
@@ -53,10 +58,13 @@ struct ContentView: View {
             VStack(spacing: 0) {
                 DateView()
                 ButtonCluster()
-                    .zIndex(3)
-                ZStack {
+                    .zIndex(4)
+                ZStack (alignment: .top) {
                     BottomSpacer(geometry)
                     Arrow()
+                        .opacity(latestDay?.note?.isEmpty ?? true ? 1.0 : 0.0 )
+                    NoteView(showingNoteEditor: $showingNoteEditor)
+                        .zIndex(3)
                 }
                 PastView()
             }

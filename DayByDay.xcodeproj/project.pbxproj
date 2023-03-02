@@ -157,6 +157,12 @@
 		61DAE0632995DA41006502BC /* LinearGradient+ForCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DAE05F2995DA41006502BC /* LinearGradient+ForCategory.swift */; };
 		61DAE0642995DA41006502BC /* LinearGradient+ForCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DAE05F2995DA41006502BC /* LinearGradient+ForCategory.swift */; };
 		61DAE0652995DA41006502BC /* LinearGradient+ForCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DAE05F2995DA41006502BC /* LinearGradient+ForCategory.swift */; };
+		61EF678229AF5D2A00C77813 /* NoteEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EF678129AF5D2A00C77813 /* NoteEditorView.swift */; };
+		61EF678329AF5D2A00C77813 /* NoteEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EF678129AF5D2A00C77813 /* NoteEditorView.swift */; };
+		61EF678429AF5D2A00C77813 /* NoteEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EF678129AF5D2A00C77813 /* NoteEditorView.swift */; };
+		61EF678629AF892500C77813 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EF678529AF892500C77813 /* NoteView.swift */; };
+		61EF678729AF892500C77813 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EF678529AF892500C77813 /* NoteView.swift */; };
+		61EF678829AF892500C77813 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EF678529AF892500C77813 /* NoteView.swift */; };
 		61F2CDC229AE236400D11CA5 /* ActiveSwirl.mov in Resources */ = {isa = PBXBuildFile; fileRef = 61F2CDBF29AE236400D11CA5 /* ActiveSwirl.mov */; };
 		61F2CDC329AE236400D11CA5 /* ActiveSwirl.mov in Resources */ = {isa = PBXBuildFile; fileRef = 61F2CDBF29AE236400D11CA5 /* ActiveSwirl.mov */; };
 		61F2CDC429AE236400D11CA5 /* ActiveSwirl.mov in Resources */ = {isa = PBXBuildFile; fileRef = 61F2CDBF29AE236400D11CA5 /* ActiveSwirl.mov */; };
@@ -261,6 +267,8 @@
 		61D46A28297615B8009CB8C3 /* DayByDayWatch Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DayByDayWatch Watch App.entitlements"; sourceTree = "<group>"; };
 		61DAE0582995D8F8006502BC /* WigglyBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WigglyBar.swift; sourceTree = "<group>"; };
 		61DAE05F2995DA41006502BC /* LinearGradient+ForCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LinearGradient+ForCategory.swift"; sourceTree = "<group>"; };
+		61EF678129AF5D2A00C77813 /* NoteEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditorView.swift; sourceTree = "<group>"; };
+		61EF678529AF892500C77813 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		61F2CDBF29AE236400D11CA5 /* ActiveSwirl.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = ActiveSwirl.mov; sourceTree = "<group>"; };
 		61F2CDC029AE236400D11CA5 /* CreativeSwirl.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = CreativeSwirl.mov; sourceTree = "<group>"; };
 		61F2CDC129AE236400D11CA5 /* ProductiveSwirl.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = ProductiveSwirl.mov; sourceTree = "<group>"; };
@@ -363,8 +371,10 @@
 				610F7019299EB68700F1BE72 /* DateView.swift */,
 				614EE405296AC978001FB19D /* ButtonCluster.swift */,
 				616009A129A5AF5700A48560 /* TopButtons.swift */,
-				616009AC29A825D500A48560 /* DaysCalendarView.swift */,
+				61EF678529AF892500C77813 /* NoteView.swift */,
 				614EE40B296AF187001FB19D /* PastView.swift */,
+				616009AC29A825D500A48560 /* DaysCalendarView.swift */,
+				61EF678129AF5D2A00C77813 /* NoteEditorView.swift */,
 				6104E569296B1A1A0034B9E3 /* Extensions */,
 				614EE3FE296A8344001FB19D /* Helpers */,
 				61188D3B2970E89C00BF77B5 /* Animations */,
@@ -770,6 +780,7 @@
 				610AF8F7296A5A99001E50A6 /* DayByDayApp.swift in Sources */,
 				610F337629A8831E00834E8E /* MaterialStyle.swift in Sources */,
 				616009AD29A825D500A48560 /* DaysCalendarView.swift in Sources */,
+				61EF678229AF5D2A00C77813 /* NoteEditorView.swift in Sources */,
 				614EE400296A838D001FB19D /* CircleStyle.swift in Sources */,
 				61188D4329710D8000BF77B5 /* Color+hex.swift in Sources */,
 				614EE409296AC9E7001FB19D /* DayStatus.swift in Sources */,
@@ -781,6 +792,7 @@
 				611A5F892995EDCE00E28A56 /* WigglyEyes.swift in Sources */,
 				6160099729A59ABC00A48560 /* WeekLine.swift in Sources */,
 				610AF8FE296A5A99001E50A6 /* ContentView.swift in Sources */,
+				61EF678629AF892500C77813 /* NoteView.swift in Sources */,
 				61DAE0602995DA41006502BC /* LinearGradient+ForCategory.swift in Sources */,
 				610AF8F9296A5A99001E50A6 /* Persistence.swift in Sources */,
 				61188D3D2970E8D900BF77B5 /* SwirlAnimation.swift in Sources */,
@@ -800,6 +812,7 @@
 				613D54E729AAB0B300A91942 /* DateView.swift in Sources */,
 				615465F42999F6CD00FB1F03 /* Arrow.swift in Sources */,
 				616009AE29A825D500A48560 /* DaysCalendarView.swift in Sources */,
+				61EF678329AF5D2A00C77813 /* NoteEditorView.swift in Sources */,
 				613D54F529AAB10100A91942 /* WeekLine.swift in Sources */,
 				613D54E429AAAF9A00A91942 /* DayMOTests.swift in Sources */,
 				613D550029AAB49100A91942 /* ColorHexTests.swift in Sources */,
@@ -816,6 +829,7 @@
 				613D54F429AAB0FD00A91942 /* CompleteBackgroundView.swift in Sources */,
 				613D550229AAB7E000A91942 /* DateCompareTests.swift in Sources */,
 				613D54EF29AAB0EE00A91942 /* SwirlStyle.swift in Sources */,
+				61EF678729AF892500C77813 /* NoteView.swift in Sources */,
 				613D54F629AAB12200A91942 /* SwirlAnimation.swift in Sources */,
 				61A21D7B29ADF59900E5D113 /* AnimationView.swift in Sources */,
 				616009A329A5AF5700A48560 /* TopButtons.swift in Sources */,
@@ -843,8 +857,10 @@
 				614EE404296ABA43001FB19D /* CircleLabelView.swift in Sources */,
 				61188D3E2970E8D900BF77B5 /* SwirlAnimation.swift in Sources */,
 				61188D4429710D8000BF77B5 /* Color+hex.swift in Sources */,
+				61EF678829AF892500C77813 /* NoteView.swift in Sources */,
 				6101CA262975FB7D00B12C68 /* Notifications.swift in Sources */,
 				6148F3D929A8A404009C35E5 /* DaysCalendarSelectedView.swift in Sources */,
+				61EF678429AF5D2A00C77813 /* NoteEditorView.swift in Sources */,
 				610AF918296A5A9A001E50A6 /* DayByDayUITests.swift in Sources */,
 				614EE40A296AC9E7001FB19D /* DayStatus.swift in Sources */,
 				6104E56D296B1A590034B9E3 /* Date+compare.swift in Sources */,

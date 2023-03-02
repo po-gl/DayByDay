@@ -10,42 +10,95 @@ import HorizonCalendar
 
 struct TopButtons: View {
     @State var showingCalendar = false
+    @Binding var showingNoteEditor: Bool
     
     var body: some View {
         VStack {
             HStack {
                 Spacer()
-                Button(action: { showingCalendar = true }) {
-                    Image(systemName: "calendar")
-                        .opacity(0.8)
-                }
-                .accessibilityIdentifier("CalendarButton")
-                .buttonStyle(MaterialStyle())
-                .frame(width: 50, height: 32)
-                .padding(.top, 20)
-                .padding(.trailing, 40)
-                .sheet(isPresented: $showingCalendar) {
-                    ZStack {
-                        DaysCalendarView()
-                            .accessibilityIdentifier("CalendarView")
-                        CalendarHeader()
-                    }
-                }
+                NoteButton()
+                CalendarButton()
             }
+            .padding(.top, 20)
+            .padding(.trailing, 40)
             Spacer()
+        }
+    }
+    
+    @ViewBuilder
+    private func NoteButton() -> some View {
+        Button(action: { showingNoteEditor = true }) {
+            Image(systemName: "square.and.pencil")
+                .opacity(0.8)
+        }
+        .accessibilityIdentifier("NoteButton")
+        .buttonStyle(MaterialStyle())
+        .frame(width: 50, height: 32)
+        .sheet(isPresented: $showingNoteEditor) {
+            ZStack {
+                NoteEditorView(date: Date(), focusOnAppear: false)
+                    .padding(.top, 65)
+                    .padding(.horizontal)
+                NoteHeader()
+            }
+            .presentationDetents([.medium, .large])
+        }
+    }
+    
+    @ViewBuilder
+    private func NoteHeader() -> some View {
+        VStack {
+            ZStack {
+                HStack {
+                    Button("Done") { showingNoteEditor = false }
+                        .foregroundColor(Color(hex: 0xE63C5C))
+                        .brightness(0.07)
+                        .saturation(1.05)
+                        .padding()
+                    Spacer()
+                }
+                Text("\(Date(), formatter: dayFormatter)")
+                    .font(.title3)
+            }
+            .frame(height: 65)
+            .background(.thinMaterial)
+            Spacer()
+        }
+    }
+    
+    
+    @ViewBuilder
+    private func CalendarButton() -> some View {
+        Button(action: { showingCalendar = true }) {
+            Image(systemName: "calendar")
+                .opacity(0.8)
+        }
+        .accessibilityIdentifier("CalendarButton")
+        .buttonStyle(MaterialStyle())
+        .frame(width: 50, height: 32)
+        .sheet(isPresented: $showingCalendar) {
+            ZStack {
+                DaysCalendarView()
+                    .accessibilityIdentifier("CalendarView")
+                CalendarHeader()
+            }
         }
     }
     
     @ViewBuilder
     private func CalendarHeader() -> some View {
         VStack {
-            HStack {
-                Button("Cancel") { showingCalendar = false }
-                    .foregroundColor(Color(hex: 0xBE59D5))
-                    .brightness(0.07)
-                    .saturation(1.05)
-                    .padding()
-                Spacer()
+            ZStack {
+                HStack {
+                    Button("Cancel") { showingCalendar = false }
+                        .foregroundColor(Color(hex: 0xBE59D5))
+                        .brightness(0.07)
+                        .saturation(1.05)
+                        .padding()
+                    Spacer()
+                }
+                Text("Calendar")
+                    .font(.title3)
             }
             .frame(height: 65)
             .background(.thinMaterial)
@@ -54,6 +107,10 @@ struct TopButtons: View {
     }
 }
 
-extension CalendarViewRepresentable {
-    
-}
+
+fileprivate let dayFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.setLocalizedDateFormatFromTemplate("EEEE MMM d YYYY")
+    return formatter
+}()
+
