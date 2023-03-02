@@ -145,7 +145,7 @@ struct PastView: View {
     @ViewBuilder
     private func DatesAndDividers() -> some View {
         let width = 3*(90.0+22)
-        LazyVStack(spacing: cellHeight-1) {
+        VStack(spacing: cellHeight-1) {
             ForEach(0..<daysToDisplay, id: \.self) { i in
                 let day = Date(timeInterval: -Double(60*60*24*i), since: Date())
                 ZStack {
