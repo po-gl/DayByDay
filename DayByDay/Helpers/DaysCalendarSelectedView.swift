@@ -28,21 +28,28 @@ struct DaysCalendarSelectedView: View {
         let day = getDay(for: date)
         
         ZStack {
-            Header()
-            VStack (spacing: 0) {
-                Handle()
-                Group {
-                    DateView(date: date, fontSize: 24, width: 140, shineOffset: Double.random(in: 0...30), formatter: dayFormatter)
-                        .frame(height: 50)
-                        .animation(.spring().delay(0.2), value: animate)
-                    ZStack {
-                        BackgroundOrbs()
-                        Orbs(day)
+            ScrollView {
+                VStack (spacing: 0) {
+                    Group {
+                        DateView(date: date, fontSize: 24, width: 140, shineOffset: Double.random(in: 0...30), formatter: dayFormatter)
+                            .frame(height: 50)
+                            .animation(.spring().delay(0.2), value: animate)
+                        ZStack {
+                            BackgroundOrbs()
+                            Orbs(day)
+                        }
+                        
+                        Notes(day)
+                    }
+                    .offset(y: 60)
+                    Spacer()
+                    HStack {
+                        Spacer()
                     }
                 }
-                .offset(y: 50)
-                Spacer()
+//                .frame(minWidth: 800)
             }
+            Header()
         }
         .onAppear {
             animate = true
@@ -161,6 +168,26 @@ struct DaysCalendarSelectedView: View {
             .background(.thinMaterial)
             Spacer()
         }
+    }
+    
+    @ViewBuilder
+    private func Notes(_ day: DayMO?) -> some View {
+        ZStack (alignment: .topLeading) {
+            NoteEditorView(date: date, focusOnAppear: false)
+                .padding(.top, 4)
+                .padding(.horizontal, 6)
+                .background(RoundedRectangle(cornerRadius: 6).fill(.thinMaterial))
+                .cornerRadius(8)
+            
+            Circle()
+                .fill(.orange.gradient)
+                .opacity(day?.note?.isEmpty ?? true ? 0.4 : 0.8)
+                .frame(width: 15)
+                .offset(x: -8, y: -6)
+                .brightness(0.05)
+                .allowsHitTesting(false)
+        }
+        .frame(maxWidth: 300, minHeight: 100)
     }
     
     

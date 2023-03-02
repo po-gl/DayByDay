@@ -62,7 +62,7 @@ class DaysCalendarViewController: UIViewController {
                 self?.calendarView.setContent((self?.calendarContent)!)
             })
             if let presentationController = vc.presentationController as? UISheetPresentationController {
-                presentationController.detents = [.medium()]
+                presentationController.detents = [.medium(), .large()]
             }
             self?.present(vc, animated: true)
         }
