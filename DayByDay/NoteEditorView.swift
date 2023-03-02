@@ -31,8 +31,12 @@ struct NoteEditorView: View {
                 .padding()
                 .onChange(of: noteFocus) { focus in
                     if !focus {
-                        day?.note = note
-                        saveContext()
+                        if let day {
+                            day.note = note
+                            saveContext()
+                        } else {
+                            addDay(with: note)
+                        }
                     }
                 }
             
@@ -69,6 +73,13 @@ struct NoteEditorView: View {
             }
         }
         return nil
+    }
+    
+    private func addDay(with note: String) {
+        let newItem = DayMO(context: viewContext)
+        newItem.date = date
+        newItem.note = note
+        saveContext()
     }
     
     private func saveContext() {
