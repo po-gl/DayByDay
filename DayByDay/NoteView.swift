@@ -31,7 +31,7 @@ struct NoteView: View {
                 ZStack (alignment: .topLeading) {
                     Accent()
                     
-                    Text("\(latestDay?.note ?? "")")
+                    Text(latestDay?.note ?? "")
                         .font(.system(size: 16, weight: .light))
                         .lineSpacing(2.0)
                         .padding(.horizontal)
