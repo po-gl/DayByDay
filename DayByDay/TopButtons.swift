@@ -9,7 +9,6 @@ import SwiftUI
 import HorizonCalendar
 
 struct TopButtons: View {
-    @State var showingCalendar = false
     @Binding var showingNoteEditor: Bool
     
     var body: some View {
@@ -66,44 +65,20 @@ struct TopButtons: View {
         }
     }
     
-    
     @ViewBuilder
     private func CalendarButton() -> some View {
-        Button(action: { showingCalendar = true }) {
+        NavigationLink(destination: {
+            DaysCalendarView()
+                .accessibilityIdentifier("CalendarView")
+                .ignoresSafeArea(.container, edges: .top)
+                .navigationTitle("Calendar")
+        }) {
             Image(systemName: "calendar")
                 .opacity(0.8)
         }
         .accessibilityIdentifier("CalendarButton")
         .buttonStyle(MaterialStyle())
         .frame(width: 50, height: 32)
-        .sheet(isPresented: $showingCalendar) {
-            ZStack {
-                DaysCalendarView()
-                    .accessibilityIdentifier("CalendarView")
-                CalendarHeader()
-            }
-        }
-    }
-    
-    @ViewBuilder
-    private func CalendarHeader() -> some View {
-        VStack {
-            ZStack {
-                HStack {
-                    Button("Cancel") { showingCalendar = false }
-                        .foregroundColor(Color(hex: 0xBE59D5))
-                        .brightness(0.07)
-                        .saturation(1.05)
-                        .padding()
-                    Spacer()
-                }
-                Text("Calendar")
-                    .font(.title3)
-            }
-            .frame(height: 65)
-            .background(.thinMaterial)
-            Spacer()
-        }
     }
 }
 

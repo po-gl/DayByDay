@@ -45,6 +45,7 @@ struct ContentView: View {
                     }
                 }
             }
+            .tint(Color(hex: 0xBE59D5))
         }
         .overlay(alignment: .top) {
             StatusBarBlur()
