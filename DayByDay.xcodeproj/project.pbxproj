@@ -79,6 +79,9 @@
 		614EE40A296AC9E7001FB19D /* DayStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614EE408296AC9E7001FB19D /* DayStatus.swift */; };
 		614EE40C296AF187001FB19D /* PastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614EE40B296AF187001FB19D /* PastView.swift */; };
 		614EE40D296AF187001FB19D /* PastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614EE40B296AF187001FB19D /* PastView.swift */; };
+		6150F20629B3A63A0051DB4E /* BaseNoteEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6150F20529B3A63A0051DB4E /* BaseNoteEditor.swift */; };
+		6150F20729B3A63A0051DB4E /* BaseNoteEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6150F20529B3A63A0051DB4E /* BaseNoteEditor.swift */; };
+		6150F20829B3A63A0051DB4E /* BaseNoteEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6150F20529B3A63A0051DB4E /* BaseNoteEditor.swift */; };
 		615465F32999F6CD00FB1F03 /* Arrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615465F22999F6CD00FB1F03 /* Arrow.swift */; };
 		615465F42999F6CD00FB1F03 /* Arrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615465F22999F6CD00FB1F03 /* Arrow.swift */; };
 		615465F52999F6CD00FB1F03 /* Arrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615465F22999F6CD00FB1F03 /* Arrow.swift */; };
@@ -247,6 +250,7 @@
 		614EE405296AC978001FB19D /* ButtonCluster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCluster.swift; sourceTree = "<group>"; };
 		614EE408296AC9E7001FB19D /* DayStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayStatus.swift; sourceTree = "<group>"; };
 		614EE40B296AF187001FB19D /* PastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastView.swift; sourceTree = "<group>"; };
+		6150F20529B3A63A0051DB4E /* BaseNoteEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNoteEditor.swift; sourceTree = "<group>"; };
 		615465F22999F6CD00FB1F03 /* Arrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arrow.swift; sourceTree = "<group>"; };
 		615CC1F7296CC354004DEE47 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		6160099629A59ABC00A48560 /* WeekLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekLine.swift; sourceTree = "<group>"; };
@@ -375,6 +379,7 @@
 				614EE40B296AF187001FB19D /* PastView.swift */,
 				616009AC29A825D500A48560 /* DaysCalendarView.swift */,
 				61EF678129AF5D2A00C77813 /* NoteEditorView.swift */,
+				6150F20529B3A63A0051DB4E /* BaseNoteEditor.swift */,
 				6104E569296B1A1A0034B9E3 /* Extensions */,
 				614EE3FE296A8344001FB19D /* Helpers */,
 				61188D3B2970E89C00BF77B5 /* Animations */,
@@ -791,6 +796,7 @@
 				614EE403296ABA43001FB19D /* CircleLabelView.swift in Sources */,
 				611A5F892995EDCE00E28A56 /* WigglyEyes.swift in Sources */,
 				6160099729A59ABC00A48560 /* WeekLine.swift in Sources */,
+				6150F20629B3A63A0051DB4E /* BaseNoteEditor.swift in Sources */,
 				610AF8FE296A5A99001E50A6 /* ContentView.swift in Sources */,
 				61EF678629AF892500C77813 /* NoteView.swift in Sources */,
 				61DAE0602995DA41006502BC /* LinearGradient+ForCategory.swift in Sources */,
@@ -831,6 +837,7 @@
 				613D54EF29AAB0EE00A91942 /* SwirlStyle.swift in Sources */,
 				61EF678729AF892500C77813 /* NoteView.swift in Sources */,
 				613D54F629AAB12200A91942 /* SwirlAnimation.swift in Sources */,
+				6150F20729B3A63A0051DB4E /* BaseNoteEditor.swift in Sources */,
 				61A21D7B29ADF59900E5D113 /* AnimationView.swift in Sources */,
 				616009A329A5AF5700A48560 /* TopButtons.swift in Sources */,
 				613D54EE29AAB0EB00A91942 /* CircleStyle.swift in Sources */,
@@ -849,6 +856,7 @@
 				615465F52999F6CD00FB1F03 /* Arrow.swift in Sources */,
 				616009A429A5AF5700A48560 /* TopButtons.swift in Sources */,
 				614AE46C2974C27900F24397 /* CompleteBackgroundView.swift in Sources */,
+				6150F20829B3A63A0051DB4E /* BaseNoteEditor.swift in Sources */,
 				615CC1FA296CC354004DEE47 /* Haptics.swift in Sources */,
 				61D469F9297608D5009CB8C3 /* Persistence.swift in Sources */,
 				613D54E829AAB0B400A91942 /* DateView.swift in Sources */,

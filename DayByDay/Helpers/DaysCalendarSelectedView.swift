@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DaysCalendarSelectedView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.colorScheme) private var colorScheme
     @Environment(\.dismiss) private var dismiss
     let date: Date
     
@@ -23,6 +24,9 @@ struct DaysCalendarSelectedView: View {
     
     @State var animate = false
     let orbAnimation: Animation = .spring()
+    
+    @State var showingNoteEditor = false
+    
     
     var body: some View {
         let day = getDay(for: date)
@@ -43,11 +47,10 @@ struct DaysCalendarSelectedView: View {
                     }
                     .offset(y: 60)
                     Spacer()
-                    HStack {
+                    HStack { // fill width
                         Spacer()
                     }
                 }
-//                .frame(minWidth: 800)
             }
             Header()
         }
@@ -159,7 +162,7 @@ struct DaysCalendarSelectedView: View {
             HStack {
                 Button("Close") { dismiss() }
                     .foregroundColor(Color(hex: 0x97D327))
-                    .brightness(0.07)
+                    .brightness(colorScheme == .dark ? 0.07 : -0.02)
                     .saturation(1.05)
                     .padding()
                 Spacer()
@@ -173,21 +176,47 @@ struct DaysCalendarSelectedView: View {
     @ViewBuilder
     private func Notes(_ day: DayMO?) -> some View {
         ZStack (alignment: .topLeading) {
-            NoteEditorView(date: date, focusOnAppear: false)
-                .padding(.top, 4)
-                .padding(.horizontal, 6)
-                .background(RoundedRectangle(cornerRadius: 6).fill(.thinMaterial))
-                .cornerRadius(8)
+            Group {
+                RoundedRectangle(cornerRadius: 6)
+                    .fill(.thinMaterial)
+                    .frame(minHeight: 90)
+                
+                Text(day?.note?.isEmpty ?? true ? "Enter notes for the day here." : day!.note!)
+                    .fontWeight(.light)
+                    .lineSpacing(6)
+                    .opacity(day?.note?.isEmpty ?? true ? 0.5 : 1.0)
+                    .padding()
+                    .sheet(isPresented: $showingNoteEditor) {
+                        NoteEditorView(focusOnAppear: true)
+                            .presentationDetents([.medium, .large])
+                    }
+            }
+            .contentShape(.contextMenuPreview, RoundedRectangle(cornerRadius: 6))
+            .compositingGroup()
+            .contextMenu { NoteContextMenu(day) }
+            .onTapGesture { showingNoteEditor = true }
+            
             
             Circle()
                 .fill(.orange.gradient)
-                .opacity(day?.note?.isEmpty ?? true ? 0.4 : 0.8)
+                .saturation(day?.note?.isEmpty ?? true ? 0.2 : 1.0)
+                .brightness(day?.note?.isEmpty ?? true ? 0.2 : 0.0)
                 .frame(width: 15)
                 .offset(x: -8, y: -6)
                 .brightness(0.05)
                 .allowsHitTesting(false)
         }
-        .frame(maxWidth: 300, minHeight: 100)
+        .frame(maxWidth: 300)
+    }
+    
+    @ViewBuilder
+    private func NoteContextMenu(_ day: DayMO?) -> some View {
+        Button(action: { showingNoteEditor = true }) {
+            Label("Edit", systemImage: "note.text")
+        }
+        Button(role: .destructive, action: { deleteNote(day: day) }) {
+            Label("Delete", systemImage: "trash")
+        }
     }
     
     
@@ -205,6 +234,11 @@ struct DaysCalendarSelectedView: View {
         let newItem = DayMO(context: viewContext)
         newItem.date = date
         newItem.toggle(category: category)
+        saveContext()
+    }
+    
+    private func deleteNote(day: DayMO?) {
+        day?.note = ""
         saveContext()
     }
     
@@ -275,5 +309,12 @@ class DaysCalendarSelectedViewController: UIViewController {
         if isBeingDismissed {
             onDismissBlock()
         }
+    }
+}
+
+
+struct DaysCalendarSelectedView_Previews: PreviewProvider {
+    static var previews: some View {
+        DaysCalendarSelectedView(date: Date()).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

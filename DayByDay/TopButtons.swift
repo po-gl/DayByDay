@@ -34,59 +34,11 @@ struct TopButtons: View {
         .buttonStyle(MaterialStyle())
         .frame(width: 50, height: 32)
         .sheet(isPresented: $showingNoteEditor) {
-            MainNoteEditorView()
+            NoteEditorView()
+                .presentationDetents([.medium, .large])
         }
     }
     
-    @ViewBuilder
-    private func MainNoteEditorView() -> some View {
-        ZStack (alignment: .topLeading) {
-            Group {
-                HStack {
-                    NoteAccent()
-                    Spacer()
-                }
-                NoteEditorView(date: Date(), focusOnAppear: false)
-                    .padding(.leading)
-            }
-            .padding(.top, 65)
-            NoteHeader()
-        }
-        .presentationDetents([.medium, .large])
-    }
-    
-    @ViewBuilder
-    private func NoteAccent() -> some View {
-        HStack {
-            Circle()
-                .fill(.orange.gradient)
-                .frame(width: 10)
-                .opacity(0.7)
-                .padding()
-                .offset(y: 15)
-            Spacer()
-        }
-    }
-    
-    @ViewBuilder
-    private func NoteHeader() -> some View {
-        VStack {
-            ZStack {
-                HStack {
-                    Button("Done") { showingNoteEditor = false }
-                        .foregroundColor(.orange)
-                        .brightness(0.07)
-                        .saturation(1.05)
-                        .padding()
-                    Spacer()
-                }
-                Text("\(Date(), formatter: dayFormatter)")
-            }
-            .frame(height: 65)
-            .background(.thinMaterial)
-            Spacer()
-        }
-    }
     
     @ViewBuilder
     private func CalendarButton() -> some View {
