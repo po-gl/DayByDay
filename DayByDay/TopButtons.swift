@@ -34,13 +34,37 @@ struct TopButtons: View {
         .buttonStyle(MaterialStyle())
         .frame(width: 50, height: 32)
         .sheet(isPresented: $showingNoteEditor) {
-            ZStack {
+            MainNoteEditorView()
+        }
+    }
+    
+    @ViewBuilder
+    private func MainNoteEditorView() -> some View {
+        ZStack (alignment: .topLeading) {
+            Group {
+                HStack {
+                    NoteAccent()
+                    Spacer()
+                }
                 NoteEditorView(date: Date(), focusOnAppear: false)
-                    .padding(.top, 65)
-                    .padding(.horizontal)
-                NoteHeader()
+                    .padding(.leading)
             }
-            .presentationDetents([.medium, .large])
+            .padding(.top, 65)
+            NoteHeader()
+        }
+        .presentationDetents([.medium, .large])
+    }
+    
+    @ViewBuilder
+    private func NoteAccent() -> some View {
+        HStack {
+            Circle()
+                .fill(.orange.gradient)
+                .frame(width: 10)
+                .opacity(0.7)
+                .padding()
+                .offset(y: 15)
+            Spacer()
         }
     }
     
@@ -50,14 +74,13 @@ struct TopButtons: View {
             ZStack {
                 HStack {
                     Button("Done") { showingNoteEditor = false }
-                        .foregroundColor(Color(hex: 0xE63C5C))
+                        .foregroundColor(.orange)
                         .brightness(0.07)
                         .saturation(1.05)
                         .padding()
                     Spacer()
                 }
                 Text("\(Date(), formatter: dayFormatter)")
-                    .font(.title3)
             }
             .frame(height: 65)
             .background(.thinMaterial)
