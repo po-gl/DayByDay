@@ -23,5 +23,6 @@ struct SwirlAnimation: View {
     
     var body: some View {
         AnimationView(name: assetName)
+            .transition(.opacity)
     }
 }
