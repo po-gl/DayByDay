@@ -200,7 +200,7 @@ struct DaysCalendarSelectedView: View {
             Circle()
                 .fill(.orange.gradient)
                 .saturation(day?.note?.isEmpty ?? true ? 0.2 : 1.0)
-                .brightness(day?.note?.isEmpty ?? true ? 0.2 : 0.0)
+                .brightness(day?.note?.isEmpty ?? true ? (colorScheme == .dark ? -0.2 : 0.2) : 0.0)
                 .frame(width: 15)
                 .offset(x: -8, y: -6)
                 .brightness(0.05)
