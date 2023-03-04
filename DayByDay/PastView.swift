@@ -18,14 +18,16 @@ struct PastView: View {
     private var height: Double { Double(daysToDisplay) * cellHeight }
     
     var body: some View {
-        ZStack {
-            WigglyBars()
-                .mask(Cells(isMask: true))
-            DatesAndDividers()
-            Eyes()
-            Cells()
-        }
+            ZStack {
+                WigglyBars()
+                    .mask(Cells(isMask: true))
+                DatesAndDividers()
+                Eyes()
+                Cells()
+                DescriptiveText()
+            }
         .frame(height: height)
+        .padding(.bottom, 30)
     }
     
     
@@ -180,6 +182,17 @@ struct PastView: View {
                     }
                 }
             }
+        }
+    }
+    
+    @ViewBuilder private func DescriptiveText() -> some View {
+        VStack {
+            Spacer()
+            Text("Past \(daysToDisplay) days")
+                .font(.title3)
+                .fontDesign(.serif)
+                .opacity(0.8)
+                .offset(y: 35)
         }
     }
 }
