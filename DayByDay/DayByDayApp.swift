@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVKit
 
 @main
 struct DayByDayApp: App {
@@ -15,6 +16,9 @@ struct DayByDayApp: App {
         WindowGroup {
             ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .onAppear {
+                    try? AVAudioSession.sharedInstance().setCategory(.ambient)
+                }
         }
     }
 }

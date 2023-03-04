@@ -45,6 +45,7 @@ class AnimationUIView: UIView {
                 if isPlayable {
                     let item = AVPlayerItem(asset: asset)
                     player = AVQueuePlayer()
+                    player?.isMuted = true
                     player?.automaticallyWaitsToMinimizeStalling = false
                     playerLayer.player = player
                     playerLayer.videoGravity = .resize
