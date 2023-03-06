@@ -8,6 +8,15 @@
         "branch" : "master",
         "revision" : "100c5901e7e269cd4f70e2f396cc2a35dd155fff"
       }
+    },
+    {
+      "identity" : "shiny",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/maustinstar/shiny",
+      "state" : {
+        "branch" : "master",
+        "revision" : "862360b8ab6b9ea9eb1156569a30f154b22625a5"
+      }
     }
   ],
   "version" : 2

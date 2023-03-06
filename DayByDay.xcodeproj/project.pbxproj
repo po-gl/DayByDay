@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6101CA242975FB7D00B12C68 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6101CA232975FB7D00B12C68 /* Notifications.swift */; };
 		6101CA262975FB7D00B12C68 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6101CA232975FB7D00B12C68 /* Notifications.swift */; };
+		6104E4FB29B679CA00EA1E94 /* Shiny in Frameworks */ = {isa = PBXBuildFile; productRef = 6104E4FA29B679CA00EA1E94 /* Shiny */; };
 		6104E56B296B1A580034B9E3 /* Date+compare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6104E56A296B1A580034B9E3 /* Date+compare.swift */; };
 		6104E56C296B1A580034B9E3 /* Date+compare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6104E56A296B1A580034B9E3 /* Date+compare.swift */; };
 		6104E56D296B1A590034B9E3 /* Date+compare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6104E56A296B1A580034B9E3 /* Date+compare.swift */; };
@@ -283,6 +284,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6104E4FB29B679CA00EA1E94 /* Shiny in Frameworks */,
 				616009AB29A7189F00A48560 /* HorizonCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -537,6 +539,7 @@
 			name = DayByDay;
 			packageProductDependencies = (
 				616009AA29A7189F00A48560 /* HorizonCalendar */,
+				6104E4FA29B679CA00EA1E94 /* Shiny */,
 			);
 			productName = DayByDay;
 			productReference = 610AF8F3296A5A99001E50A6 /* DayByDay.app */;
@@ -682,6 +685,7 @@
 			mainGroup = 610AF8EA296A5A99001E50A6;
 			packageReferences = (
 				616009A929A7189F00A48560 /* XCRemoteSwiftPackageReference "HorizonCalendar" */,
+				6104E4F929B679CA00EA1E94 /* XCRemoteSwiftPackageReference "shiny" */,
 			);
 			productRefGroup = 610AF8F4296A5A99001E50A6 /* Products */;
 			projectDirPath = "";
@@ -1496,6 +1500,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		6104E4F929B679CA00EA1E94 /* XCRemoteSwiftPackageReference "shiny" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/maustinstar/shiny";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		616009A929A7189F00A48560 /* XCRemoteSwiftPackageReference "HorizonCalendar" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/HorizonCalendar.git";
@@ -1507,6 +1519,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		6104E4FA29B679CA00EA1E94 /* Shiny */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6104E4F929B679CA00EA1E94 /* XCRemoteSwiftPackageReference "shiny" */;
+			productName = Shiny;
+		};
 		613D54FB29AAB21600A91942 /* HorizonCalendar */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 616009A929A7189F00A48560 /* XCRemoteSwiftPackageReference "HorizonCalendar" */;
