@@ -43,7 +43,7 @@ struct DaysCalendarSelectedView: View {
                             Orbs(day)
                         }
                         
-                        Notes(day)
+                        Notes(day, date: date)
                     }
                     .offset(y: 60)
                     Spacer()
@@ -172,7 +172,7 @@ struct DaysCalendarSelectedView: View {
     }
     
     @ViewBuilder
-    private func Notes(_ day: DayMO?) -> some View {
+    private func Notes(_ day: DayMO?, date: Date) -> some View {
         ZStack (alignment: .topLeading) {
             Group {
                 RoundedRectangle(cornerRadius: 6)
@@ -185,7 +185,7 @@ struct DaysCalendarSelectedView: View {
                     .opacity(day?.note?.isEmpty ?? true ? 0.5 : 1.0)
                     .padding()
                     .sheet(isPresented: $showingNoteEditor) {
-                        NoteEditorView(focusOnAppear: true)
+                        NoteEditorView(date: date)
                             .presentationDetents([.medium, .large])
                     }
             }

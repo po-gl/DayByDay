@@ -9,6 +9,7 @@ import SwiftUI
 
 struct NoteEditorView: View {
     @Environment(\.dismiss) private var dismiss
+    var date: Date = Date()
     var focusOnAppear: Bool = false
 
     var body: some View {
@@ -18,7 +19,7 @@ struct NoteEditorView: View {
                     NoteAccent()
                     Spacer()
                 }
-                BaseNoteEditor(date: Date(), focusOnAppear: focusOnAppear)
+                BaseNoteEditor(date: date, focusOnAppear: focusOnAppear)
                     .padding(.leading)
             }
             .padding(.top, 65)
@@ -51,7 +52,7 @@ struct NoteEditorView: View {
                         .padding()
                     Spacer()
                 }
-                Text("\(Date(), formatter: dayFormatter)")
+                Text(date, formatter: dayFormatter)
             }
             .frame(height: 65)
             .background(.thinMaterial)
