@@ -22,7 +22,7 @@ struct NoteEditorView: View {
                 BaseNoteEditor(date: date, focusOnAppear: focusOnAppear)
                     .padding(.leading)
             }
-            .padding(.top, 65)
+            .padding(.top, 50)
             NoteHeader()
         }
     }
@@ -54,7 +54,7 @@ struct NoteEditorView: View {
                 }
                 Text(date, formatter: dayFormatter)
             }
-            .frame(height: 65)
+            .frame(height: 50)
             .background(.thinMaterial)
             Spacer()
         }

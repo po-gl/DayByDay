@@ -35,9 +35,6 @@ struct DaysCalendarSelectedView: View {
             ScrollView {
                 VStack (spacing: 0) {
                     Group {
-                        DateView(date: date, fontSize: 24, width: 140, shineOffset: Double.random(in: 0...30), formatter: dayFormatter)
-                            .frame(height: 50)
-                            .animation(.spring().delay(0.2), value: animate)
                         ZStack {
                             BackgroundOrbs()
                             Orbs(day)
@@ -157,13 +154,16 @@ struct DaysCalendarSelectedView: View {
     @ViewBuilder
     private func Header() -> some View {
         VStack {
-            HStack {
-                Button("Close") { dismiss() }
-                    .foregroundColor(Color(hex: 0x97D327))
-                    .brightness(colorScheme == .dark ? 0.07 : -0.02)
-                    .saturation(1.05)
-                    .padding()
-                Spacer()
+            ZStack {
+                HStack {
+                    Button("Close") { dismiss() }
+                        .foregroundColor(Color(hex: 0x97D327))
+                        .brightness(colorScheme == .dark ? 0.07 : -0.02)
+                        .saturation(1.05)
+                        .padding()
+                    Spacer()
+                }
+                Text(date, formatter: dayFormatter)
             }
             .frame(height: 50)
             .background(.thinMaterial)
