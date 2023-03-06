@@ -27,6 +27,8 @@ struct DaysCalendarSelectedView: View {
     
     @State var showingNoteEditor = false
     
+    let headerHeight: Double = 50
+    
     
     var body: some View {
         let day = getDay(for: date)
@@ -42,7 +44,7 @@ struct DaysCalendarSelectedView: View {
                         
                         Notes(day, date: date)
                     }
-                    .offset(y: 60)
+                    .offset(y: headerHeight + 10)
                     Spacer()
                 }
                 .frame(maxWidth: .infinity)
@@ -163,9 +165,13 @@ struct DaysCalendarSelectedView: View {
                         .padding()
                     Spacer()
                 }
+                RoundedRectangle(cornerRadius: 10)
+                    .frame(width: 35, height: 5)
+                    .opacity(0.6)
+                    .offset(y: -headerHeight/2 + 8)
                 Text(date, formatter: dayFormatter)
             }
-            .frame(height: 50)
+            .frame(height: headerHeight)
             .background(.thinMaterial)
             Spacer()
         }
