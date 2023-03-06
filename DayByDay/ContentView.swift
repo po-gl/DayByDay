@@ -7,7 +7,6 @@
 
 import SwiftUI
 import CoreData
-import Shiny
 
 struct ContentView: View {
     @Environment(\.scenePhase) private var scenePhase
