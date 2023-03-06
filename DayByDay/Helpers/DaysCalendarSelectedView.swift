@@ -47,10 +47,8 @@ struct DaysCalendarSelectedView: View {
                     }
                     .offset(y: 60)
                     Spacer()
-                    HStack { // fill width
-                        Spacer()
-                    }
                 }
+                .frame(maxWidth: .infinity)
             }
             Header()
         }
