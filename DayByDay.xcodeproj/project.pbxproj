@@ -113,6 +113,8 @@
 		61A21D7D29ADF59900E5D113 /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A21D7929ADF59900E5D113 /* AnimationView.swift */; };
 		61A21D7E29ADF59900E5D113 /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A21D7929ADF59900E5D113 /* AnimationView.swift */; };
 		61A21D7F29ADF59900E5D113 /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A21D7929ADF59900E5D113 /* AnimationView.swift */; };
+		61A593C529B6BBC800DDA56A /* Shiny in Frameworks */ = {isa = PBXBuildFile; productRef = 61A593C429B6BBC800DDA56A /* Shiny */; };
+		61A593C729B6BBCE00DDA56A /* Shiny in Frameworks */ = {isa = PBXBuildFile; productRef = 61A593C629B6BBCE00DDA56A /* Shiny */; };
 		61D469C929760854009CB8C3 /* DayByDayWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D469C829760854009CB8C3 /* DayByDayWatchApp.swift */; };
 		61D469CB29760854009CB8C3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D469CA29760854009CB8C3 /* ContentView.swift */; };
 		61D469DA29760855009CB8C3 /* DayByDayWatch_Watch_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D469D929760855009CB8C3 /* DayByDayWatch_Watch_AppTests.swift */; };
@@ -300,6 +302,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61A593C529B6BBC800DDA56A /* Shiny in Frameworks */,
 				613D54FC29AAB21600A91942 /* HorizonCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,6 +311,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61A593C729B6BBCE00DDA56A /* Shiny in Frameworks */,
 				613D54FE29AAB21C00A91942 /* HorizonCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -569,6 +573,7 @@
 			name = DayByDayTests;
 			packageProductDependencies = (
 				613D54FB29AAB21600A91942 /* HorizonCalendar */,
+				61A593C429B6BBC800DDA56A /* Shiny */,
 			);
 			productName = DayByDayTests;
 			productReference = 610AF909296A5A9A001E50A6 /* DayByDayTests.xctest */;
@@ -590,6 +595,7 @@
 			name = DayByDayUITests;
 			packageProductDependencies = (
 				613D54FD29AAB21C00A91942 /* HorizonCalendar */,
+				61A593C629B6BBCE00DDA56A /* Shiny */,
 			);
 			productName = DayByDayUITests;
 			productReference = 610AF913296A5A9A001E50A6 /* DayByDayUITests.xctest */;
@@ -1552,6 +1558,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 616009A929A7189F00A48560 /* XCRemoteSwiftPackageReference "HorizonCalendar" */;
 			productName = HorizonCalendar;
+		};
+		61A593C429B6BBC800DDA56A /* Shiny */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6104E4F929B679CA00EA1E94 /* XCRemoteSwiftPackageReference "shiny" */;
+			productName = Shiny;
+		};
+		61A593C629B6BBCE00DDA56A /* Shiny */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6104E4F929B679CA00EA1E94 /* XCRemoteSwiftPackageReference "shiny" */;
+			productName = Shiny;
 		};
 /* End XCSwiftPackageProductDependency section */
 
