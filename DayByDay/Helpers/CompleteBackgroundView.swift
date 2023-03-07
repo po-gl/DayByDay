@@ -21,9 +21,9 @@ struct CompleteBackgroundView: View {
     
     var body: some View {
         ZStack {
-            active()
-            productive()
-            creative()
+            Active()
+            Productive()
+            Creative()
         }
         .onAppear() {
             withAnimation {
@@ -32,7 +32,9 @@ struct CompleteBackgroundView: View {
         }
     }
     
-    private func active() -> some View {
+    
+    @ViewBuilder
+    private func Active() -> some View {
         Group {
             Circle()
                 .rotationEffect(.degrees(-70))
@@ -60,7 +62,8 @@ struct CompleteBackgroundView: View {
         }
     }
     
-    private func creative() -> some View {
+    @ViewBuilder
+    private func Creative() -> some View {
         Group {
             Circle()
                 .rotationEffect(.degrees(moving ? 0 : 360))
@@ -82,7 +85,8 @@ struct CompleteBackgroundView: View {
         }
     }
     
-    private func productive() -> some View {
+    @ViewBuilder
+    private func Productive() -> some View {
         Group {
             Circle()
                 .rotationEffect(.degrees(0))
