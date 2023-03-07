@@ -113,6 +113,12 @@
 		6180296B29B78DEF00049F1C /* DayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6180296729B78DEF00049F1C /* DayData.swift */; };
 		6180296C29B78DEF00049F1C /* DayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6180296729B78DEF00049F1C /* DayData.swift */; };
 		6180296D29B78DEF00049F1C /* DayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6180296729B78DEF00049F1C /* DayData.swift */; };
+		6180296F29B7B20400049F1C /* View+ParallaxMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6180296E29B7B20400049F1C /* View+ParallaxMotion.swift */; };
+		6180297029B7B20400049F1C /* View+ParallaxMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6180296E29B7B20400049F1C /* View+ParallaxMotion.swift */; };
+		6180297129B7B20400049F1C /* View+ParallaxMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6180296E29B7B20400049F1C /* View+ParallaxMotion.swift */; };
+		6180297229B7B20400049F1C /* View+ParallaxMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6180296E29B7B20400049F1C /* View+ParallaxMotion.swift */; };
+		6180297329B7B20400049F1C /* View+ParallaxMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6180296E29B7B20400049F1C /* View+ParallaxMotion.swift */; };
+		6180297429B7B20400049F1C /* View+ParallaxMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6180296E29B7B20400049F1C /* View+ParallaxMotion.swift */; };
 		61A21D7A29ADF59900E5D113 /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A21D7929ADF59900E5D113 /* AnimationView.swift */; };
 		61A21D7B29ADF59900E5D113 /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A21D7929ADF59900E5D113 /* AnimationView.swift */; };
 		61A21D7C29ADF59900E5D113 /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A21D7929ADF59900E5D113 /* AnimationView.swift */; };
@@ -273,6 +279,7 @@
 		616009A129A5AF5700A48560 /* TopButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopButtons.swift; sourceTree = "<group>"; };
 		616009AC29A825D500A48560 /* DaysCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysCalendarView.swift; sourceTree = "<group>"; };
 		6180296729B78DEF00049F1C /* DayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayData.swift; sourceTree = "<group>"; };
+		6180296E29B7B20400049F1C /* View+ParallaxMotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ParallaxMotion.swift"; sourceTree = "<group>"; };
 		61A21D7929ADF59900E5D113 /* AnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
 		61D469C629760854009CB8C3 /* DayByDayWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DayByDayWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		61D469C829760854009CB8C3 /* DayByDayWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayByDayWatchApp.swift; sourceTree = "<group>"; };
@@ -353,6 +360,7 @@
 				6104E56A296B1A580034B9E3 /* Date+compare.swift */,
 				61188D4229710D8000BF77B5 /* Color+hex.swift */,
 				61DAE05F2995DA41006502BC /* LinearGradient+ForCategory.swift */,
+				6180296E29B7B20400049F1C /* View+ParallaxMotion.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -808,6 +816,7 @@
 				614AE46B2974C27900F24397 /* CompleteBackgroundView.swift in Sources */,
 				610AF8FC296A5A99001E50A6 /* DayByDay.xcdatamodeld in Sources */,
 				615CC1F8296CC354004DEE47 /* Haptics.swift in Sources */,
+				6180296F29B7B20400049F1C /* View+ParallaxMotion.swift in Sources */,
 				610AF8F7296A5A99001E50A6 /* DayByDayApp.swift in Sources */,
 				610F337629A8831E00834E8E /* MaterialStyle.swift in Sources */,
 				616009AD29A825D500A48560 /* DaysCalendarView.swift in Sources */,
@@ -862,6 +871,7 @@
 				610F701D299EC11B00F1BE72 /* HorizontalLine.swift in Sources */,
 				61DAE05A2995D8F8006502BC /* WigglyBar.swift in Sources */,
 				613D54F229AAB0F700A91942 /* CircleLabelView.swift in Sources */,
+				6180297029B7B20400049F1C /* View+ParallaxMotion.swift in Sources */,
 				613D54F429AAB0FD00A91942 /* CompleteBackgroundView.swift in Sources */,
 				613D550229AAB7E000A91942 /* DateCompareTests.swift in Sources */,
 				613D54EF29AAB0EE00A91942 /* SwirlStyle.swift in Sources */,
@@ -909,6 +919,7 @@
 				61DAE0622995DA41006502BC /* LinearGradient+ForCategory.swift in Sources */,
 				61188D412970F51B00BF77B5 /* SwirlStyle.swift in Sources */,
 				610F701E299EC11B00F1BE72 /* HorizontalLine.swift in Sources */,
+				6180297129B7B20400049F1C /* View+ParallaxMotion.swift in Sources */,
 				6180296A29B78DEF00049F1C /* DayData.swift in Sources */,
 				613D54EB29AAB0DB00A91942 /* ContentView.swift in Sources */,
 				616009AF29A825D500A48560 /* DaysCalendarView.swift in Sources */,
@@ -933,6 +944,7 @@
 				61D469F7297608CE009CB8C3 /* Persistence.swift in Sources */,
 				612E149529B6AEBF0001DFFE /* WaveView.swift in Sources */,
 				61D469FA297608DB009CB8C3 /* DayStatus.swift in Sources */,
+				6180297229B7B20400049F1C /* View+ParallaxMotion.swift in Sources */,
 				610F701F299EC11B00F1BE72 /* HorizontalLine.swift in Sources */,
 				61D469F5297608AB009CB8C3 /* ButtonCluster.swift in Sources */,
 				61D469FE297608E9009CB8C3 /* Date+compare.swift in Sources */,
@@ -959,6 +971,7 @@
 				61D469FF297608EA009CB8C3 /* Date+compare.swift in Sources */,
 				612E149629B6AEBF0001DFFE /* WaveView.swift in Sources */,
 				61DAE0642995DA41006502BC /* LinearGradient+ForCategory.swift in Sources */,
+				6180297329B7B20400049F1C /* View+ParallaxMotion.swift in Sources */,
 				61A21D7E29ADF59900E5D113 /* AnimationView.swift in Sources */,
 				610F7020299EC11B00F1BE72 /* HorizontalLine.swift in Sources */,
 				61DAE05D2995D8F8006502BC /* WigglyBar.swift in Sources */,
@@ -970,6 +983,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6180297429B7B20400049F1C /* View+ParallaxMotion.swift in Sources */,
 				6180296D29B78DEF00049F1C /* DayData.swift in Sources */,
 				61D46A1929760993009CB8C3 /* DayByDay.xcdatamodeld in Sources */,
 				61DAE05E2995D8F8006502BC /* WigglyBar.swift in Sources */,

@@ -26,6 +26,7 @@ struct WaveView: View {
                     moving.toggle()
                 }
             }
+            .parallaxMotion(magnitude: 15)
     }
     
     @ViewBuilder
