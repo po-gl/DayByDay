@@ -42,6 +42,7 @@ struct BaseNoteEditor: View {
             
             if note.isEmpty {
                 TextHint()
+                    .allowsHitTesting(false)
             }
         }
         .onAppear {
