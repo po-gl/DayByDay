@@ -59,16 +59,6 @@ struct PastView: View {
     }
     
     
-    private func getDay(for date: Date) -> DayMO? {
-        for day in allDays {
-            if day.date?.isSameDay(as: date) ?? false {
-                return day
-            }
-        }
-        return nil
-    }
-    
-    
     @ViewBuilder
     private func Cells(isMask: Bool = false) -> some View {
         VStack(spacing: 0) {
@@ -92,7 +82,7 @@ struct PastView: View {
     @ViewBuilder
     private func Cell(category: StatusCategory, _ isMask: Bool, date: Date) -> some View {
         let width: Double = 110
-        let day = getDay(for: date)
+        let day = DayData.getDay(for: date, days: allDays)
         let isActive = day?.isActive(for: category) ?? false
         
         if isMask {
@@ -108,29 +98,12 @@ struct PastView: View {
                     withAnimation {
                         heavyHaptic()
                         if let day = day {
-                            day.toggle(category: category)
+                            DayData.toggle(category: category, for: day, context: viewContext)
                         } else {
-                            addDay(activeFor: category, date: date)
+                            DayData.addDay(activeFor: category, date: date, context: viewContext)
                         }
-                        saveContext()
                     }
                 }
-        }
-    }
-    
-    private func addDay(activeFor category: StatusCategory, date: Date) {
-        let newItem = DayMO(context: viewContext)
-        newItem.date = date
-        newItem.toggle(category: category)
-        saveContext()
-    }
-    
-    private func saveContext() {
-        do {
-            try viewContext.save()
-        } catch {
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
     }
     

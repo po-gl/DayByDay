@@ -67,23 +67,12 @@ struct NoteView: View {
         Button(action: { showingNoteEditor = true }) {
             Label("Edit", systemImage: "note.text")
         }
-        Button(role: .destructive, action: deleteNote) {
+        Button(role: .destructive, action: {
+            if let latestDay {
+                DayData.deleteNote(for: latestDay, context: viewContext)
+            }
+        }) {
             Label("Delete", systemImage: "trash")
-        }
-    }
-    
-    private func deleteNote() {
-        latestDay?.note = ""
-        saveContext()
-    }
-    
-    private func saveContext() {
-        do {
-            try viewContext.save()
-        } catch {
-            // Replace this implementation with code to handle the error appropriately.
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
     }
 }

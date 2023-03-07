@@ -19,7 +19,7 @@ struct BaseNoteEditor: View {
     let focusOnAppear: Bool
     
     var body: some View {
-        let day = getDay(for: date)
+        let day = DayData.getDay(for: date, days: allDays)
         
         ZStack {
             TextEditor(text: $note)
@@ -33,10 +33,9 @@ struct BaseNoteEditor: View {
                 .onChange(of: noteFocus) { focus in
                     if !focus {
                         if let day {
-                            day.note = note
-                            saveContext()
+                            DayData.change(note: note, for: day, context: viewContext)
                         } else {
-                            addDay(with: note)
+                            DayData.addDay(withNote: note, date: date, context: viewContext)
                         }
                     }
                 }
@@ -64,32 +63,6 @@ struct BaseNoteEditor: View {
                 Spacer()
             }
             Spacer()
-        }
-    }
-    
-    private func getDay(for date: Date) -> DayMO? {
-        for day in allDays {
-            if day.date?.isSameDay(as: date) ?? false {
-                return day
-            }
-        }
-        return nil
-    }
-    
-    private func addDay(with note: String) {
-        let newItem = DayMO(context: viewContext)
-        newItem.date = date
-        newItem.note = note
-        saveContext()
-    }
-    
-    private func saveContext() {
-        do {
-            try viewContext.save()
-        } catch {
-            // Replace this implementation with code to handle the error appropriately.
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
     }
 }

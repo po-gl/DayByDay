@@ -65,11 +65,10 @@ struct ButtonCluster: View {
         Button(action: {
             withAnimation(.easeOut(duration: 0.2)) {
                 if let day = latestDay {
-                    day.toggle(category: category)
+                    DayData.toggle(category: category, for: day, context: viewContext)
                 } else {
-                    addDay(activeFor: category)
+                    DayData.addDay(activeFor: category, date: Date(), context: viewContext)
                 }
-                saveContext()
             }
             haptic()
         }) {
@@ -85,24 +84,6 @@ struct ButtonCluster: View {
         .accessibilityIdentifier("\(text)Button_\(isOn ? "On" : "Off")") // for UITests
     }
     
-    private func addDay(activeFor category: StatusCategory) {
-        let newItem = DayMO(context: viewContext)
-        newItem.date = Date()
-        newItem.toggle(category: category)
-        saveContext()
-    }
-    
-    
-    private func saveContext() {
-        do {
-            try viewContext.save()
-        } catch {
-            // Replace this implementation with code to handle the error appropriately.
-            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-        }
-    }
     
     private func haptic() {
         if isDayComplete {

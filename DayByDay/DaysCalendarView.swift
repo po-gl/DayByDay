@@ -147,7 +147,7 @@ class DaysCalendarViewController: UIViewController {
     private func Orbs(_ day: Day) -> some View {
         let orbWidth: Double = 16
         let spacing: Double = orbWidth/2 + 1
-        let day = getDay(for: calendar.date(from: day.components)!)
+        let day = DayData.getDay(for: calendar.date(from: day.components)!, days: allDays)
         
         let isActive = day?.isActive(for: .active) ?? false
         let isCreative = day?.isActive(for: .creative) ?? false
@@ -198,15 +198,6 @@ class DaysCalendarViewController: UIViewController {
                 .offset(x: -offset*2, y: offset-2)
                 .brightness(0.05)
         }
-    }
-    
-    private func getDay(for date: Date) -> DayMO? {
-        for day in allDays {
-            if day.date?.isSameDay(as: date) ?? false {
-                return day
-            }
-        }
-        return nil
     }
 }
 

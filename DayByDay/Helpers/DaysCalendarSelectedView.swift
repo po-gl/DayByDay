@@ -31,7 +31,7 @@ struct DaysCalendarSelectedView: View {
     
     
     var body: some View {
-        let day = getDay(for: date)
+        let day = DayData.getDay(for: date, days: allDays)
         
         ZStack {
             ScrollView {
@@ -109,11 +109,10 @@ struct DaysCalendarSelectedView: View {
     private func handleOrbPress(for category: StatusCategory, day: DayMO?) {
         withAnimation(.easeOut(duration: 0.2)) {
             if let day {
-                day.toggle(category: category)
+                DayData.toggle(category: category, for: day, context: viewContext)
             } else {
-                addDay(activeFor: category)
+                DayData.addDay(activeFor: category, date: date, context: viewContext)
             }
-            saveContext()
         }
         haptic(day)
     }
@@ -218,44 +217,15 @@ struct DaysCalendarSelectedView: View {
         Button(action: { showingNoteEditor = true }) {
             Label("Edit", systemImage: "note.text")
         }
-        Button(role: .destructive, action: { deleteNote(day: day) }) {
+        Button(role: .destructive, action: {
+            if let day {
+                DayData.deleteNote(for: day, context: viewContext)
+            }
+        }) {
             Label("Delete", systemImage: "trash")
         }
     }
     
-    
-    private func getDay(for date: Date) -> DayMO? {
-        for day in allDays {
-            if day.date?.isSameDay(as: date) ?? false {
-                return day
-            }
-        }
-        return nil
-    }
-    
-    
-    private func addDay(activeFor category: StatusCategory) {
-        let newItem = DayMO(context: viewContext)
-        newItem.date = date
-        newItem.toggle(category: category)
-        saveContext()
-    }
-    
-    private func deleteNote(day: DayMO?) {
-        day?.note = ""
-        saveContext()
-    }
-    
-    private func saveContext() {
-        do {
-            try viewContext.save()
-        } catch {
-            // Replace this implementation with code to handle the error appropriately.
-            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-        }
-    }
     
     private func haptic(_ day: DayMO?) {
         if day?.isComplete() ?? false {
