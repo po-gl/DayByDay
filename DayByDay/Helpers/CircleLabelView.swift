@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Shiny
 
 struct CircleLabelView: View {
     @Environment(\.colorScheme) private var colorScheme
@@ -40,8 +39,6 @@ struct CircleLabelView: View {
         }
         .frame(width: size.width, height: size.height)
         .rotationEffect(angle(for: startAngle))
-        .shiny(colorScheme == .dark ? .glossy(.gray) : .matte(.black))
-        .allowsHitTesting(false)
     }
     
     func angle(at index: Int) -> Angle {

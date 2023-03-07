@@ -7,7 +7,6 @@
 
 import Foundation
 import SwiftUI
-import Shiny
 
 struct SwirlStyle: ButtonStyle {
     @Environment(\.colorScheme) private var colorScheme
@@ -28,8 +27,6 @@ struct SwirlStyle: ButtonStyle {
                     .opacity(isOn ? 1.0 : 0.4)
                     .saturation(isOn ? 1.0 : 0.7)
                     .brightness(isOn ? 0.0 : colorScheme == .dark ? -0.1 : 0.1)
-                    .shiny(.glossy(.black))
-                    .allowsHitTesting(false)
             )
             .overlay(
                 configuration.label
