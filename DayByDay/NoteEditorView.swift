@@ -46,6 +46,7 @@ struct NoteEditorView: View {
             ZStack {
                 HStack {
                     Button("Done") { dismiss() }
+                        .accessibilityIdentifier("NoteDoneButton")
                         .foregroundColor(.orange)
                         .brightness(0.07)
                         .saturation(1.05)

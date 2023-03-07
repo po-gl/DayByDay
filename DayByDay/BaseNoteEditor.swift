@@ -23,6 +23,7 @@ struct BaseNoteEditor: View {
         
         ZStack {
             TextEditor(text: $note)
+                .accessibilityIdentifier("NoteTextEditor")
                 .scrollDismissesKeyboard(.interactively)
                 .focused($noteFocus)
                 .scrollContentBackground(.hidden)

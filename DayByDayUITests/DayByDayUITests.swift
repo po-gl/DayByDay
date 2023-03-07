@@ -16,6 +16,7 @@ final class DayByDayUITests: XCTestCase {
     override func tearDownWithError() throws {
         let app = XCUIApplication()
         setDayState(on: false, app)
+        deleteNote(app)
     }
 
     func testTapButtons() throws {
@@ -41,6 +42,8 @@ final class DayByDayUITests: XCTestCase {
         XCTAssertEqual(app.buttons["PastViewRow29_Col3"].isHittable, true)
     }
     
+    // MARK: Calendar tests
+    
     func testOpenCalendar() throws {
         let app = XCUIApplication()
         app.launch()
@@ -48,6 +51,44 @@ final class DayByDayUITests: XCTestCase {
         app.buttons["CalendarButton"].tap()
         
         XCTAssertEqual(app.otherElements["CalendarView"].exists, true)
+    }
+    
+    // MARK: Note tests
+    
+    func testOpenNote() throws {
+        let app = XCUIApplication()
+        app.launch()
+        
+        app.buttons["NoteButton"].tap()
+        
+        XCTAssertEqual(app.textViews["NoteTextEditor"].exists, true)
+    }
+    
+    func testWriteAndDeleteNote() throws {
+        let app = XCUIApplication()
+        app.launch()
+        
+        // Open editor
+        app.buttons["NoteButton"].tap()
+
+        // Type note
+        let noteEditor = app.textViews["NoteTextEditor"]
+        noteEditor.tap()
+        UIPasteboard.general.string = "Test Content"
+        noteEditor.doubleTap()
+        app.menuItems["Paste"].tap()
+
+        // Close editor
+        app.buttons["NoteDoneButton"].tap()
+        
+        XCTAssertEqual(app.buttons["NoteTextView"].label, "Test Content")
+        
+        // Delete text through context menu
+        let noteText = app.buttons["NoteTextView"]
+        noteText.press(forDuration: 0.5)
+        app.buttons["NoteDeleteContextButton"].tap()
+        
+        XCTAssertEqual(app.buttons["Test Content"].exists, false)
     }
 
     func testLaunchPerformance() throws {
@@ -64,6 +105,14 @@ final class DayByDayUITests: XCTestCase {
             if button.exists {
                 button.tap()
             }
+        }
+    }
+    
+    func deleteNote(_ app: XCUIApplication) {
+        if app.buttons["NoteTextView"].exists {
+            let noteText = app.buttons["NoteTextView"]
+            noteText.press(forDuration: 0.5)
+            app.buttons["NoteDeleteContextButton"].tap()
         }
     }
 }

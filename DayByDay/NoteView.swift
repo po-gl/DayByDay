@@ -32,6 +32,8 @@ struct NoteView: View {
                     Accent()
                     
                     Text(latestDay?.note ?? "")
+                        .accessibilityIdentifier("NoteTextView")
+                        .accessibilityAddTraits(.isButton)
                         .font(.system(size: 16, weight: .light))
                         .lineSpacing(2.0)
                         .padding(.horizontal)
@@ -74,6 +76,7 @@ struct NoteView: View {
         }) {
             Label("Delete", systemImage: "trash")
         }
+        .accessibilityIdentifier("NoteDeleteContextButton")
     }
 }
 
