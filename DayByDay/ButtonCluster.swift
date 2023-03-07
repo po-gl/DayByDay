@@ -35,15 +35,22 @@ struct ButtonCluster: View {
                     .opacity(isDayComplete ? 1.0 : 0.0)
                     .animation(.easeOut(duration: 3.0), value: isDayComplete)
                     .zIndex(1)
+                WaveView()
+                    .opacity(isDayComplete ? 1.0 : 0.0)
+                    .animation(.easeOut(duration: 1.0), value: isDayComplete)
+                    .allowsHitTesting(false)
+                    .zIndex(3)
                 
                 Group {
                     SwirlButton("Active", for: .active, startAngle: .topLeft, geometry)
+                        .zIndex(2)
                     SwirlButton("Creative", for: .creative, startAngle: .topRight, geometry)
+                        .zIndex(4)
                     SwirlButton("Productive", for: .productive, startAngle: .bottom, geometry)
+                        .zIndex(4)
                 }
-                .zIndex(3)
                 .mask {
-                    WaveMask()
+                    WaveMask(geometry)
                 }
             }
             .position(x: geometry.size.width/2, y: geometry.size.height/2)
@@ -106,10 +113,10 @@ struct ButtonCluster: View {
     }
     
     @ViewBuilder
-    private func WaveMask() -> some View {
+    private func WaveMask(_ geometry: GeometryProxy) -> some View {
         ZStack {
             Rectangle()
-                .frame(width: 360, height: 700)
+                .frame(width: geometry.size.width, height: 700)
             ZStack {
                 WigglyBar(category: .active, width: 30, height: 400, frequency: 50, amplitude: 5, speed: 2.0)
                     .frame(width: 200, height: 400)

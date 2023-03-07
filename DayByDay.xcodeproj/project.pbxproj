@@ -43,6 +43,12 @@
 		611A5F8C2995EDCE00E28A56 /* WigglyEyes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A5F882995EDCE00E28A56 /* WigglyEyes.swift */; };
 		611A5F8D2995EDCE00E28A56 /* WigglyEyes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A5F882995EDCE00E28A56 /* WigglyEyes.swift */; };
 		611A5F8E2995EDCE00E28A56 /* WigglyEyes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A5F882995EDCE00E28A56 /* WigglyEyes.swift */; };
+		612E149229B6AEBE0001DFFE /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612E149129B6AEBE0001DFFE /* WaveView.swift */; };
+		612E149329B6AEBF0001DFFE /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612E149129B6AEBE0001DFFE /* WaveView.swift */; };
+		612E149429B6AEBF0001DFFE /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612E149129B6AEBE0001DFFE /* WaveView.swift */; };
+		612E149529B6AEBF0001DFFE /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612E149129B6AEBE0001DFFE /* WaveView.swift */; };
+		612E149629B6AEBF0001DFFE /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612E149129B6AEBE0001DFFE /* WaveView.swift */; };
+		612E149729B6AEBF0001DFFE /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612E149129B6AEBE0001DFFE /* WaveView.swift */; };
 		613D54E429AAAF9A00A91942 /* DayMOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613D54E329AAAF9A00A91942 /* DayMOTests.swift */; };
 		613D54E529AAB07700A91942 /* DayStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614EE408296AC9E7001FB19D /* DayStatus.swift */; };
 		613D54E629AAB07B00A91942 /* DayStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614EE408296AC9E7001FB19D /* DayStatus.swift */; };
@@ -241,6 +247,7 @@
 		61188D3F2970F51B00BF77B5 /* SwirlStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwirlStyle.swift; sourceTree = "<group>"; };
 		61188D4229710D8000BF77B5 /* Color+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+hex.swift"; sourceTree = "<group>"; };
 		611A5F882995EDCE00E28A56 /* WigglyEyes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WigglyEyes.swift; sourceTree = "<group>"; };
+		612E149129B6AEBE0001DFFE /* WaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveView.swift; sourceTree = "<group>"; };
 		613D54E329AAAF9A00A91942 /* DayMOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayMOTests.swift; sourceTree = "<group>"; };
 		613D54FF29AAB49100A91942 /* ColorHexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHexTests.swift; sourceTree = "<group>"; };
 		613D550129AAB7E000A91942 /* DateCompareTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCompareTests.swift; sourceTree = "<group>"; };
@@ -455,6 +462,7 @@
 				6101CA232975FB7D00B12C68 /* Notifications.swift */,
 				614EE402296ABA43001FB19D /* CircleLabelView.swift */,
 				614AE46A2974C27900F24397 /* CompleteBackgroundView.swift */,
+				612E149129B6AEBE0001DFFE /* WaveView.swift */,
 				610F701B299EC11B00F1BE72 /* HorizontalLine.swift */,
 				6160099629A59ABC00A48560 /* WeekLine.swift */,
 				61DAE0582995D8F8006502BC /* WigglyBar.swift */,
@@ -798,6 +806,7 @@
 				616009A229A5AF5700A48560 /* TopButtons.swift in Sources */,
 				6101CA242975FB7D00B12C68 /* Notifications.swift in Sources */,
 				614EE403296ABA43001FB19D /* CircleLabelView.swift in Sources */,
+				612E149229B6AEBE0001DFFE /* WaveView.swift in Sources */,
 				611A5F892995EDCE00E28A56 /* WigglyEyes.swift in Sources */,
 				6160099729A59ABC00A48560 /* WeekLine.swift in Sources */,
 				6150F20629B3A63A0051DB4E /* BaseNoteEditor.swift in Sources */,
@@ -820,6 +829,7 @@
 				613D54E929AAB0D100A91942 /* Persistence.swift in Sources */,
 				613D54ED29AAB0E500A91942 /* PastView.swift in Sources */,
 				613D54E729AAB0B300A91942 /* DateView.swift in Sources */,
+				612E149329B6AEBF0001DFFE /* WaveView.swift in Sources */,
 				615465F42999F6CD00FB1F03 /* Arrow.swift in Sources */,
 				616009AE29A825D500A48560 /* DaysCalendarView.swift in Sources */,
 				61EF678329AF5D2A00C77813 /* NoteEditorView.swift in Sources */,
@@ -875,6 +885,7 @@
 				61EF678429AF5D2A00C77813 /* NoteEditorView.swift in Sources */,
 				610AF918296A5A9A001E50A6 /* DayByDayUITests.swift in Sources */,
 				614EE40A296AC9E7001FB19D /* DayStatus.swift in Sources */,
+				612E149429B6AEBF0001DFFE /* WaveView.swift in Sources */,
 				6104E56D296B1A590034B9E3 /* Date+compare.swift in Sources */,
 				611A5F8B2995EDCE00E28A56 /* WigglyEyes.swift in Sources */,
 				61A21D7C29ADF59900E5D113 /* AnimationView.swift in Sources */,
@@ -903,6 +914,7 @@
 				615465F62999F6CD00FB1F03 /* Arrow.swift in Sources */,
 				61D46A05297608F6009CB8C3 /* CircleStyle.swift in Sources */,
 				61D469F7297608CE009CB8C3 /* Persistence.swift in Sources */,
+				612E149529B6AEBF0001DFFE /* WaveView.swift in Sources */,
 				61D469FA297608DB009CB8C3 /* DayStatus.swift in Sources */,
 				610F701F299EC11B00F1BE72 /* HorizontalLine.swift in Sources */,
 				61D469F5297608AB009CB8C3 /* ButtonCluster.swift in Sources */,
@@ -927,6 +939,7 @@
 				61D46A03297608F0009CB8C3 /* Color+hex.swift in Sources */,
 				61D469DA29760855009CB8C3 /* DayByDayWatch_Watch_AppTests.swift in Sources */,
 				61D469FF297608EA009CB8C3 /* Date+compare.swift in Sources */,
+				612E149629B6AEBF0001DFFE /* WaveView.swift in Sources */,
 				61DAE0642995DA41006502BC /* LinearGradient+ForCategory.swift in Sources */,
 				61A21D7E29ADF59900E5D113 /* AnimationView.swift in Sources */,
 				610F7020299EC11B00F1BE72 /* HorizontalLine.swift in Sources */,
@@ -959,6 +972,7 @@
 				61D46A2029760A40009CB8C3 /* Haptics.swift in Sources */,
 				610F7021299EC11B00F1BE72 /* HorizontalLine.swift in Sources */,
 				61D46A08297608FA009CB8C3 /* SwirlStyle.swift in Sources */,
+				612E149729B6AEBF0001DFFE /* WaveView.swift in Sources */,
 				61D46A0E29760918009CB8C3 /* CircleLabelView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
