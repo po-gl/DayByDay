@@ -169,6 +169,12 @@
 		61D46A2329760B5D009CB8C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 610AF8FF296A5A9A001E50A6 /* Assets.xcassets */; };
 		61D46A2629761033009CB8C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 610AF8FF296A5A9A001E50A6 /* Assets.xcassets */; };
 		61D46A2729761034009CB8C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 610AF8FF296A5A9A001E50A6 /* Assets.xcassets */; };
+		61D5808129B8C944006F0BB0 /* Comparable+Clamped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D5808029B8C944006F0BB0 /* Comparable+Clamped.swift */; };
+		61D5808229B8C944006F0BB0 /* Comparable+Clamped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D5808029B8C944006F0BB0 /* Comparable+Clamped.swift */; };
+		61D5808329B8C944006F0BB0 /* Comparable+Clamped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D5808029B8C944006F0BB0 /* Comparable+Clamped.swift */; };
+		61D5808429B8C944006F0BB0 /* Comparable+Clamped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D5808029B8C944006F0BB0 /* Comparable+Clamped.swift */; };
+		61D5808529B8C944006F0BB0 /* Comparable+Clamped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D5808029B8C944006F0BB0 /* Comparable+Clamped.swift */; };
+		61D5808629B8C944006F0BB0 /* Comparable+Clamped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D5808029B8C944006F0BB0 /* Comparable+Clamped.swift */; };
 		61DAE0592995D8F8006502BC /* WigglyBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DAE0582995D8F8006502BC /* WigglyBar.swift */; };
 		61DAE05A2995D8F8006502BC /* WigglyBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DAE0582995D8F8006502BC /* WigglyBar.swift */; };
 		61DAE05B2995D8F8006502BC /* WigglyBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DAE0582995D8F8006502BC /* WigglyBar.swift */; };
@@ -293,6 +299,7 @@
 		61D469F4297608AB009CB8C3 /* ButtonCluster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCluster.swift; sourceTree = "<group>"; };
 		61D46A1E29760A40009CB8C3 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		61D46A28297615B8009CB8C3 /* DayByDayWatch Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DayByDayWatch Watch App.entitlements"; sourceTree = "<group>"; };
+		61D5808029B8C944006F0BB0 /* Comparable+Clamped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable+Clamped.swift"; sourceTree = "<group>"; };
 		61DAE0582995D8F8006502BC /* WigglyBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WigglyBar.swift; sourceTree = "<group>"; };
 		61DAE05F2995DA41006502BC /* LinearGradient+ForCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LinearGradient+ForCategory.swift"; sourceTree = "<group>"; };
 		61EF678129AF5D2A00C77813 /* NoteEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditorView.swift; sourceTree = "<group>"; };
@@ -361,6 +368,7 @@
 				61188D4229710D8000BF77B5 /* Color+hex.swift */,
 				61DAE05F2995DA41006502BC /* LinearGradient+ForCategory.swift */,
 				6180296E29B7B20400049F1C /* View+ParallaxMotion.swift */,
+				61D5808029B8C944006F0BB0 /* Comparable+Clamped.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -835,6 +843,7 @@
 				6160099729A59ABC00A48560 /* WeekLine.swift in Sources */,
 				6150F20629B3A63A0051DB4E /* BaseNoteEditor.swift in Sources */,
 				610AF8FE296A5A99001E50A6 /* ContentView.swift in Sources */,
+				61D5808129B8C944006F0BB0 /* Comparable+Clamped.swift in Sources */,
 				61EF678629AF892500C77813 /* NoteView.swift in Sources */,
 				61DAE0602995DA41006502BC /* LinearGradient+ForCategory.swift in Sources */,
 				610AF8F9296A5A99001E50A6 /* Persistence.swift in Sources */,
@@ -857,6 +866,7 @@
 				612E149329B6AEBF0001DFFE /* WaveView.swift in Sources */,
 				615465F42999F6CD00FB1F03 /* Arrow.swift in Sources */,
 				616009AE29A825D500A48560 /* DaysCalendarView.swift in Sources */,
+				61D5808229B8C944006F0BB0 /* Comparable+Clamped.swift in Sources */,
 				61EF678329AF5D2A00C77813 /* NoteEditorView.swift in Sources */,
 				613D54F529AAB10100A91942 /* WeekLine.swift in Sources */,
 				613D54E429AAAF9A00A91942 /* DayMOTests.swift in Sources */,
@@ -914,6 +924,7 @@
 				612E149429B6AEBF0001DFFE /* WaveView.swift in Sources */,
 				6104E56D296B1A590034B9E3 /* Date+compare.swift in Sources */,
 				611A5F8B2995EDCE00E28A56 /* WigglyEyes.swift in Sources */,
+				61D5808329B8C944006F0BB0 /* Comparable+Clamped.swift in Sources */,
 				61A21D7C29ADF59900E5D113 /* AnimationView.swift in Sources */,
 				614EE40D296AF187001FB19D /* PastView.swift in Sources */,
 				61DAE0622995DA41006502BC /* LinearGradient+ForCategory.swift in Sources */,
@@ -931,6 +942,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61D5808429B8C944006F0BB0 /* Comparable+Clamped.swift in Sources */,
 				611A5F8C2995EDCE00E28A56 /* WigglyEyes.swift in Sources */,
 				61D46A1F29760A40009CB8C3 /* Haptics.swift in Sources */,
 				61D46A1729760990009CB8C3 /* DayByDay.xcdatamodeld in Sources */,
@@ -972,6 +984,7 @@
 				612E149629B6AEBF0001DFFE /* WaveView.swift in Sources */,
 				61DAE0642995DA41006502BC /* LinearGradient+ForCategory.swift in Sources */,
 				6180297329B7B20400049F1C /* View+ParallaxMotion.swift in Sources */,
+				61D5808529B8C944006F0BB0 /* Comparable+Clamped.swift in Sources */,
 				61A21D7E29ADF59900E5D113 /* AnimationView.swift in Sources */,
 				610F7020299EC11B00F1BE72 /* HorizontalLine.swift in Sources */,
 				61DAE05D2995D8F8006502BC /* WigglyBar.swift in Sources */,
@@ -1006,6 +1019,7 @@
 				61D46A2029760A40009CB8C3 /* Haptics.swift in Sources */,
 				610F7021299EC11B00F1BE72 /* HorizontalLine.swift in Sources */,
 				61D46A08297608FA009CB8C3 /* SwirlStyle.swift in Sources */,
+				61D5808629B8C944006F0BB0 /* Comparable+Clamped.swift in Sources */,
 				612E149729B6AEBF0001DFFE /* WaveView.swift in Sources */,
 				61D46A0E29760918009CB8C3 /* CircleLabelView.swift in Sources */,
 			);

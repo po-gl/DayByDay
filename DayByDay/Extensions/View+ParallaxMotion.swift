@@ -20,7 +20,7 @@ struct ParallaxMotionModifier: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .offset(x: manager.roll * magnitude, y: manager.pitch * magnitude)
+            .offset(x: manager.roll.clamped(to: 0.0...1.0) * magnitude, y: manager.pitch.clamped(to: 0.0...1.0) * magnitude)
     }
 }
 
