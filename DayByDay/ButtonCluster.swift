@@ -34,6 +34,7 @@ struct ButtonCluster: View {
                 CompleteBackgroundView()
                     .opacity(isDayComplete ? 1.0 : 0.0)
                     .animation(.easeOut(duration: 3.0), value: isDayComplete)
+                    .allowsHitTesting(false)
                     .zIndex(1)
                 WaveView()
                     .opacity(isDayComplete ? 1.0 : 0.0)
