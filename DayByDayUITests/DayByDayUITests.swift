@@ -85,8 +85,10 @@ final class DayByDayUITests: XCTestCase {
         
         // Delete text through context menu
         let noteText = app.buttons["NoteTextView"]
-        noteText.press(forDuration: 0.5)
-        app.buttons["NoteDeleteContextButton"].tap()
+        noteText.press(forDuration: 1.0)
+        let deleteButton = app.buttons["NoteDeleteContextButton"]
+        XCTAssert(deleteButton.waitForExistence(timeout: 1.0), "Expecting context menu to appear")
+        deleteButton.tap()
         
         XCTAssertEqual(app.buttons["Test Content"].exists, false)
     }
