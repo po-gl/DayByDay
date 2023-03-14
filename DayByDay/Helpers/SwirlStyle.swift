@@ -23,6 +23,7 @@ struct SwirlStyle: ButtonStyle {
                     .background(
                         BackgroundFrame(for: category)
                             .mask(Circle())
+                            .brightness(colorScheme == .dark ? -0.1 : 0.1)
                     )
                     .opacity(isOn ? 1.0 : 0.4)
                     .saturation(isOn ? 1.0 : 0.7)
