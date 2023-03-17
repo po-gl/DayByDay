@@ -30,6 +30,7 @@ struct ContentView: View {
             NavigationView {
                 ZStack {
                     MainPage(geometry)
+                        .overlay(alignment: .top) { StatusBarBlur() }
                     TopButtons(showingNoteEditor: $showingNoteEditor)
                         .zIndex(5)
                 }
@@ -46,9 +47,6 @@ struct ContentView: View {
                 }
             }
             .tint(Color(hex: 0xBE59D5))
-        }
-        .overlay(alignment: .top) {
-            StatusBarBlur()
         }
     }
     
