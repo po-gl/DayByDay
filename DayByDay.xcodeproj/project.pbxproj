@@ -55,7 +55,6 @@
 		613D54E729AAB0B300A91942 /* DateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610F7019299EB68700F1BE72 /* DateView.swift */; };
 		613D54E829AAB0B400A91942 /* DateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610F7019299EB68700F1BE72 /* DateView.swift */; };
 		613D54E929AAB0D100A91942 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610AF8F8296A5A99001E50A6 /* Persistence.swift */; };
-		613D54EA29AAB0DA00A91942 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610AF8FD296A5A99001E50A6 /* ContentView.swift */; };
 		613D54EB29AAB0DB00A91942 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610AF8FD296A5A99001E50A6 /* ContentView.swift */; };
 		613D54EC29AAB0DF00A91942 /* ButtonCluster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614EE405296AC978001FB19D /* ButtonCluster.swift */; };
 		613D54ED29AAB0E500A91942 /* PastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614EE40B296AF187001FB19D /* PastView.swift */; };
@@ -102,11 +101,9 @@
 		6160099729A59ABC00A48560 /* WeekLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6160099629A59ABC00A48560 /* WeekLine.swift */; };
 		6160099929A59ABC00A48560 /* WeekLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6160099629A59ABC00A48560 /* WeekLine.swift */; };
 		616009A229A5AF5700A48560 /* TopButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616009A129A5AF5700A48560 /* TopButtons.swift */; };
-		616009A329A5AF5700A48560 /* TopButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616009A129A5AF5700A48560 /* TopButtons.swift */; };
 		616009A429A5AF5700A48560 /* TopButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616009A129A5AF5700A48560 /* TopButtons.swift */; };
 		616009AB29A7189F00A48560 /* HorizonCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 616009AA29A7189F00A48560 /* HorizonCalendar */; };
 		616009AD29A825D500A48560 /* DaysCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616009AC29A825D500A48560 /* DaysCalendarView.swift */; };
-		616009AE29A825D500A48560 /* DaysCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616009AC29A825D500A48560 /* DaysCalendarView.swift */; };
 		616009AF29A825D500A48560 /* DaysCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616009AC29A825D500A48560 /* DaysCalendarView.swift */; };
 		61677FDB29AC35920075C5AC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61D469CF29760855009CB8C3 /* Preview Assets.xcassets */; };
 		6180296829B78DEF00049F1C /* DayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6180296729B78DEF00049F1C /* DayData.swift */; };
@@ -870,7 +867,6 @@
 				613D54E729AAB0B300A91942 /* DateView.swift in Sources */,
 				612E149329B6AEBF0001DFFE /* WaveView.swift in Sources */,
 				615465F42999F6CD00FB1F03 /* Arrow.swift in Sources */,
-				616009AE29A825D500A48560 /* DaysCalendarView.swift in Sources */,
 				61D5808229B8C944006F0BB0 /* Comparable+Clamped.swift in Sources */,
 				61EF678329AF5D2A00C77813 /* NoteEditorView.swift in Sources */,
 				613D54F529AAB10100A91942 /* WeekLine.swift in Sources */,
@@ -882,7 +878,6 @@
 				6104E56C296B1A580034B9E3 /* Date+compare.swift in Sources */,
 				6148F3D829A8A404009C35E5 /* DaysCalendarSelectedView.swift in Sources */,
 				61DAE0612995DA41006502BC /* LinearGradient+ForCategory.swift in Sources */,
-				613D54EA29AAB0DA00A91942 /* ContentView.swift in Sources */,
 				610F701D299EC11B00F1BE72 /* HorizontalLine.swift in Sources */,
 				61DAE05A2995D8F8006502BC /* WigglyBar.swift in Sources */,
 				613D54F229AAB0F700A91942 /* CircleLabelView.swift in Sources */,
@@ -894,7 +889,6 @@
 				613D54F629AAB12200A91942 /* SwirlAnimation.swift in Sources */,
 				6150F20729B3A63A0051DB4E /* BaseNoteEditor.swift in Sources */,
 				61A21D7B29ADF59900E5D113 /* AnimationView.swift in Sources */,
-				616009A329A5AF5700A48560 /* TopButtons.swift in Sources */,
 				613D54EE29AAB0EB00A91942 /* CircleStyle.swift in Sources */,
 				613D54F029AAB0F100A91942 /* Haptics.swift in Sources */,
 			);
