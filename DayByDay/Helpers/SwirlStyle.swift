@@ -20,14 +20,17 @@ struct SwirlStyle: ButtonStyle {
             .overlay(
                 SwirlAnimation(for: category)
                     .mask(Circle().opacity(configuration.isPressed ? 0.7 : 1.0))
-                    .background(
-                        BackgroundFrame(for: category)
-                            .mask(Circle())
-                            .brightness(colorScheme == .dark ? -0.1 : 0.1)
+                    .background( BackgroundFrame(for: category).mask(Circle()) )
+                
+                    .saturation(isOn ? 1.0 : 0.8)
+                    .brightness(isOn ? colorScheme == .dark ? 0.0 : 0.05
+                                     : colorScheme == .dark ? -0.1 : 0.08)
+                
+                    .overlay(
+                        Circle()
+                            .fill(colorScheme == .dark ? .black : .white)
+                            .opacity(isOn ? 0.0 : 0.35)
                     )
-                    .opacity(isOn ? 1.0 : 0.4)
-                    .saturation(isOn ? 1.0 : 0.7)
-                    .brightness(isOn ? 0.0 : colorScheme == .dark ? -0.1 : 0.1)
             )
             .overlay(
                 configuration.label
