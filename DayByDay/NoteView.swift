@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct NoteView: View {
+    @Environment(\.colorScheme) private var colorScheme
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(sortDescriptors: [SortDescriptor(\DayMO.date, order: .reverse)])
@@ -34,7 +35,7 @@ struct NoteView: View {
                     Text(latestDay?.note ?? "")
                         .accessibilityIdentifier("NoteTextView")
                         .accessibilityAddTraits(.isButton)
-                        .font(.system(size: 16, weight: .light))
+                        .font(.system(.body, weight: colorScheme == .dark ? .light : .regular))
                         .lineSpacing(2.0)
                         .padding(.horizontal)
                         .contextMenu { NoteContextMenu() }
@@ -59,7 +60,7 @@ struct NoteView: View {
                 .fill(.orange.gradient)
                 .frame(width: 10)
                 .opacity(0.7)
-                .offset(y: 4)
+                .offset(y: 5)
             Spacer()
         }
     }
