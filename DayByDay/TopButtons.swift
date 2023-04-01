@@ -47,6 +47,10 @@ struct TopButtons: View {
                 .accessibilityIdentifier("CalendarView")
                 .ignoresSafeArea(.container, edges: .top)
                 .navigationTitle("Calendar")
+            
+                .toolbar {
+                    PastNotesButton()
+                }
         }) {
             Image(systemName: "calendar")
                 .opacity(0.8)
@@ -54,6 +58,16 @@ struct TopButtons: View {
         .accessibilityIdentifier("CalendarButton")
         .buttonStyle(MaterialStyle())
         .frame(width: 50, height: 32)
+    }
+    
+    
+    @ViewBuilder
+    private func PastNotesButton() -> some View {
+        NavigationLink(destination: {
+            PastNotes()
+        }) {
+            Image(systemName: "note.text")
+        }
     }
 }
 
