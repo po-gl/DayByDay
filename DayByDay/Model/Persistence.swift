@@ -15,10 +15,14 @@ struct PersistenceController {
         let viewContext = result.container.viewContext
         for i in 0..<10 {
             let date = Date().addingTimeInterval(-Double(i+1) * 60.0 * 60.0 * 24.0)
-            DayData.addDay(active: Bool.random(),
-                           creative: Bool.random(),
-                           productive: Bool.random(),
-                           date: date, context: viewContext)
+            if i == 0 || i == 2 {
+                DayData.addDay(withNote: "Test note", date: date, context: viewContext)
+            } else {
+                DayData.addDay(active: Bool.random(),
+                               creative: Bool.random(),
+                               productive: Bool.random(),
+                               date: date, context: viewContext)
+            }
         }
         
         DayData.addDay(active: true,
