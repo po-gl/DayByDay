@@ -18,6 +18,7 @@ struct WigglyEyes: View {
     let offset = -1.0
     
     @State var blink = false
+    @State var cancelBlink = false
     
     var body: some View {
         HStack {
@@ -34,9 +35,13 @@ struct WigglyEyes: View {
         .frame(width: barWidth)
         .padding(.top, depth)
         .onAppear {
+            cancelBlink = false
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
                 startAnimation()
             }
+        }
+        .onDisappear {
+            cancelBlink = true
         }
     }
     
@@ -51,6 +56,7 @@ struct WigglyEyes: View {
         DispatchQueue.main.asyncAfter(deadline: .now() + openLength + blinkLength) {
             withAnimation(.easeIn(duration: 0.1)) {
                 blink = false
+                guard !cancelBlink else { return }
                 startAnimation()
             }
         }
