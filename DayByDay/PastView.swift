@@ -127,16 +127,16 @@ struct PastView: View {
                     HStack (spacing: 0){
                         if day.isToday() {
                             Text("Today")
-                                .font(.system(size: 14, weight: .regular, design: .monospaced))
+                                .font(.system(.body, design: .monospaced, weight: .medium))
                                 .padding(.trailing, 10)
                         } else {
                             Text("\(day, formatter: weekdayFormatter)")
-                                .font(.system(size: 14, weight: .medium, design: .monospaced))
+                                .font(.system(.body, design: .monospaced, weight: .medium))
                                 .padding(.trailing, 10)
+                            Text("\(day, formatter: dayFormatter)")
+                                .font(.system(.body, design: .monospaced, weight: .regular))
+                                .opacity(0.6)
                         }
-                        Text("\(day, formatter: dayFormatter)")
-                            .font(.system(size: 12, weight: .regular, design: .monospaced))
-                            .opacity(0.6)
                         Spacer()
                     }
                     .frame(width: width, height: 0)
