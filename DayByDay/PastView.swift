@@ -17,17 +17,25 @@ struct PastView: View {
     private let cellHeight = 66.0
     private var height: Double { Double(daysToDisplay) * cellHeight }
     
+    @State private var showingNoteEditor = false
+    @State private var noteEditorDay: DayMO?
+    
     var body: some View {
             ZStack {
                 WigglyBars()
                     .mask(Cells(isMask: true))
                 DatesAndDividers()
+                NoteAccents()
                 Eyes()
                 Cells()
                 DescriptiveText()
             }
         .frame(height: height)
         .padding(.bottom, 30)
+        
+        .sheet(item: $noteEditorDay) { day in
+            NoteEditorView(date: day.date!)
+        }
     }
     
     
@@ -64,6 +72,8 @@ struct PastView: View {
         VStack(spacing: 0) {
             ForEach(0..<daysToDisplay, id: \.self) { i in
                 let date = Date(timeInterval: -Double(60*60*24*i), since: Date())
+                let day = DayData.getDay(for: date, days: allDays)
+                
                 HStack(spacing: 5) {
                     Cell(category: .active, isMask, date: date)
                         .accessibilityAddTraits(.isButton)
@@ -74,6 +84,12 @@ struct PastView: View {
                     Cell(category: .creative, isMask, date: date)
                         .accessibilityAddTraits(.isButton)
                         .accessibilityIdentifier("PastViewRow\(i)_Col3")
+                }
+                .contentShape(.contextMenuPreview, RoundedRectangle(cornerRadius: 20))
+                .contextMenu {
+                    NoteContextMenu(for: day)
+                } preview: {
+                    NoteContextPreview(for: day, date: date)
                 }
             }
         }
@@ -122,18 +138,18 @@ struct PastView: View {
         let width = 3*(90.0+22)
         VStack(spacing: cellHeight-1) {
             ForEach(0..<daysToDisplay, id: \.self) { i in
-                let day = Date(timeInterval: -Double(60*60*24*i), since: Date())
+                let date = Date(timeInterval: -Double(60*60*24*i), since: Date())
                 ZStack {
                     HStack (spacing: 0){
-                        if day.isToday() {
+                        if date.isToday() {
                             Text("Today")
                                 .font(.system(.body, design: .monospaced, weight: .medium))
                                 .padding(.trailing, 10)
                         } else {
-                            Text("\(day, formatter: weekdayFormatter)")
+                            Text("\(date, formatter: weekdayFormatter)")
                                 .font(.system(.body, design: .monospaced, weight: .medium))
                                 .padding(.trailing, 10)
-                            Text("\(day, formatter: dayFormatter)")
+                            Text("\(date, formatter: dayFormatter)")
                                 .font(.system(.body, design: .monospaced, weight: .regular))
                                 .opacity(0.6)
                         }
@@ -142,7 +158,7 @@ struct PastView: View {
                     .frame(width: width, height: 0)
                     .offset(y: 14)
                     
-                    if day.isMonday() {
+                    if date.isMonday() {
                         WeekLine(width: width)
                             .frame(height: 1)
                             .offset(y: cellHeight/2)
@@ -168,6 +184,67 @@ struct PastView: View {
                 .offset(y: 35)
         }
     }
+    
+    @ViewBuilder
+    private func NoteAccents() -> some View {
+        let width = 3*(90.0+22)
+        VStack(spacing: 0) {
+            ForEach(0..<daysToDisplay, id: \.self) { i in
+                let date = Date(timeInterval: -Double(60*60*24*i), since: Date())
+                let day = DayData.getDay(for: date, days: allDays)
+                
+                HStack {
+                    Spacer()
+                    NoteAccent()
+                        .opacity(day?.note?.isEmpty ?? true ? 0.0 : 1.0)
+                        .offset(x: 10, y: 15)
+                }
+                .frame(width: width, height: cellHeight)
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private func NoteAccent() -> some View {
+        Circle()
+            .fill(.orange.gradient)
+            .frame(width: 9)
+            .opacity(0.7)
+    }
+    
+    @ViewBuilder
+    private func NoteContextMenu(for day: DayMO?) -> some View {
+        Button(action: {
+            noteEditorDay = day
+        }) {
+            Label("Edit note", systemImage: "pencil.line")
+        }
+    }
+    
+    @ViewBuilder
+    private func NoteContextPreview(for day: DayMO?, date: Date) -> some View {
+        HStack {
+            VStack(alignment: .leading, spacing: 5) {
+                HStack {
+                    Color.clear.frame(width: 10, height: 10)
+                    Text(relativeDayFormatter.string(from: date))
+                        .font(.system(.body, design: .serif))
+                        .opacity(0.6)
+                }
+                
+                HStack(alignment:. top) {
+                    NoteAccent()
+                        .opacity(day?.note?.isEmpty ?? true ? 0.3 : 1.0)
+                        .offset(y: 5)
+                    Text(day?.note ?? "No note for day")
+                        .opacity(day?.note?.isEmpty ?? true ? 0.5 : 1.0)
+                }
+            }
+            Spacer()
+        }
+        .padding()
+        .frame(minWidth: 250)
+    }
 }
 
 
@@ -179,6 +256,13 @@ private let weekdayFormatter: DateFormatter = {
 private let dayFormatter: DateFormatter = {
     let formatter = DateFormatter()
     formatter.setLocalizedDateFormatFromTemplate("M/d")
+    return formatter
+}()
+
+private let relativeDayFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.doesRelativeDateFormatting = true
+    formatter.dateStyle = .short
     return formatter
 }()
 
