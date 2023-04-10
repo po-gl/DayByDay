@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DateView: View {
     var date = Date()
-    var fontSize: Double = 44
+    var fontSize: Double = 38
     var width: Double = 200
     var shineOffset: Double = 40
     
@@ -51,7 +51,7 @@ struct DateView: View {
 
 private let dayFormatter: DateFormatter = {
     let formatter = DateFormatter()
-    formatter.setLocalizedDateFormatFromTemplate("EEEE M/d")
+    formatter.setLocalizedDateFormatFromTemplate("EEEE MMM d")
     return formatter
 }()
 
