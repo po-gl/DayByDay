@@ -197,7 +197,7 @@ struct PastView: View {
                     Spacer()
                     NoteAccent()
                         .opacity(day?.note?.isEmpty ?? true ? 0.0 : 1.0)
-                        .offset(x: 10, y: 15)
+                        .offset(x: 10)
                 }
                 .frame(width: width, height: cellHeight)
             }
