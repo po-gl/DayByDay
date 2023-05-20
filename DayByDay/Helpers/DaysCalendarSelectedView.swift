@@ -145,14 +145,6 @@ struct DaysCalendarSelectedView: View {
     }
     
     @ViewBuilder
-    private func Handle() -> some View {
-        RoundedRectangle(cornerRadius: 30)
-            .frame(width: 50, height: 5)
-            .opacity(0.2)
-            .padding(.top, 10)
-    }
-    
-    @ViewBuilder
     private func Header() -> some View {
         VStack {
             ZStack {
