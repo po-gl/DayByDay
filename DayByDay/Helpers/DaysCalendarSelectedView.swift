@@ -58,7 +58,7 @@ struct DaysCalendarSelectedView: View {
     
     @ViewBuilder
     private func Orbs(_ day: DayMO?) -> some View {
-        let orbWidth: Double = 100
+        let orbWidth: Double = 85
         let spacing: Double = orbWidth/2 + 3
         
         let isActive = day?.isActive(for: .active) ?? false
@@ -103,7 +103,7 @@ struct DaysCalendarSelectedView: View {
             .brightness(0.06)
             .saturation(1.05)
         }
-        .frame(width: orbWidth*2 + spacing, height: orbWidth*2 + spacing)
+        .frame(width: orbWidth*2 + spacing, height: orbWidth*1.8 + spacing)
     }
     
     private func handleOrbPress(for category: StatusCategory, day: DayMO?) {
@@ -119,7 +119,7 @@ struct DaysCalendarSelectedView: View {
     
     @ViewBuilder
     private func BackgroundOrbs() -> some View {
-        let orbWidth: Double = 100
+        let orbWidth: Double = 85
         let spacing: Double = orbWidth/2 + 3
         
         ZStack {
@@ -141,7 +141,7 @@ struct DaysCalendarSelectedView: View {
             .brightness(0.06)
             .saturation(1.05)
         }
-        .frame(width: orbWidth*2 + spacing, height: orbWidth*2 + spacing)
+        .frame(width: orbWidth*2 + spacing, height: orbWidth*1.8 + spacing)
     }
     
     @ViewBuilder
@@ -180,7 +180,7 @@ struct DaysCalendarSelectedView: View {
     private func Notes(_ day: DayMO?, date: Date) -> some View {
         ZStack (alignment: .topLeading) {
             Group {
-                RoundedRectangle(cornerRadius: 6)
+                RoundedRectangle(cornerRadius: 12)
                     .fill(.thinMaterial)
                     .frame(minHeight: 90)
                 
@@ -209,7 +209,7 @@ struct DaysCalendarSelectedView: View {
                 .brightness(0.05)
                 .allowsHitTesting(false)
         }
-        .frame(maxWidth: 300)
+        .padding()
     }
     
     @ViewBuilder
