@@ -23,7 +23,11 @@ func getNotificationPermissions() {
 }
 
 func setupNotifications() {
-    let today = Date().atHour(20.25)
+    guard UserDefaults.standard.bool(forKey: "dailyReminderIsOn") else { return }
+    
+    let hour = UserDefaults.standard.integer(forKey: "dailyReminderHour")
+    let minute = UserDefaults.standard.integer(forKey: "dailyReminderMinute")
+    let today = Date().at(hour: hour, minute: minute)
     
     for i in 0..<7 {
         let nextNotificationTime = today.addingTimeInterval(TimeInterval(i*60*60*24))

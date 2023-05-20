@@ -47,4 +47,10 @@ extension Date {
         }
         return calendar.startOfDay(for: self).addingTimeInterval(safeHour * 60 * 60)
     }
+    
+    func at(hour: Int, minute: Int, calendar: Calendar = .current) -> Date {
+        let hour = hour.clamped(to: 0...24) * 60 * 60
+        let minute = minute.clamped(to: 0...59) * 60
+        return calendar.startOfDay(for: self).addingTimeInterval(TimeInterval(hour + minute))
+    }
 }

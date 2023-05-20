@@ -10,17 +10,34 @@ import HorizonCalendar
 
 struct TopButtons: View {
     @Binding var showingNoteEditor: Bool
+    @State var showingDailyNotificationSettings = false
     
     var body: some View {
         VStack {
             HStack {
+                DailyNotificationButton()
                 Spacer()
                 NoteButton()
                 CalendarButton()
             }
             .padding(.top, 20)
-            .padding(.trailing, 40)
+            .padding(.horizontal, 30)
             Spacer()
+        }
+    }
+    
+    @ViewBuilder
+    private func DailyNotificationButton() -> some View {
+        Button(action: { showingDailyNotificationSettings = true }) {
+            Image(systemName: "clock")
+                .opacity(0.8)
+        }
+        .accessibilityIdentifier("DailyNotificationButton")
+        .buttonStyle(MaterialStyle())
+        .frame(width: 50, height: 32)
+        .sheet(isPresented: $showingDailyNotificationSettings) {
+            DailyNotificationSettingsView()
+                .presentationDetents([.medium])
         }
     }
     
@@ -38,7 +55,6 @@ struct TopButtons: View {
                 .presentationDetents([.medium, .large])
         }
     }
-    
     
     @ViewBuilder
     private func CalendarButton() -> some View {
