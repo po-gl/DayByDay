@@ -30,7 +30,6 @@ struct PastNotes: View {
         
         .sheet(item: $selectedDay) { day in
             NoteEditorView(date: day.date!)
-                .presentationDetents([.medium, .large])
         }
     }
     

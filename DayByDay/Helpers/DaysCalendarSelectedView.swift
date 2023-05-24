@@ -183,7 +183,6 @@ struct DaysCalendarSelectedView: View {
                     .padding()
                     .sheet(isPresented: $showingNoteEditor) {
                         NoteEditorView(date: date)
-                            .presentationDetents([.medium, .large])
                     }
             }
             .contentShape(.contextMenuPreview, RoundedRectangle(cornerRadius: 6))
