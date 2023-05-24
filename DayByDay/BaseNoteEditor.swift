@@ -60,7 +60,7 @@ struct BaseNoteEditor: View {
             HStack {
                 Text("Enter notes for the day here.")
                     .padding()
-                    .offset(x: 4, y: 10)
+                    .offset(x: 4, y: 8.3)
                     .opacity(0.4)
                 Spacer()
             }

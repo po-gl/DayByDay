@@ -35,7 +35,7 @@ struct NoteEditorView: View {
                 .frame(width: 10)
                 .opacity(0.7)
                 .padding()
-                .offset(y: 15)
+                .offset(y: 13.3)
             Spacer()
         }
     }
