@@ -232,18 +232,19 @@ struct PastView: View {
                         .opacity(0.6)
                 }
                 
-                HStack(alignment:. top) {
+                HStack(alignment: .top) {
                     NoteAccent()
                         .opacity(day?.note?.isEmpty ?? true ? 0.3 : 1.0)
                         .offset(y: 5)
                     Text(day?.note ?? "No note for day")
                         .opacity(day?.note?.isEmpty ?? true ? 0.5 : 1.0)
+                        .lineLimit(nil)
                 }
             }
             Spacer()
         }
         .padding()
-        .frame(minWidth: 250)
+        .frame(width: 300)
     }
 }
 
