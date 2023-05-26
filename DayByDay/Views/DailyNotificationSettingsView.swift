@@ -50,7 +50,7 @@ struct DailyNotificationSettingsView: View {
             ZStack {
                 HStack {
                     Button("Cancel") { dismiss() }
-                        .accessibilityIdentifier("NoteDoneButton")
+                        .accessibilityIdentifier("NotificationSettingsCancelButton")
                         .foregroundColor(.orange)
                         .brightness(0.07)
                         .saturation(1.05)
@@ -62,7 +62,7 @@ struct DailyNotificationSettingsView: View {
                         saveDailyReminder()
                         dismiss()
                     }) { Text("Save").bold() }
-                    .accessibilityIdentifier("NoteDoneButton")
+                    .accessibilityIdentifier("NotificationSettingsSaveButton")
                     .foregroundColor(.orange)
                     .brightness(0.07)
                     .saturation(1.05)
