@@ -70,7 +70,6 @@
 		613D54FE29AAB21C00A91942 /* HorizonCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 613D54FD29AAB21C00A91942 /* HorizonCalendar */; };
 		613D550029AAB49100A91942 /* ColorHexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613D54FF29AAB49100A91942 /* ColorHexTests.swift */; };
 		613D550229AAB7E000A91942 /* DateCompareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613D550129AAB7E000A91942 /* DateCompareTests.swift */; };
-		6142DFA02A205CAE00FD2EA1 /* DaysCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616009AC29A825D500A48560 /* DaysCalendarView.swift */; };
 		6142DFA22A205D0F00FD2EA1 /* PastNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C4F01A29D875C900BC70C7 /* PastNotes.swift */; };
 		6148F3D729A8A404009C35E5 /* DaysCalendarSelectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6148F3D629A8A404009C35E5 /* DaysCalendarSelectedView.swift */; };
 		6148F3D829A8A404009C35E5 /* DaysCalendarSelectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6148F3D629A8A404009C35E5 /* DaysCalendarSelectedView.swift */; };
@@ -924,7 +923,6 @@
 				61DAE05A2995D8F8006502BC /* WigglyBar.swift in Sources */,
 				613D54F229AAB0F700A91942 /* CircleLabelView.swift in Sources */,
 				6180297029B7B20400049F1C /* View+ParallaxMotion.swift in Sources */,
-				6142DFA02A205CAE00FD2EA1 /* DaysCalendarView.swift in Sources */,
 				613D54F429AAB0FD00A91942 /* CompleteBackgroundView.swift in Sources */,
 				613D550229AAB7E000A91942 /* DateCompareTests.swift in Sources */,
 				613D54EF29AAB0EE00A91942 /* SwirlStyle.swift in Sources */,
