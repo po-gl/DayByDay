@@ -11,6 +11,7 @@ struct NoteEditorView: View {
     @Environment(\.dismiss) private var dismiss
     var date: Date = Date()
     var focusOnAppear: Bool = false
+    @FocusState var noteFocus: Bool
 
     var body: some View {
         ZStack (alignment: .topLeading) {
@@ -20,6 +21,7 @@ struct NoteEditorView: View {
                     Spacer()
                 }
                 BaseNoteEditor(date: date, focusOnAppear: focusOnAppear)
+                    .focused($noteFocus)
                     .padding(.leading)
             }
             .padding(.top, 50)
@@ -45,14 +47,24 @@ struct NoteEditorView: View {
         VStack {
             ZStack {
                 HStack {
-                    Button("Done") { dismiss() }
-                        .accessibilityIdentifier("NoteDoneButton")
+                    Button(action: { dismiss() }) {
+                        Text("Close").bold()
+                    }
+                        .accessibilityIdentifier("NoteCloseButton")
                         .foregroundColor(.orange)
                         .brightness(0.07)
                         .saturation(1.05)
-                        .padding()
+                    
                     Spacer()
+                    
+                    Button("Done") { UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil) }
+                        .accessibilityIdentifier("NoteDoneTypingButton")
+                        .tint(Color(hex: 0xFF7676))
+                        .brightness(-0.07)
+                        .saturation(1.05)
+                        .opacity(noteFocus ? 1.0 : 0.0)
                 }
+                .padding()
                 Text(date, formatter: dayFormatter)
             }
             .frame(height: 50)

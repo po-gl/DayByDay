@@ -79,7 +79,7 @@ final class DayByDayUITests: XCTestCase {
         app.menuItems["Paste"].tap()
 
         // Close editor
-        app.buttons["NoteDoneButton"].tap()
+        app.buttons["NoteCloseButton"].tap()
         
         XCTAssertEqual(app.buttons["NoteTextView"].label, "Test Content")
         
