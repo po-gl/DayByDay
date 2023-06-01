@@ -63,6 +63,7 @@ struct TopButtons: View {
                 .accessibilityIdentifier("CalendarView")
                 .ignoresSafeArea(.container, edges: .top)
                 .navigationTitle("Calendar")
+                .navigationBarTitleDisplayMode(.large)
             
                 .toolbar {
                     PastNotesButton()
