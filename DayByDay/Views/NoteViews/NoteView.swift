@@ -29,9 +29,9 @@ struct NoteView: View {
                     .fontDesign(.serif)
                     .opacity(0.4)
                     .padding(.leading)
+                
                 ZStack (alignment: .topLeading) {
                     Accent()
-                    
                     Text(latestDay?.note ?? "")
                         .accessibilityIdentifier("NoteTextView")
                         .accessibilityAddTraits(.isButton)
@@ -48,6 +48,7 @@ struct NoteView: View {
             )
             .padding(.top)
             .opacity(latestDay?.note?.isEmpty ?? true ? 0.0 : 1.0 + scrollOffset / 100)
+            .contentShape(Rectangle())
             .onTapGesture { showingNoteEditor = true }
             .position(x: geometry.size.width/2, y: geometry.size.height/2)
         }
