@@ -29,10 +29,18 @@ class AnimationUIView: UIView {
     required init(name: String) {
         super.init(frame: .zero)
         self.name = name
-        setupPlayer()
         
         NotificationCenter.default.addObserver(self, selector: #selector(removeLayer), name: UIApplication.didEnterBackgroundNotification, object: UIApplication.shared)
         NotificationCenter.default.addObserver(self, selector: #selector(refresh), name: UIApplication.willEnterForegroundNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(removeLayer), name: UIApplication.willResignActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refresh), name: UIApplication.didBecomeActiveNotification, object: nil)
+        
+        setupPlayer()
+    }
+    
+    deinit {
+        print("Deinit called")
     }
     
     private func setupPlayer() {
@@ -68,7 +76,8 @@ class AnimationUIView: UIView {
     
     @objc
     private func removeLayer() {
-        self.playerLayer.removeFromSuperlayer()
+        player?.pause()
+        playerLayer.removeFromSuperlayer()
     }
     
     required init?(coder: NSCoder) {
