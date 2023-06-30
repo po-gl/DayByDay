@@ -34,7 +34,7 @@ struct PastView: View {
         .padding(.bottom, 30)
         
         .sheet(item: $noteEditorDay) { day in
-            NoteEditorView(date: day.date!)
+            NoteEditorView(date: day.date!, focusOnAppear: true)
         }
     }
     
