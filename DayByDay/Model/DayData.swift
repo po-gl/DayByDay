@@ -13,6 +13,14 @@ struct DayData {
     
     // MARK: Add Day functions
     
+    @discardableResult
+    static func addDay(date: Date, context: NSManagedObjectContext) -> DayMO {
+        let newDay = DayMO(context: context)
+        newDay.date = date
+        saveContext(context, errorMessage: "CoreData error adding day.")
+        return newDay
+    }
+    
     static func addDay(activeFor category: StatusCategory, date: Date, context: NSManagedObjectContext) {
         let newDay = DayMO(context: context)
         newDay.date = date

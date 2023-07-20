@@ -87,7 +87,7 @@ struct PastView: View {
                 }
                 .contentShape(.contextMenuPreview, RoundedRectangle(cornerRadius: 20))
                 .contextMenu {
-                    NoteContextMenu(for: day)
+                    NoteContextMenu(for: day, date: date)
                 } preview: {
                     NoteContextPreview(for: day, date: date)
                 }
@@ -213,9 +213,9 @@ struct PastView: View {
     }
     
     @ViewBuilder
-    private func NoteContextMenu(for day: DayMO?) -> some View {
+    private func NoteContextMenu(for day: DayMO?, date: Date) -> some View {
         Button(action: {
-            noteEditorDay = day
+            noteEditorDay = day ?? DayData.addDay(date: date, context: viewContext)
         }) {
             Label("Edit note", systemImage: "pencil.line")
         }
