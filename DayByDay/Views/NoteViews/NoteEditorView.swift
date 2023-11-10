@@ -14,63 +14,48 @@ struct NoteEditorView: View {
     @FocusState var noteFocus: Bool
 
     var body: some View {
-        ZStack (alignment: .topLeading) {
-            Group {
-                HStack {
-                    NoteAccent()
-                    Spacer()
-                }
+        NavigationStack {
+            ScrollView {
                 BaseNoteEditor(date: date, focusOnAppear: focusOnAppear)
-                    .focused($noteFocus)
-                    .padding(.leading)
-            }
-            .padding(.top, 50)
-            NoteHeader()
-        }
-    }
-    
-    @ViewBuilder
-    private func NoteAccent() -> some View {
-        HStack {
-            Circle()
-                .fill(.orange.gradient)
-                .frame(width: 10)
-                .opacity(0.7)
-                .padding()
-                .offset(y: 13.3)
-            Spacer()
-        }
-    }
-    
-    @ViewBuilder
-    private func NoteHeader() -> some View {
-        VStack {
-            ZStack {
-                HStack {
-                    Button(action: { dismiss() }) {
-                        Text("Close").bold()
+                    .ignoresSafeArea(edges: .all)
+                    .safeAreaInset(edge: .top) {
+                        Color.clear
+                            .background(.bar)
+                            .frame(height: 0)
+                            .border(.thinMaterial)
                     }
-                        .accessibilityIdentifier("NoteCloseButton")
-                        .foregroundColor(.orange)
-                        .brightness(0.07)
-                        .saturation(1.05)
-                    
-                    Spacer()
-                    
-                    Button("Done") { UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil) }
-                        .accessibilityIdentifier("NoteDoneTypingButton")
-                        .tint(Color(hex: 0xFF7676))
-                        .brightness(-0.07)
-                        .saturation(1.05)
-                        .opacity(noteFocus ? 1.0 : 0.0)
-                }
-                .padding()
-                Text(date, formatter: dayFormatter)
+                    .focused($noteFocus)
+                    .toolbar {
+                        ToolbarItem(placement: .topBarLeading) {
+                            closeButton
+                        }
+                        ToolbarItem(placement: .topBarTrailing) {
+                            doneButton
+                        }
+                    }
+                    .navigationTitle(dayFormatter.string(from: date))
+                    .navigationBarTitleDisplayMode(.inline)
             }
-            .frame(height: 50)
-            .background(.thinMaterial)
-            Spacer()
         }
+    }
+
+    @ViewBuilder private var closeButton: some View {
+        Button(action: { dismiss() }) {
+            Text("Close").bold()
+        }
+        .accessibilityIdentifier("NoteCloseButton")
+        .foregroundColor(.orange)
+        .brightness(0.07)
+        .saturation(1.05)
+    }
+
+    @ViewBuilder private var doneButton: some View {
+        Button("Done") { UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil) }
+            .accessibilityIdentifier("NoteDoneTypingButton")
+            .tint(Color(hex: 0xFF7676))
+            .brightness(-0.07)
+            .saturation(1.05)
+            .opacity(noteFocus ? 1.0 : 0.0)
     }
 }
 
@@ -79,3 +64,17 @@ fileprivate let dayFormatter: DateFormatter = {
     formatter.setLocalizedDateFormatFromTemplate("EEEE MMM d YYYY")
     return formatter
 }()
+
+
+struct NoteEditorView_Preview: PreviewProvider {
+    static var previews: some View {
+        @State var presenting = true
+        
+        Text("Preview")
+            .onTapGesture { presenting = true }
+            .sheet(isPresented: $presenting) {
+                NoteEditorView()
+            }
+            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    }
+}
