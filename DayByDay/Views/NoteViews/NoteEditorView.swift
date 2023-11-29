@@ -35,6 +35,7 @@ struct NoteEditorView: View {
                     }
                     .navigationTitle(dayFormatter.string(from: date))
                     .navigationBarTitleDisplayMode(.inline)
+                    .padding(.leading, 10)
             }
         }
     }
