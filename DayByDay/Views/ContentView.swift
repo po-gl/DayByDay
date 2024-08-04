@@ -9,11 +9,7 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    @Environment(\.scenePhase) private var scenePhase
     @Environment(\.colorScheme) private var colorScheme
-    
-    @Environment(\.managedObjectContext) private var viewContext
-    @Environment(\.undoManager) private var undoManager
 
     @FetchRequest(sortDescriptors: [SortDescriptor(\DayMO.date, order: .reverse)])
     private var allDays: FetchedResults<DayMO>
@@ -33,17 +29,6 @@ struct ContentView: View {
                         .overlay(alignment: .top) { StatusBarBlur() }
                     TopButtons(showingNoteEditor: $showingNoteEditor)
                         .zIndex(5)
-                }
-                .onAppear {
-                    getNotificationPermissions()
-                    viewContext.undoManager = undoManager
-                }
-                .onChange(of: scenePhase) { newPhase in
-                    if newPhase == .active {
-                        cancelPendingNotifications()
-                    } else if newPhase == .inactive {
-                        setupNotifications()
-                    }
                 }
             }
             .tint(Color(hex: 0xBE59D5))
