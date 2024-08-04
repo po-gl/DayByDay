@@ -11,39 +11,59 @@ import SwiftUI
 
 struct DayData {
     
+    static func pastDays(count: Int) -> NSFetchRequest<DayMO> {
+        let fetchRequest = DayMO.fetchRequest()
+        fetchRequest.sortDescriptors = [
+            SortDescriptor(\DayMO.date, order: .reverse)
+        ].map { NSSortDescriptor($0) }
+        fetchRequest.fetchLimit = count
+        return fetchRequest
+    }
+    
     // MARK: Add Day functions
     
     @discardableResult
-    static func addDay(date: Date, context: NSManagedObjectContext) -> DayMO {
+    static func addDay(date: Date,
+                       context: NSManagedObjectContext) -> DayMO {
         let newDay = DayMO(context: context)
         newDay.date = date
         saveContext(context, errorMessage: "CoreData error adding day.")
         return newDay
     }
     
-    static func addDay(activeFor category: StatusCategory, date: Date, context: NSManagedObjectContext) {
+    @discardableResult
+    static func addDay(activeFor category: StatusCategory,
+                       date: Date,
+                       context: NSManagedObjectContext) -> DayMO {
         let newDay = DayMO(context: context)
         newDay.date = date
         newDay.toggle(category: category)
         saveContext(context, errorMessage: "CoreData error adding day for category \(category).")
+        return newDay
     }
     
-    static func addDay(withNote note: String, date: Date, context: NSManagedObjectContext) {
+    @discardableResult
+    static func addDay(withNote note: String,
+                       date: Date,
+                       context: NSManagedObjectContext) -> DayMO {
         let newDay = DayMO(context: context)
         newDay.date = date
         newDay.note = note
         saveContext(context, errorMessage: "CoreData error adding day with note.")
+        return newDay
     }
     
+    @discardableResult
     static func addDay(active: Bool, creative: Bool, productive: Bool,
                        date: Date,
-                       context: NSManagedObjectContext) {
+                       context: NSManagedObjectContext) -> DayMO {
         let newDay = DayMO(context: context)
         newDay.date = date
         newDay.active = active
         newDay.creative = creative
         newDay.productive = productive
         saveContext(context, errorMessage: "CoreData error adding day.")
+        return newDay
     }
     
     // MARK: Toggle Category

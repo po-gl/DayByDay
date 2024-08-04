@@ -11,15 +11,13 @@ import CoreData
 struct ContentView: View {
     @Environment(\.colorScheme) private var colorScheme
 
-    @FetchRequest(sortDescriptors: [SortDescriptor(\DayMO.date, order: .reverse)])
-    private var allDays: FetchedResults<DayMO>
+    @FetchRequest(fetchRequest: DayData.pastDays(count: 1))
+    private var latestDayResult: FetchedResults<DayMO>
     private var latestDay: DayMO? {
-        if allDays.isEmpty { return nil }
-        return allDays[0].date?.isToday() ?? false ? allDays[0] : nil
+        latestDayResult.first?.date?.isToday() ?? false ? latestDayResult.first : nil
     }
     
     @State private var showingNoteEditor = false
-    
     
     var body: some View {
         GeometryReader { geometry in

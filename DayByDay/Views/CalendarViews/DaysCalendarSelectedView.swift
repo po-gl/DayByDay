@@ -12,10 +12,8 @@ struct DaysCalendarSelectedView: View {
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.dismiss) private var dismiss
     let date: Date
-    
-    @FetchRequest(sortDescriptors: [SortDescriptor(\DayMO.date, order: .reverse)])
-    private var allDays: FetchedResults<DayMO>
-    
+    @State var day: DayMO?
+
     private let dayFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.setLocalizedDateFormatFromTemplate("EEEE MMM d YYYY")
@@ -29,41 +27,61 @@ struct DaysCalendarSelectedView: View {
     
     let headerHeight: Double = 50
     
+    @State var categoryToggles: [StatusCategory: Bool] = [
+        .active: false,
+        .creative: false,
+        .productive: false
+    ]
+    @State var note = ""
     
     var body: some View {
-        let day = DayData.getDay(for: date, days: allDays)
-        
         ZStack {
             ScrollView {
                 VStack (spacing: 0) {
                     Group {
                         ZStack {
-                            BackgroundOrbs()
-                            Orbs(day)
+                            BackgroundOrbs
+                            Orbs
                         }
                         
-                        Notes(day, date: date)
+                        Notes
                     }
                     .offset(y: headerHeight + 10)
                     Spacer()
                 }
                 .frame(maxWidth: .infinity)
             }
-            Header()
+            Header
         }
         .onAppear {
             animate = true
+            updateDayInfo()
+        }
+        .onChange(of: showingNoteEditor) { _ in
+            Task {
+                try? await Task.sleep(for: .seconds(0.1))
+                updateDayInfo()
+            }
+        }
+    }
+    
+    func updateDayInfo() {
+        if let day {
+            categoryToggles[.active] = day.isActive(for: .active)
+            categoryToggles[.creative] = day.isActive(for: .creative)
+            categoryToggles[.productive] = day.isActive(for: .productive)
+            note = day.note ?? ""
         }
     }
     
     @ViewBuilder
-    private func Orbs(_ day: DayMO?) -> some View {
+    private var Orbs: some View {
         let orbWidth: Double = 85
         let spacing: Double = orbWidth/2 + 3
         
-        let isActive = day?.isActive(for: .active) ?? false
-        let isCreative = day?.isActive(for: .creative) ?? false
-        let isProductive = day?.isActive(for: .productive) ?? false
+        let isActive = categoryToggles[.active] ?? false
+        let isCreative = categoryToggles[.creative] ?? false
+        let isProductive = categoryToggles[.productive] ?? false
         let isComplete = isActive && isCreative && isProductive
         
         let activeColor = Color(hex: 0xE63C5C)
@@ -111,14 +129,15 @@ struct DaysCalendarSelectedView: View {
             if let day {
                 DayData.toggle(category: category, for: day, context: viewContext)
             } else {
-                DayData.addDay(activeFor: category, date: date, context: viewContext)
+                self.day = DayData.addDay(activeFor: category, date: date, context: viewContext)
             }
+            updateDayInfo()
         }
-        haptic(day)
+        haptic()
     }
     
     @ViewBuilder
-    private func BackgroundOrbs() -> some View {
+    private var BackgroundOrbs: some View {
         let orbWidth: Double = 85
         let spacing: Double = orbWidth/2 + 3
         
@@ -145,7 +164,7 @@ struct DaysCalendarSelectedView: View {
     }
     
     @ViewBuilder
-    private func Header() -> some View {
+    private var Header: some View {
         VStack {
             ZStack {
                 HStack {
@@ -169,32 +188,35 @@ struct DaysCalendarSelectedView: View {
     }
     
     @ViewBuilder
-    private func Notes(_ day: DayMO?, date: Date) -> some View {
+    private var Notes: some View {
         ZStack (alignment: .topLeading) {
             Group {
                 RoundedRectangle(cornerRadius: 12)
                     .fill(.thinMaterial)
                     .frame(minHeight: 90)
                 
-                Text(day?.note?.isEmpty ?? true ? "Enter notes for the day here." : day!.note!)
+                Text(note.isEmpty ? "Enter notes for the day here." : day!.note!)
                     .fontWeight(.light)
                     .lineSpacing(6)
-                    .opacity(day?.note?.isEmpty ?? true ? 0.5 : 1.0)
+                    .opacity(note.isEmpty ? 0.5 : 1.0)
                     .padding()
                     .sheet(isPresented: $showingNoteEditor) {
-                        NoteEditorView(date: date)
+                        NoteEditorView(date: date, day: day)
                     }
             }
             .contentShape(.contextMenuPreview, RoundedRectangle(cornerRadius: 6))
             .compositingGroup()
-            .contextMenu { NoteContextMenu(day) }
-            .onTapGesture { showingNoteEditor = true }
+            .contextMenu { NoteContextMenu }
+            .onTapGesture {
+                showingNoteEditor = true
+                self.day = DayData.addDay(date: date, context: viewContext)
+            }
             
             
             Circle()
                 .fill(.orange.gradient)
-                .saturation(day?.note?.isEmpty ?? true ? 0.2 : 1.0)
-                .brightness(day?.note?.isEmpty ?? true ? (colorScheme == .dark ? -0.2 : 0.2) : 0.0)
+                .saturation(note.isEmpty ? 0.2 : 1.0)
+                .brightness(note.isEmpty ? (colorScheme == .dark ? -0.2 : 0.2) : 0.0)
                 .frame(width: 15)
                 .offset(x: -8, y: -6)
                 .brightness(0.05)
@@ -204,8 +226,11 @@ struct DaysCalendarSelectedView: View {
     }
     
     @ViewBuilder
-    private func NoteContextMenu(_ day: DayMO?) -> some View {
-        Button(action: { showingNoteEditor = true }) {
+    private var NoteContextMenu: some View {
+        Button(action: {
+            showingNoteEditor = true
+            self.day = DayData.addDay(date: date, context: viewContext)
+        }) {
             Label("Edit", systemImage: "note.text")
         }
         Button(role: .destructive, action: {
@@ -218,7 +243,7 @@ struct DaysCalendarSelectedView: View {
     }
     
     
-    private func haptic(_ day: DayMO?) {
+    private func haptic() {
         if day?.isComplete() ?? false {
             completeHaptic()
         } else {
@@ -230,9 +255,10 @@ struct DaysCalendarSelectedView: View {
 
 struct DaysCalendarSelectedViewEnvironmentWrapper: View {
     let date: Date
+    var day: DayMO?
     
     var body: some View {
-        DaysCalendarSelectedView(date: date)
+        DaysCalendarSelectedView(date: date, day: day)
             .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
     }
 }
@@ -240,11 +266,13 @@ struct DaysCalendarSelectedViewEnvironmentWrapper: View {
 
 class DaysCalendarSelectedViewController: UIViewController {
     let date: Date
+    var day: DayMO?
     let onDismissBlock: () -> Void
-    lazy var contentView = UIHostingController(rootView: DaysCalendarSelectedViewEnvironmentWrapper(date: date))
+    lazy var contentView = UIHostingController(rootView: DaysCalendarSelectedViewEnvironmentWrapper(date: date, day: day))
     
-    init(date: Date, onDismiss: @escaping () -> Void = {}) {
+    init(date: Date, day: DayMO?, onDismiss: @escaping () -> Void = {}) {
         self.date = date
+        self.day = day
         self.onDismissBlock = onDismiss
         
         super.init(nibName: nil, bundle: nil)
@@ -280,6 +308,6 @@ class DaysCalendarSelectedViewController: UIViewController {
 
 struct DaysCalendarSelectedView_Previews: PreviewProvider {
     static var previews: some View {
-        DaysCalendarSelectedView(date: Date()).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        DaysCalendarSelectedView(date: Date(), day: nil).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

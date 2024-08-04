@@ -10,14 +10,13 @@ import CoreData
 
 struct ButtonCluster: View {
     @Environment(\.managedObjectContext) private var viewContext
-    
-    @FetchRequest(sortDescriptors: [SortDescriptor(\DayMO.date, order: .reverse)])
-    private var allDays: FetchedResults<DayMO>
+
+    @FetchRequest(fetchRequest: DayData.pastDays(count: 1))
+    private var latestDayResult: FetchedResults<DayMO>
     private var latestDay: DayMO? {
-        if allDays.isEmpty { return nil }
-        return allDays[0].date?.isToday() ?? false ? allDays[0] : nil
+        latestDayResult.first?.date?.isToday() ?? false ? latestDayResult.first : nil
     }
-    
+
     let diameter = 140.0
     let fontSize = 15.0
     

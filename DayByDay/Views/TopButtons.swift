@@ -12,6 +12,12 @@ struct TopButtons: View {
     @Binding var showingNoteEditor: Bool
     @State var showingDailyNotificationSettings = false
     
+    @FetchRequest(fetchRequest: DayData.pastDays(count: 1))
+    private var latestDayResult: FetchedResults<DayMO>
+    private var latestDay: DayMO? {
+        latestDayResult.first?.date?.isToday() ?? false ? latestDayResult.first : nil
+    }
+
     var body: some View {
         VStack {
             HStack {
@@ -51,7 +57,7 @@ struct TopButtons: View {
         .buttonStyle(MaterialStyle())
         .frame(width: 50, height: 32)
         .sheet(isPresented: $showingNoteEditor) {
-            NoteEditorView()
+            NoteEditorView(date: Date(), day: latestDay)
                 .presentationDetents([.medium, .large])
         }
     }

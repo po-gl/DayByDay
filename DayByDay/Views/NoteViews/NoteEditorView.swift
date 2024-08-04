@@ -9,14 +9,15 @@ import SwiftUI
 
 struct NoteEditorView: View {
     @Environment(\.dismiss) private var dismiss
-    var date: Date = Date()
+    var date: Date
+    var day: DayMO?
     var focusOnAppear: Bool = false
     @FocusState var noteFocus: Bool
 
     var body: some View {
         NavigationStack {
             ScrollView {
-                BaseNoteEditor(date: date, focusOnAppear: focusOnAppear)
+                BaseNoteEditor(date: date, day: day, focusOnAppear: focusOnAppear)
                     .ignoresSafeArea(edges: .all)
                     .safeAreaInset(edge: .top) {
                         Color.clear
@@ -74,7 +75,7 @@ struct NoteEditorView_Preview: PreviewProvider {
         Text("Preview")
             .onTapGesture { presenting = true }
             .sheet(isPresented: $presenting) {
-                NoteEditorView()
+                NoteEditorView(date: Date(), day: nil)
             }
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }

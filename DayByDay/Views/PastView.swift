@@ -9,11 +9,12 @@ import SwiftUI
 
 struct PastView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    
-    @FetchRequest(sortDescriptors: [SortDescriptor(\DayMO.date, order: .reverse)])
-    private var allDays: FetchedResults<DayMO>
-    
+
     private let daysToDisplay: Int = 30
+
+    @FetchRequest(fetchRequest: DayData.pastDays(count: 30))
+    private var pastDays: FetchedResults<DayMO>
+    
     private let cellHeight = 66.0
     private var height: Double { Double(daysToDisplay) * cellHeight }
     
@@ -21,23 +22,43 @@ struct PastView: View {
     @State private var noteEditorDay: DayMO?
     
     var body: some View {
-            ZStack {
-                WigglyBars()
-                    .mask(Cells(isMask: true))
-                DatesAndDividers()
-                NoteAccents()
-                Eyes()
-                Cells()
-                DescriptiveText()
-            }
+        let days = generatedFilledDays()
+        ZStack {
+            WigglyBars()
+                .mask(Cells(days: days, isMask: true))
+            DatesAndDividers()
+            NoteAccents(days: days)
+            Eyes()
+            Cells(days: days)
+            DescriptiveText()
+        }
         .frame(height: height)
         .padding(.bottom, 30)
         
         .sheet(item: $noteEditorDay) { day in
-            NoteEditorView(date: day.date!, focusOnAppear: true)
+            NoteEditorView(date: day.date!, day: day, focusOnAppear: true)
         }
     }
     
+    private func generatedFilledDays() -> [(Date, DayMO?)] {
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: Date())
+        let fetchedDaysDict = Dictionary(
+            pastDays.map { (calendar.startOfDay(for: $0.date!), $0) },
+            uniquingKeysWith: { (first, _) in first }
+        )
+        var days: [(Date, DayMO?)] = []
+        
+        for i in 0..<daysToDisplay {
+            guard let date = calendar.date(byAdding: .day, value: -i, to: today) else { continue }
+            if let day = fetchedDaysDict[date] {
+                days.append((date, day))
+            } else {
+                days.append((date, nil))
+            }
+        }
+        return days
+    }
     
     @State var eyesAnim1 = false
     @State var eyesAnim2 = false
@@ -68,20 +89,19 @@ struct PastView: View {
     
     
     @ViewBuilder
-    private func Cells(isMask: Bool = false) -> some View {
+    private func Cells(days: [(Date, DayMO?)], isMask: Bool = false) -> some View {
         VStack(spacing: 0) {
-            ForEach(0..<daysToDisplay, id: \.self) { i in
-                let date = Date(timeInterval: -Double(60*60*24*i), since: Date())
-                let day = DayData.getDay(for: date, days: allDays)
+            ForEach(days.indices, id: \.self) { i in
+                let (date, day) = days[i]
                 
                 HStack(spacing: 5) {
-                    Cell(category: .active, isMask, date: date)
+                    Cell(for: day, on: date, category: .active, isMask)
                         .accessibilityAddTraits(.isButton)
                         .accessibilityIdentifier("PastViewRow\(i)_Col1")
-                    Cell(category: .productive, isMask, date: date)
+                    Cell(for: day, on: date, category: .productive, isMask)
                         .accessibilityAddTraits(.isButton)
                         .accessibilityIdentifier("PastViewRow\(i)_Col2")
-                    Cell(category: .creative, isMask, date: date)
+                    Cell(for: day, on: date, category: .creative, isMask)
                         .accessibilityAddTraits(.isButton)
                         .accessibilityIdentifier("PastViewRow\(i)_Col3")
                 }
@@ -96,9 +116,8 @@ struct PastView: View {
     }
     
     @ViewBuilder
-    private func Cell(category: StatusCategory, _ isMask: Bool, date: Date) -> some View {
+    private func Cell(for day: DayMO?, on date: Date, category: StatusCategory, _ isMask: Bool) -> some View {
         let width: Double = 110
-        let day = DayData.getDay(for: date, days: allDays)
         let isActive = day?.isActive(for: category) ?? false
         
         if isMask {
@@ -186,12 +205,11 @@ struct PastView: View {
     }
     
     @ViewBuilder
-    private func NoteAccents() -> some View {
+    private func NoteAccents(days: [(Date, DayMO?)]) -> some View {
         let width = 3*(90.0+22)
         VStack(spacing: 0) {
-            ForEach(0..<daysToDisplay, id: \.self) { i in
-                let date = Date(timeInterval: -Double(60*60*24*i), since: Date())
-                let day = DayData.getDay(for: date, days: allDays)
+            ForEach(days.indices, id: \.self) { i in
+                let day = days[i].1
                 
                 HStack {
                     Spacer()

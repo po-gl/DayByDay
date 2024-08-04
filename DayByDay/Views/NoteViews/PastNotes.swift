@@ -29,7 +29,7 @@ struct PastNotes: View {
         .navigationBarTitleDisplayMode(.large)
         
         .sheet(item: $selectedDay) { day in
-            NoteEditorView(date: day.date!)
+            NoteEditorView(date: day.date!, day: day)
         }
     }
     

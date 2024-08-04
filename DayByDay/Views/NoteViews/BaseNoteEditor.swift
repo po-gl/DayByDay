@@ -9,11 +9,9 @@ import SwiftUI
 
 struct BaseNoteEditor: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @FetchRequest(sortDescriptors: [SortDescriptor(\DayMO.date, order: .reverse)])
-    private var allDays: FetchedResults<DayMO>
-
-
-    let date: Date
+    
+    var date: Date
+    var day: DayMO?
     @State private var note = ""
     @FocusState private var noteFocus: Bool
     let focusOnAppear: Bool
@@ -28,8 +26,6 @@ struct BaseNoteEditor: View {
     }
 
     @ViewBuilder var noteEditor: some View {
-        let day = DayData.getDay(for: date, days: allDays)
-        
         ZStack (alignment: .topLeading) {
             // Dummy text used to calculate TextEditor height
             // This fragile workaround will eventually not be needed and
