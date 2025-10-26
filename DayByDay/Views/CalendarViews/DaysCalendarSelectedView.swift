@@ -20,7 +20,9 @@ struct DaysCalendarSelectedView: View {
         return formatter
     }()
     
-    @State var animate = false
+    @State var animateActive = false
+    @State var animateCreative = false
+    @State var animateProductive = false
     let orbAnimation: Animation = .spring()
     
     @State var showingNoteEditor = false
@@ -53,8 +55,10 @@ struct DaysCalendarSelectedView: View {
                 }
             }
             .onAppear {
-                animate = true
                 updateDayInfo()
+                withAnimation(orbAnimation.delay(Double.random(in: 0.1...0.3))) { animateActive = true }
+                withAnimation(orbAnimation.delay(Double.random(in: 0.1...0.3))) { animateCreative = true }
+                withAnimation(orbAnimation.delay(Double.random(in: 0.1...0.3))) { animateProductive = true }
             }
             .onChange(of: showingNoteEditor) {
                 Task {
@@ -100,29 +104,26 @@ struct DaysCalendarSelectedView: View {
                 Circle()
                     .fill(LinearGradient(forSimple: .active))
                     .frame(width: orbWidth)
-                    .scaleEffect(animate ? 1.0 : 0.001, anchor: .center)
+                    .scaleEffect(animateActive ? 1.0 : 0.001, anchor: .center)
                     .offset(x: -spacing, y: -spacing)
                     .opacity(isActive ? 1.0 : 0.001)
                     .shadow(color: isComplete ? activeColor : .clear, radius: 10)
-                    .animation(orbAnimation.delay(Double.random(in: 0.1...0.3)), value: animate)
                     .onTapGesture { handleOrbPress(for: .active, day: day) }
                 Circle()
                     .fill(LinearGradient(forSimple: .creative))
                     .frame(width: orbWidth)
-                    .scaleEffect(animate ? 1.0 : 0.001, anchor: .center)
+                    .scaleEffect(animateCreative ? 1.0 : 0.001, anchor: .center)
                     .offset(x: spacing, y: -spacing)
                     .opacity(isCreative ? 1.0 : 0.001)
                     .shadow(color: isComplete ? creativeColor : .clear, radius: 10)
-                    .animation(orbAnimation.delay(Double.random(in: 0.1...0.3)), value: animate)
                     .onTapGesture { handleOrbPress(for: .creative, day: day) }
                 Circle()
                     .fill(LinearGradient(forSimple: .productive))
                     .frame(width: orbWidth)
-                    .scaleEffect(animate ? 1.0 : 0.001, anchor: .center)
+                    .scaleEffect(animateProductive ? 1.0 : 0.001, anchor: .center)
                     .offset(y: spacing - 12)
                     .opacity(isProductive ? 1.0 : 0.001)
                     .shadow(color: isComplete ? productiveColor : .clear, radius: 10)
-                    .animation(orbAnimation.delay(Double.random(in: 0.1...0.3)), value: animate)
                     .onTapGesture { handleOrbPress(for: .productive, day: day) }
             }
             .brightness(0.06)
