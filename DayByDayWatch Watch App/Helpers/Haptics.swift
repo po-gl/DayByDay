@@ -9,9 +9,9 @@ import Foundation
 import WatchKit
 
 func basicHaptic() {
-    WKInterfaceDevice.current().play(.click)
+  WKInterfaceDevice.current().play(.click)
 }
 
 func completeHaptic() {
-    WKInterfaceDevice.current().play(.success)
+  WKInterfaceDevice.current().play(.success)
 }
