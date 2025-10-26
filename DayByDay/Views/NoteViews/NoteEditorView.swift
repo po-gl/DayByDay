@@ -25,13 +25,6 @@ struct NoteEditorView: View {
     NavigationStack {
       ScrollView {
         BaseNoteEditor(date: date, day: day, focusOnAppear: focusOnAppear)
-          .ignoresSafeArea(edges: .all)
-          .safeAreaInset(edge: .top) {
-            Color.clear
-              .background(.bar)
-              .frame(height: 0)
-              .border(.thinMaterial)
-          }
           .focused($noteFocus)
           .toolbar {
             ToolbarItem(placement: .topBarLeading) {
@@ -57,12 +50,12 @@ struct NoteEditorView: View {
       },
       label: {
         Image(systemName: "chevron.backward")
+          .brightness(0.07)
+          .saturation(1.05)
       }
     )
     .accessibilityIdentifier("NoteCloseButton")
-    .foregroundColor(.orange)
-    .brightness(0.07)
-    .saturation(1.05)
+    .tint(.orange)
   }
 
   @ViewBuilder private var doneButton: some View {
@@ -73,12 +66,12 @@ struct NoteEditorView: View {
       },
       label: {
         Image(systemName: "checkmark")
+          .brightness(-0.07)
+          .saturation(1.05)
       }
     )
     .accessibilityIdentifier("NoteDoneTypingButton")
     .tint(.pinkish)
-    .brightness(-0.07)
-    .saturation(1.05)
     .buttonStyle(.glassProminent)
   }
 }

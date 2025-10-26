@@ -69,12 +69,12 @@ struct DailyNotificationSettingsView: View {
       },
       label: {
         Image(systemName: "chevron.backward")
+          .brightness(0.07)
+          .saturation(1.05)
       }
     )
     .accessibilityIdentifier("NotificationSettingsCancelButton")
-    .foregroundColor(.orange)
-    .brightness(0.07)
-    .saturation(1.05)
+    .tint(.orange)
   }
 
   @ViewBuilder private var saveButton: some View {
@@ -85,12 +85,11 @@ struct DailyNotificationSettingsView: View {
       },
       label: {
         Image(systemName: "checkmark")
+          .brightness(0.07)
+          .saturation(1.05)
       }
     )
     .accessibilityIdentifier("NotificationSettingsSaveButton")
-    .foregroundColor(.orange)
-    .brightness(0.07)
-    .saturation(1.05)
     .tint(.pinkish)
     .buttonStyle(.glassProminent)
   }
