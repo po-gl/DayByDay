@@ -10,14 +10,13 @@ import SwiftUI
 struct PastView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
-    private let daysToDisplay: Int = 30
+    public static let daysToDisplay: Int = 30
+    public static let cellHeight = 66.0
+    public static var height: Double { Double(daysToDisplay) * cellHeight }
 
-    @FetchRequest(fetchRequest: DayData.pastDays(count: 30))
+    @FetchRequest(fetchRequest: DayData.pastDays(count: PastView.daysToDisplay))
     private var pastDays: FetchedResults<DayMO>
-    
-    private let cellHeight = 66.0
-    private var height: Double { Double(daysToDisplay) * cellHeight }
-    
+
     @State private var showingNoteEditor = false
     @State private var noteEditorDay: DayMO?
     
@@ -32,7 +31,7 @@ struct PastView: View {
             Cells(days: days)
             DescriptiveText()
         }
-        .frame(height: height)
+        .frame(height: PastView.height)
         .padding(.bottom, 30)
         
         .sheet(item: $noteEditorDay) { day in
@@ -49,7 +48,7 @@ struct PastView: View {
         )
         var days: [(Date, DayMO?)] = []
         
-        for i in 0..<daysToDisplay {
+        for i in 0..<PastView.daysToDisplay {
             guard let date = calendar.date(byAdding: .day, value: -i, to: today) else { continue }
             if let day = fetchedDaysDict[date] {
                 days.append((date, day))
@@ -91,19 +90,17 @@ struct PastView: View {
     @ViewBuilder
     private func Cells(days: [(Date, DayMO?)], isMask: Bool = false) -> some View {
         VStack(spacing: 0) {
-            ForEach(days.indices, id: \.self) { i in
-                let (date, day) = days[i]
-                
+            ForEach(days, id: \.0) { (date, day) in
                 HStack(spacing: 5) {
-                    Cell(for: day, on: date, category: .active, isMask)
-                        .accessibilityAddTraits(.isButton)
-                        .accessibilityIdentifier("PastViewRow\(i)_Col1")
-                    Cell(for: day, on: date, category: .productive, isMask)
-                        .accessibilityAddTraits(.isButton)
-                        .accessibilityIdentifier("PastViewRow\(i)_Col2")
-                    Cell(for: day, on: date, category: .creative, isMask)
-                        .accessibilityAddTraits(.isButton)
-                        .accessibilityIdentifier("PastViewRow\(i)_Col3")
+                    if let day {
+                        CellView(date: date, category: .active, isMask: isMask, day: day)
+                        CellView(date: date, category: .productive, isMask: isMask, day: day)
+                        CellView(date: date, category: .creative, isMask: isMask, day: day)
+                    } else {
+                        EmptyCellView(date: date, category: .active, isMask: isMask)
+                        EmptyCellView(date: date, category: .productive, isMask: isMask)
+                        EmptyCellView(date: date, category: .creative, isMask: isMask)
+                    }
                 }
                 .contentShape(.contextMenuPreview, RoundedRectangle(cornerRadius: 20))
                 .contextMenu {
@@ -114,40 +111,13 @@ struct PastView: View {
             }
         }
     }
-    
-    @ViewBuilder
-    private func Cell(for day: DayMO?, on date: Date, category: StatusCategory, _ isMask: Bool) -> some View {
-        let width: Double = 110
-        let isActive = day?.isActive(for: category) ?? false
-        
-        if isMask {
-            Rectangle()
-                .frame(width: width, height: cellHeight)
-                .opacity(isActive ? 1.0 : 0.40)
-        } else {
-            Rectangle()
-                .frame(width: width, height: cellHeight)
-                .foregroundColor(.clear)
-                .contentShape(Rectangle())
-                .onTapGesture {
-                    withAnimation {
-                        heavyHaptic()
-                        if let day = day {
-                            DayData.toggle(category: category, for: day, context: viewContext)
-                        } else {
-                            DayData.addDay(activeFor: category, date: date, context: viewContext)
-                        }
-                    }
-                }
-        }
-    }
-    
+
     @ViewBuilder
     private func WigglyBars() -> some View {
         HStack(spacing: 25) {
-            WigglyBar(category: .active, width: ButtonCluster.lowerBoundDiameter, height: height)
-            WigglyBar(category: .productive, width: ButtonCluster.lowerBoundDiameter, height: height)
-            WigglyBar(category: .creative, width: ButtonCluster.lowerBoundDiameter, height: height)
+            WigglyBar(category: .active, width: ButtonCluster.lowerBoundDiameter, height: PastView.height)
+            WigglyBar(category: .productive, width: ButtonCluster.lowerBoundDiameter, height: PastView.height)
+            WigglyBar(category: .creative, width: ButtonCluster.lowerBoundDiameter, height: PastView.height)
         }
         .offset(y: ButtonCluster.lowerBoundDiameter/2)
     }
@@ -155,8 +125,8 @@ struct PastView: View {
     @ViewBuilder
     private func DatesAndDividers() -> some View {
         let width = 3*(90.0+22)
-        VStack(spacing: cellHeight-1) {
-            ForEach(0..<daysToDisplay, id: \.self) { i in
+        VStack(spacing: PastView.cellHeight-1) {
+            ForEach(0..<PastView.daysToDisplay, id: \.self) { i in
                 let date = Date(timeInterval: -Double(60*60*24*i), since: Date())
                 ZStack {
                     HStack (spacing: 0){
@@ -180,12 +150,12 @@ struct PastView: View {
                     if date.isMonday() {
                         WeekLine(width: width)
                             .frame(height: 1)
-                            .offset(y: cellHeight/2)
+                            .offset(y: PastView.cellHeight/2)
                     } else {
                         HorizontalLine()
                             .stroke(.primary, style: StrokeStyle(lineWidth: 1.0, lineCap: .round))
                             .frame(width: width, height: 1)
-                            .offset(y: cellHeight/2)
+                            .offset(y: PastView.cellHeight/2)
                             .opacity(0.3)
                     }
                 }
@@ -196,7 +166,7 @@ struct PastView: View {
     @ViewBuilder private func DescriptiveText() -> some View {
         VStack {
             Spacer()
-            Text("Past \(daysToDisplay) days")
+            Text("Past \(PastView.daysToDisplay) days")
                 .font(.title3)
                 .fontDesign(.serif)
                 .opacity(0.8)
@@ -208,16 +178,14 @@ struct PastView: View {
     private func NoteAccents(days: [(Date, DayMO?)]) -> some View {
         let width = 3*(90.0+22)
         VStack(spacing: 0) {
-            ForEach(days.indices, id: \.self) { i in
-                let day = days[i].1
-                
+            ForEach(days, id: \.0) { (date, day) in
                 HStack {
                     Spacer()
                     NoteAccent()
                         .opacity(day?.note?.isEmpty ?? true ? 0.0 : 1.0)
                         .offset(x: 10)
                 }
-                .frame(width: width, height: cellHeight)
+                .frame(width: width, height: PastView.cellHeight)
             }
         }
     }
@@ -263,6 +231,63 @@ struct PastView: View {
         }
         .padding()
         .frame(width: 300)
+    }
+}
+
+private struct CellView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    let date: Date
+    let category: StatusCategory
+    let isMask: Bool
+
+    @ObservedObject var day: DayMO
+
+    var body: some View {
+        let width: Double = 110
+        let isActive = day.isActive(for: category)
+        if isMask {
+            Rectangle()
+                .frame(width: width, height: PastView.cellHeight)
+                .opacity(isActive ? 1.0 : 0.40)
+        } else {
+            Rectangle()
+                .frame(width: width, height: PastView.cellHeight)
+                .foregroundColor(.clear)
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    withAnimation {
+                        heavyHaptic()
+                        DayData.toggle(category: category, for: day, context: viewContext)
+                    }
+                }
+        }
+    }
+}
+
+private struct EmptyCellView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    let date: Date
+    let category: StatusCategory
+    let isMask: Bool
+
+    var body: some View {
+        let width: Double = 110
+        if isMask {
+            Rectangle()
+                .frame(width: width, height: PastView.cellHeight)
+                .opacity(0.40)
+        } else {
+            Rectangle()
+                .frame(width: width, height: PastView.cellHeight)
+                .foregroundColor(.clear)
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    withAnimation {
+                        heavyHaptic()
+                        DayData.addDay(activeFor: category, date: date, context: viewContext)
+                    }
+                }
+        }
     }
 }
 

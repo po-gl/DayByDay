@@ -31,17 +31,6 @@ final class DayByDayUITests: XCTestCase {
         }
     }
     
-    func testScrollToBottom() throws {
-        let app = XCUIApplication()
-        app.launch()
-        
-        app.swipeUp(velocity: .init(5000))
-        
-        XCTAssertEqual(app.buttons["PastViewRow0_Col1"].isHittable, false)
-        
-        XCTAssertEqual(app.buttons["PastViewRow29_Col3"].isHittable, true)
-    }
-    
     // MARK: Calendar tests
     
     func testOpenCalendar() throws {

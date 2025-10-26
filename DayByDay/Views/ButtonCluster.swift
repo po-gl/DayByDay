@@ -16,59 +16,77 @@ struct ButtonCluster: View {
     private var latestDay: DayMO? {
         latestDayResult.first?.date?.isToday() ?? false ? latestDayResult.first : nil
     }
-
-    let diameter = 140.0
-    let fontSize = 15.0
     
     static let lowerBoundDiameter = 90.0
-    
-    var isDayComplete: Bool {
-        guard let latestDay = latestDay else { return false }
-        return latestDay.active && latestDay.creative && latestDay.productive
-    }
-    
+
     var body: some View {
         GeometryReader { geometry in
-            ZStack {
-                CompleteBackgroundView()
-                    .opacity(isDayComplete ? 1.0 : 0.0)
-                    .animation(.easeOut(duration: 3.0), value: isDayComplete)
-                    .allowsHitTesting(false)
-                    .zIndex(1)
-                WaveView()
-                    .opacity(isDayComplete ? 1.0 : 0.0)
-                    .animation(.easeOut(duration: 1.0), value: isDayComplete)
-                    .allowsHitTesting(false)
-                    .zIndex(3)
-                
-                Group {
-                    SwirlButton("Active", for: .active, startAngle: .topLeft, geometry)
-                        .zIndex(2)
-                    SwirlButton("Creative", for: .creative, startAngle: .topRight, geometry)
-                        .zIndex(4)
-                    SwirlButton("Productive", for: .productive, startAngle: .bottom, geometry)
-                        .zIndex(4)
-                }
-                .mask {
-                    WaveMask(geometry)
-                }
-            }
-            .position(x: geometry.size.width/2, y: geometry.size.height/2)
+            ButtonClusterForDay(day: latestDay, geometry: geometry, context: viewContext)
         }
         .frame(width: 360, height: 360)
     }
-    
-    
+}
+
+private struct ButtonClusterForDay: View {
+    @ObservedObject var day: DayMO
+    let geometry: GeometryProxy
+    let context: NSManagedObjectContext
+
+    let diameter = 140.0
+    let fontSize = 15.0
+
+    init(day: DayMO?, geometry: GeometryProxy, context: NSManagedObjectContext) {
+        if let day {
+            self.day = day
+        } else {
+            self.day = DayMO()
+            let newDay = DayMO(context: context)
+            newDay.date = Date()
+            self.day = newDay
+        }
+        self.geometry = geometry
+        self.context = context
+    }
+
+    var isDayComplete: Bool {
+        day.active && day.creative && day.productive
+    }
+
+    var body: some View {
+        // your existing body, now reading day.active/creative/productive directly
+        ZStack {
+            CompleteBackgroundView()
+                .opacity(isDayComplete ? 1.0 : 0.0)
+                .animation(.easeOut(duration: 3.0), value: isDayComplete)
+                .allowsHitTesting(false)
+                .zIndex(1)
+            WaveView()
+                .opacity(isDayComplete ? 1.0 : 0.0)
+                .animation(.easeOut(duration: 1.0), value: isDayComplete)
+                .allowsHitTesting(false)
+                .zIndex(3)
+
+            Group {
+                SwirlButton("Active", for: .active, startAngle: .topLeft, geometry)
+                    .zIndex(2)
+                SwirlButton("Creative", for: .creative, startAngle: .topRight, geometry)
+                    .zIndex(4)
+                SwirlButton("Productive", for: .productive, startAngle: .bottom, geometry)
+                    .zIndex(4)
+            }
+            .mask {
+                WaveMask(geometry)
+            }
+        }
+        .position(x: geometry.size.width/2, y: geometry.size.height/2)
+    }
+
     @ViewBuilder
     private func SwirlButton(_ text: String, for category: StatusCategory, startAngle: AngleStart, _ geometry: GeometryProxy) -> some View {
-        let isOn = latestDay?.isActive(for: category) ?? false
+        let isOn = day.isActive(for: category)
         Button(action: {
             withAnimation(.easeOut(duration: 0.2)) {
-                if let day = latestDay {
-                    DayData.toggle(category: category, for: day, context: viewContext)
-                } else {
-                    DayData.addDay(activeFor: category, date: Date(), context: viewContext)
-                }
+                DayData.toggle(category: category, for: day, context: context)
             }
             haptic()
         }) {
@@ -83,8 +101,8 @@ struct ButtonCluster: View {
         .position(animPosition(for: startAngle, geometry))
         .accessibilityIdentifier("\(text)Button_\(isOn ? "On" : "Off")") // for UITests
     }
-    
-    
+
+
     private func haptic() {
         if isDayComplete {
             completeHaptic()
@@ -92,7 +110,7 @@ struct ButtonCluster: View {
             basicHaptic()
         }
     }
-    
+
     @ViewBuilder
     private func WaveMask(_ geometry: GeometryProxy) -> some View {
         ZStack {
@@ -111,14 +129,14 @@ struct ButtonCluster: View {
             .offset(y: 700/2)
         }
     }
-    
-    
+
+
     private func animPosition(for startAngle: AngleStart, _ geometry: GeometryProxy) -> CGPoint {
         let start = startingPosition(for: startAngle, geometry)
         let offset = offset(for: startAngle, geometry)
         return CGPoint(x: start.x + offset.x, y: start.y + offset.y)
     }
-    
+
     private func startingPosition(for startAngle: AngleStart, _ geometry: GeometryProxy) -> CGPoint {
         let padding = 15.0
         let frameX = geometry.frame(in: .local).width
@@ -134,7 +152,7 @@ struct ButtonCluster: View {
             return CGPoint()
         }
     }
-    
+
     private func offset(for startAngle: AngleStart, _ geometry: GeometryProxy) -> CGPoint {
         let scrollOffset = scrollOffset(geometry)
         let bound = 40.0
@@ -151,7 +169,7 @@ struct ButtonCluster: View {
             return CGPoint()
         }
     }
-    
+
     private func opacity(for startAngle: AngleStart, _ geometry: GeometryProxy) -> Double {
         let scrollOffset = scrollOffset(geometry)
         switch startAngle {
@@ -171,7 +189,7 @@ struct ButtonCluster: View {
         let lowerBound = ButtonCluster.lowerBoundDiameter / diameter
         return max(min(1.0, 1.0 + scrollOffset / 200), lowerBound)
     }
-    
+
     private func scrollOffset(_ geometry: GeometryProxy) -> Double {
         return geometry.frame(in: .named("scroll")).minY - 216.0
     }
