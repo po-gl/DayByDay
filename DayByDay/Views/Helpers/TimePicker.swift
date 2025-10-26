@@ -26,7 +26,7 @@ struct TimePicker: View {
                 .onAppear {
                     setSelectionsFor(hour: hour, minute: minute)
                 }
-                .onChange(of: selections) { selections in
+                .onChange(of: selections) { _, selections in
                     setHourAndMinuteFor(selections: selections)
                 }
         }

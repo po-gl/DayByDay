@@ -14,6 +14,13 @@ struct NoteEditorView: View {
     var focusOnAppear: Bool = false
     @FocusState var noteFocus: Bool
 
+    init(date: Date, day: DayMO? = nil, focusOnAppear: Bool = false) {
+        self.date = date
+        self.day = day
+        self.focusOnAppear = focusOnAppear
+        self._noteFocus = FocusState()
+    }
+
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -31,7 +38,9 @@ struct NoteEditorView: View {
                             closeButton
                         }
                         ToolbarItem(placement: .topBarTrailing) {
-                            doneButton
+                            if (noteFocus) {
+                                doneButton
+                            }
                         }
                     }
                     .navigationTitle(dayFormatter.string(from: date))
@@ -42,9 +51,11 @@ struct NoteEditorView: View {
     }
 
     @ViewBuilder private var closeButton: some View {
-        Button(action: { dismiss() }) {
-            Text("Close").bold()
-        }
+        Button(action: {
+            dismiss()
+        }, label: {
+            Image(systemName: "chevron.backward")
+        })
         .accessibilityIdentifier("NoteCloseButton")
         .foregroundColor(.orange)
         .brightness(0.07)
@@ -52,12 +63,16 @@ struct NoteEditorView: View {
     }
 
     @ViewBuilder private var doneButton: some View {
-        Button("Done") { UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil) }
-            .accessibilityIdentifier("NoteDoneTypingButton")
-            .tint(Color(hex: 0xFF7676))
-            .brightness(-0.07)
-            .saturation(1.05)
-            .opacity(noteFocus ? 1.0 : 0.0)
+        Button(action: {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        }, label: {
+            Image(systemName: "checkmark")
+        })
+        .accessibilityIdentifier("NoteDoneTypingButton")
+        .tint(.pinkish)
+        .brightness(-0.07)
+        .saturation(1.05)
+        .buttonStyle(.glassProminent)
     }
 }
 
@@ -80,3 +95,4 @@ struct NoteEditorView_Preview: PreviewProvider {
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
+

@@ -36,14 +36,14 @@ struct TopButtons: View {
     private func DailyNotificationButton() -> some View {
         Button(action: { showingDailyNotificationSettings = true }) {
             Image(systemName: "clock")
-                .opacity(0.8)
         }
         .accessibilityIdentifier("DailyNotificationButton")
-        .buttonStyle(MaterialStyle())
+        .buttonStyle(.glass)
+        .tint(.active)
         .frame(width: 50, height: 32)
         .sheet(isPresented: $showingDailyNotificationSettings) {
             DailyNotificationSettingsView()
-                .presentationDetents([.medium])
+                .presentationDetents([.medium, .large])
         }
     }
     
@@ -51,10 +51,10 @@ struct TopButtons: View {
     private func NoteButton() -> some View {
         Button(action: { showingNoteEditor = true }) {
             Image(systemName: "square.and.pencil")
-                .opacity(0.8)
         }
         .accessibilityIdentifier("NoteButton")
-        .buttonStyle(MaterialStyle())
+        .buttonStyle(.glass)
+        .tint(.active)
         .frame(width: 50, height: 32)
         .sheet(isPresented: $showingNoteEditor) {
             NoteEditorView(date: Date(), day: latestDay)
@@ -76,13 +76,12 @@ struct TopButtons: View {
                 }
         }) {
             Image(systemName: "calendar")
-                .opacity(0.8)
         }
         .accessibilityIdentifier("CalendarButton")
-        .buttonStyle(MaterialStyle())
+        .buttonStyle(.glass)
+        .tint(.active)
         .frame(width: 50, height: 32)
     }
-    
     
     @ViewBuilder
     private func PastNotesButton() -> some View {
@@ -94,10 +93,8 @@ struct TopButtons: View {
     }
 }
 
-
 fileprivate let dayFormatter: DateFormatter = {
     let formatter = DateFormatter()
     formatter.setLocalizedDateFormatFromTemplate("EEEE MMM d YYYY")
     return formatter
 }()
-

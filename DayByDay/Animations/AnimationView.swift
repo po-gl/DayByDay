@@ -41,14 +41,24 @@ class AnimationUIView: UIView {
     
     deinit {
         print("Deinit called")
+        NotificationCenter.default.removeObserver(self)
+        teardownPlayer()
     }
     
     private func setupPlayer() {
         guard let fileURL = Bundle.main.url(forResource: name, withExtension: "mov") else { return }
         
+        // Ensure we don't stack multiple layers or players
+        if playerLayer.superlayer == nil {
+            layer.addSublayer(playerLayer)
+        }
+        
+        // Tear down any existing player before setting up a new one
+        teardownPlayer()
+        
         Task {
             do {
-                let asset = AVAsset(url: fileURL)
+                let asset = AVURLAsset(url: fileURL)
                 let isPlayable = try await asset.load(.isPlayable)
                 if isPlayable {
                     let item = AVPlayerItem(asset: asset)
@@ -56,8 +66,6 @@ class AnimationUIView: UIView {
                     player?.isMuted = true
                     player?.automaticallyWaitsToMinimizeStalling = false
                     playerLayer.player = player
-                    playerLayer.videoGravity = .resize
-                    layer.addSublayer(playerLayer)
                     
                     self.playerLooper = AVPlayerLooper(player: self.player!, templateItem: item)
                     self.player?.playImmediately(atRate: 1.0)
@@ -68,6 +76,12 @@ class AnimationUIView: UIView {
         }
     }
     
+    private func teardownPlayer() {
+        player?.pause()
+        playerLooper = nil
+        playerLayer.player = nil
+        player = nil
+    }
     
     @objc
     private func refresh() {
@@ -76,7 +90,7 @@ class AnimationUIView: UIView {
     
     @objc
     private func removeLayer() {
-        player?.pause()
+        teardownPlayer()
         playerLayer.removeFromSuperlayer()
     }
     

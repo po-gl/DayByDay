@@ -35,33 +35,40 @@ struct DaysCalendarSelectedView: View {
     @State var note = ""
     
     var body: some View {
-        ZStack {
-            ScrollView {
-                VStack (spacing: 0) {
-                    Group {
-                        ZStack {
-                            BackgroundOrbs
-                            Orbs
+        NavigationStack {
+            ZStack {
+                ScrollView {
+                    VStack (spacing: 0) {
+                        Group {
+                            ZStack {
+                                BackgroundOrbs
+                                Orbs
+                            }
+
+                            Notes
                         }
-                        
-                        Notes
+                        Spacer()
                     }
-                    .offset(y: headerHeight + 10)
-                    Spacer()
+                    .frame(maxWidth: .infinity)
                 }
-                .frame(maxWidth: .infinity)
             }
-            Header
-        }
-        .onAppear {
-            animate = true
-            updateDayInfo()
-        }
-        .onChange(of: showingNoteEditor) { _ in
-            Task {
-                try? await Task.sleep(for: .seconds(0.1))
+            .onAppear {
+                animate = true
                 updateDayInfo()
             }
+            .onChange(of: showingNoteEditor) {
+                Task {
+                    try? await Task.sleep(for: .seconds(0.1))
+                    updateDayInfo()
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    closeButton
+                }
+            }
+            .navigationTitle(dayFormatter.string(from: date))
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
     
@@ -162,31 +169,19 @@ struct DaysCalendarSelectedView: View {
         }
         .frame(width: orbWidth*2 + spacing, height: orbWidth*1.8 + spacing)
     }
-    
+
     @ViewBuilder
-    private var Header: some View {
-        VStack {
-            ZStack {
-                HStack {
-                    Button("Close") { dismiss() }
-                        .foregroundColor(Color(hex: 0x97D327))
-                        .brightness(colorScheme == .dark ? 0.07 : -0.02)
-                        .saturation(1.05)
-                        .padding()
-                    Spacer()
-                }
-                RoundedRectangle(cornerRadius: 10)
-                    .frame(width: 35, height: 5)
-                    .opacity(0.6)
-                    .offset(y: -headerHeight/2 + 8)
-                Text(date, formatter: dayFormatter)
-            }
-            .frame(height: headerHeight)
-            .background(.thinMaterial)
-            Spacer()
-        }
+    private var closeButton: some View {
+        Button(action: {
+            dismiss()
+        }, label: {
+            Image(systemName: "chevron.backward")
+        })
+        .foregroundColor(Color(hex: 0x97D327))
+        .brightness(colorScheme == .dark ? 0.07 : -0.02)
+        .saturation(1.05)
     }
-    
+
     @ViewBuilder
     private var Notes: some View {
         ZStack (alignment: .topLeading) {
@@ -308,6 +303,8 @@ class DaysCalendarSelectedViewController: UIViewController {
 
 struct DaysCalendarSelectedView_Previews: PreviewProvider {
     static var previews: some View {
-        DaysCalendarSelectedView(date: Date(), day: nil).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        NavigationView {
+            DaysCalendarSelectedView(date: Date(), day: nil).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        }
     }
 }

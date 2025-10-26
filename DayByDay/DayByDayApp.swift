@@ -25,10 +25,10 @@ struct DayByDayApp: App {
                     getNotificationPermissions()
                     viewContext.undoManager = undoManager
                 }
-                .onChange(of: scenePhase) { newPhase in
-                    if newPhase == .active {
+                .onChange(of: scenePhase) { _, newValue in
+                    if newValue == .active {
                         cancelPendingNotifications()
-                    } else if newPhase == .inactive {
+                    } else if newValue == .inactive {
                         setupNotifications()
                     }
                 }

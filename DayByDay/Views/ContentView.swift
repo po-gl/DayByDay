@@ -24,7 +24,6 @@ struct ContentView: View {
             NavigationView {
                 ZStack {
                     MainPage(geometry)
-                        .overlay(alignment: .top) { StatusBarBlur() }
                     TopButtons(showingNoteEditor: $showingNoteEditor)
                         .zIndex(5)
                 }
@@ -55,16 +54,7 @@ struct ContentView: View {
         .position(x: geometry.size.width/2, y: geometry.size.height/2)
         .coordinateSpace(name: "scroll")
     }
-    
-    @ViewBuilder
-    private func StatusBarBlur() -> some View {
-        Color.clear
-            .background(.ultraThinMaterial)
-            .brightness(colorScheme == .dark ? -0.1 : 0.02)
-            .edgesIgnoringSafeArea(.top)
-            .frame(height: 0)
-    }
-    
+
     @ViewBuilder
     private func BottomSpacer(_ geometry: GeometryProxy) -> some View {
         Rectangle()

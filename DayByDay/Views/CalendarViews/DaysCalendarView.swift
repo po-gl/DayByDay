@@ -147,12 +147,13 @@ class DaysCalendarViewController: UIViewController {
         VStack (spacing: 0) {
             Text("\(day.day)")
                 .font(.system(size: 18))
+                .padding([.leading, .trailing], 2)
                 .foregroundColor(.primary)
                 .background(
                     RoundedRectangle(cornerRadius: 8)
                         .fill(Color(hex: 0xDC3F3F).lighten().gradient)
                         .saturation(1.14)
-                        .brightness(-0.1)
+                        .brightness(-0.05)
                         .opacity(date.isToday() ? 1.0 : 0.0)
                         .scaleEffect(1.15)
                         .frame(minWidth: 15)
@@ -171,9 +172,9 @@ class DaysCalendarViewController: UIViewController {
         let isProductive = dayMO?.isActive(for: .productive) ?? false
         let isComplete = isActive && isCreative && isProductive
         
-        let activeColor = Color(hex: 0xE63C5C)
-        let creativeColor = Color(hex: 0xBE59D5)
-        let productiveColor = Color(hex: 0x97D327)
+        let activeColor = Color.active
+        let creativeColor = Color.creative
+        let productiveColor = Color.productive
         
         ZStack {
             Group {

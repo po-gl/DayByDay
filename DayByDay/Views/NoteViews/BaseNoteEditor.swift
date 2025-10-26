@@ -53,8 +53,8 @@ struct BaseNoteEditor: View {
                 .scrollContentBackground(.hidden)
                 .scrollDisabled(true)
                 .tint(Color(hex: 0xE63C5C))
-                .onChange(of: noteFocus) { focus in
-                    if !focus {
+                .onChange(of: noteFocus) { _, newValue in
+                    if !newValue {
                         if let day {
                             DayData.change(note: note, for: day, context: viewContext)
                         } else {
