@@ -12,6 +12,9 @@ struct TopButtons: View {
   @Binding var showingNoteEditor: Bool
   @State var showingDailyNotificationSettings = false
 
+  @State private var animateButtons: Bool = false
+  @Namespace private var namespace
+
   @FetchRequest(fetchRequest: DayData.pastDays(count: 1))
   private var latestDayResult: FetchedResults<DayMO>
   private var latestDay: DayMO? {
@@ -20,15 +23,26 @@ struct TopButtons: View {
 
   var body: some View {
     VStack {
-      HStack {
-        DailyNotificationButton()
+      GlassEffectContainer {
+        HStack(spacing: 0) {
+          DailyNotificationButton()
+          Spacer()
+          if (animateButtons) {
+            NoteButton()
+              .glassEffectID("note", in: namespace)
+          }
+          CalendarButton()
+            .glassEffectID("calendar", in: namespace)
+        }
+        .padding(.top, 20)
+        .padding(.horizontal, 30)
         Spacer()
-        NoteButton()
-        CalendarButton()
       }
-      .padding(.top, 20)
-      .padding(.horizontal, 30)
-      Spacer()
+    }
+    .onAppear {
+      withAnimation {
+        animateButtons = true
+      }
     }
   }
 
@@ -36,11 +50,14 @@ struct TopButtons: View {
   private func DailyNotificationButton() -> some View {
     Button(action: { showingDailyNotificationSettings = true }) {
       Image(systemName: "clock")
+        .font(.title2)
+        .padding(2)
     }
     .accessibilityIdentifier("DailyNotificationButton")
-    .buttonStyle(.glass)
     .tint(.active)
-    .frame(width: 50, height: 32)
+    .buttonStyle(.glass)
+    .buttonBorderShape(.circle)
+    .contentShape(.circle)
     .sheet(isPresented: $showingDailyNotificationSettings) {
       DailyNotificationSettingsView()
         .presentationDetents([.medium, .large])
@@ -51,11 +68,14 @@ struct TopButtons: View {
   private func NoteButton() -> some View {
     Button(action: { showingNoteEditor = true }) {
       Image(systemName: "square.and.pencil")
+        .font(.title2)
+        .padding(2)
     }
     .accessibilityIdentifier("NoteButton")
-    .buttonStyle(.glass)
     .tint(.active)
-    .frame(width: 50, height: 32)
+    .buttonStyle(.glass)
+    .buttonBorderShape(.circle)
+    .contentShape(.circle)
     .sheet(isPresented: $showingNoteEditor) {
       NoteEditorView(date: Date(), day: latestDay)
         .presentationDetents([.medium, .large])
@@ -76,11 +96,14 @@ struct TopButtons: View {
         }
     }) {
       Image(systemName: "calendar")
+        .font(.title2)
+        .padding(3)
     }
     .accessibilityIdentifier("CalendarButton")
-    .buttonStyle(.glass)
     .tint(.active)
-    .frame(width: 50, height: 32)
+    .buttonStyle(.glass)
+    .buttonBorderShape(.circle)
+    .contentShape(.circle)
   }
 
   @ViewBuilder
